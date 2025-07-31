@@ -1,0 +1,7 @@
+[user]
+	name = fard-draf
+	email = fard@ik.me
+[safe]
+	directory = /mnt/zatdev/embedded
+[alias]
+	lg = log --oneline --graph --decorate --all

@@ -1,0 +1,25 @@
+[[language]]
+name = "rust"
+formatter = { command = "rustfmt", args = ["--emit=stdout"] }
+language-servers = [ "rust-analyzer", "taplo-lsp" ]
+indent = { tab-width = 4, unit = "    " }
+
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+check.command = "cargo clippy -- -A clippy::all"
+checkOnSave = true  # Exécuter Clippy lors de la sauvegarde
+
+[language-server.rust-analyzer.config]
+cargo.allFeatures = true
+procMacro.enable = true
+
+inlayHints.bindingModeHints.enable = true
+inlayHints.chainingHints.enable = true
+inlayHints.closingBraceHints.enable = true
+inlayHints.closingBraceHints.minLines = 10
+inlayHints.parameterHints.enable = true
+inlayHints.typeHints.enable = true
+inlayHints.typeHints.hideLessSpecificTypes = true
+
+hover.actions.enable = true
+completion.autoimport.enable = true

@@ -1,0 +1,60 @@
+{
+    "editor.minimap.enabled": false,
+    "workbench.colorTheme": "Rusty One Dark",
+    "editor.formatOnSave": true,
+    "editor.semanticHighlighting.enabled": true,
+    "rust-analyzer.semanticHighlighting": true,
+    "rust-analyzer.checkOnSave": true,
+    "rust-analyzer.check.command": "clippy",
+    "rust-analyzer.inlayHints.enable": true,
+    "rust-analyzer.inlayHints.typeHints.enable": true,
+    "rust-analyzer.inlayHints.parameterHints.enable": true,
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    // "rust-analyzer.cargo.extraEnv": {
+    //     "CARGO_HOME": "/mnt/dev_env/tools/rust/cargo",
+    //     "RUSTUP_HOME": "/mnt/dev_env/tools/rust/rustup"
+    // },
+    "workbench.iconTheme": "material-icon-theme",
+    "symbols.hidesExplorerArrows": false,
+    "diffEditor.hideUnchangedRegions.enabled": true,
+    "git.openRepositoryInParentFolders": "never",
+    "typescript.tsdk": "/mnt/dev_env/tools/nodejs/npm-global/lib/node_modules/typescript/lib",
+    "npm.executable.path": "/mnt/dev_env/tools/nodejs/bin/npm",
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "rust-analyzer.procMacro.server": null,
+    "rust-analyzer.linkedProjects": [],
+    "launch": {
+        "configurations": [],
+        "compounds": []
+    },
+    "workbench.settings.applyToAllProfiles": [],
+    "vim.useSystemClipboard": true,
+    "vim.hlsearch": true,
+    "vim.incsearch": true,
+    "vim.easymotion": true,
+    "vim.leader": "<space>",
+    "vim.surround": true,
+    "vim.commentary": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "o"
+            ],
+            "commands": [
+                "workbench.action.files.openFolder"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "e"
+            ],
+            "commands": [
+                "workbench.view.explorer"
+            ]
+        },
+    ],
+    "lldb.suppressUpdateNotifications": true,
+}

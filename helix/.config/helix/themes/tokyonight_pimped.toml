@@ -1,0 +1,31 @@
+inherits = "jetbrains_dark"
+
+# Diagnostics dans les gutters (petits indicateurs)
+# 
+#"diagnostic.error" = "red"
+#"diagnostic.warning" = "yellow" 
+#"diagnostic.info" = "blue"
+#"diagnostic.hint" = "green"
+
+# Soulignements dans le texte (optionnel, plus discret)
+#"diagnostic.unnecessary" = { modifiers = ["dim"] }
+#"diagnostic.deprecated" = { modifiers = ["crossed_out"] }
+# 🎯 Diagnostics dans les GUTTERS
+"diagnostic.error" = { fg = "#fe3636", modifiers = ["bold"] }
+"diagnostic.warning" = { fg = "yellow", modifiers = ["bold"] }
+"diagnostic.info" = { fg = "blue", modifiers = ["bold"] }
+"diagnostic.hint" = { fg = "green", modifiers = ["bold"] }
+
+# ✏️ SOULIGNEMENTS dans le code (plus visibles)
+"diagnostic.error.underline" = { style = "line", color = "red" }
+"diagnostic.warning.underline" = { style = "line", color = "yellow" }
+"diagnostic.info.underline" = { style = "line", color = "blue" }
+"diagnostic.hint.underline" = { style = "line", color = "green" }
+
+# 🧪 Code inutilisé ou obsolète
+"diagnostic.unnecessary" = { modifiers = ["dim"] }
+"diagnostic.deprecated" = { modifiers = ["crossed_out", "italic"] }
+
+# (optionnel) Pour encore plus de contraste
+"ui.virtual.diagnostic.error" = { fg = "red", modifiers = ["bold"] }
+"ui.virtual.diagnostic.warning" = { fg = "yellow", modifiers = ["bold"] }
