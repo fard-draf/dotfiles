@@ -109,6 +109,7 @@ alias t2='tree -L 2 -a'
 alias t3='tree -a -L 3'
 alias t4='tree -a -C -L 4'
 alias cloud='cd /home/fard/Documents/10_SYNC/10.2_VAULTS/10.2.1_SUMAC_CLOUD'
+alias :q='exit'
 
 # ======= ALIAS SYSTÈME =======
 alias update='sudo dnf update -y'
