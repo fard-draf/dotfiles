@@ -99,8 +99,9 @@ alias md='mkdir -p'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias dev='cd /mnt/dev_env'
-alias wh='cd /mnt/dev_env/warehouse'
+alias dev='cd /mnt/sumac/dev'
+alias wh='cd /mnt/sumac/dev/warehouse'
+alias korri='cd /mnt/sumac/dev/warehouse/projects/professional/korrigan/'
 alias zshrc='$EDITOR ~/.zshrc'    # Éditer rapidement votre .zshrc
 alias reload='source ~/.zshrc'    # Recharger zsh
 alias t1='tree -L 1 -a'
@@ -119,6 +120,7 @@ alias process='ps aux | grep'
 alias meminfo='free -m -l -t'
 alias cpuinfo='lscpu'
 alias diskspace='df -h'
+alias wezterm='flatpak run org.wezfurlong.wezterm'
 
 # ======= ALIAS VAULT ====
 export VAULT_PATH="/home/fard/Documents/10_SYNC/10.2_VAULTS/10.2.1_SUMAC_CLOUD"
@@ -268,6 +270,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
+export EDITOR=hx
 # ==================================================================================SECRETS
  if [[ -f "~/dotfiles/zsh/.secrets" ]]; then
   source "~/dotfiles/zsh/.secrets"

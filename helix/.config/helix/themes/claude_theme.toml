@@ -1,0 +1,222 @@
+
+# Thème Helix optimisé pour Rust avec distinctions sémantiques
+
+# === TYPES ET STRUCTURES ===
+"type" = "yellow"
+"type.struct" = { fg = "rust_struct" }     # Structs en orange vif
+"type.enum" = { fg = "rust_enum" }      # Enums en jaune-vert
+"type.union" = { fg = "rust_union", modifiers = ["underlined"] } # Unions soulignées
+"type.trait" = { fg = "rust_trait", modifiers = ["bold", "italic"] } # Traits en bleu cyan distinctif
+"type.builtin" = { fg = "rust_primitive", modifiers = ["bold"] } # Types primitifs (i32, String, etc.)
+"type.parameter" = "rust_generic"                               # Paramètres génériques (T, U, etc.)
+
+# === FONCTIONS ET MÉTHODES ===
+"function" = "blue"
+"function.builtin" = { fg = "rust_builtin_fn", modifiers = ["bold"] }
+"function.macro" = { fg = "rust_macro", modifiers = ["bold"] }   # Macros distinctives
+"function.method" = "rust_method"                                # Méthodes d'implémentation
+"constructor" = { fg = "rust_constructor", modifiers = ["bold"] } # Constructeurs (new, default, etc.)
+
+# === MOTS-CLÉS SPÉCIALISÉS RUST ===
+"keyword" = "purple"
+"keyword.unsafe" = { fg = "rust_unsafe", bg = "rust_unsafe_bg", modifiers = ["bold"] } # Unsafe très visible
+"keyword.async" = { fg = "rust_async", modifiers = ["italic"] }  # async/await
+"keyword.storage.type" = { fg = "rust_storage", modifiers = ["bold"] } # mut, ref, etc.
+"keyword.storage.modifier" = "rust_modifier"                     # pub, const, static
+"keyword.control.conditional" = "rust_control"                   # if, else, match
+"keyword.control.loop" = { fg = "rust_loop", modifiers = ["bold"] } # for, while, loop
+"keyword.directive" = "cyan"
+
+# === VARIABLES ET IDENTIFICATEURS ===
+"variable" = "fg"
+"variable.builtin" = { fg = "rust_self", modifiers = ["italic"] } # self, Self
+"variable.parameter" = "rust_param"
+"variable.other.member" = "rust_field"                           # Champs de struct
+"variable.other.constant" = { fg = "rust_const", modifiers = ["bold"] } # CONSTANTES
+
+# === CONSTANTES ET LITTÉRAUX ===
+"constant" = { fg = "rust_const", modifiers = ["bold"] }
+"constant.numeric" = "rust_number"
+"constant.numeric.integer" = "rust_integer"
+"constant.numeric.float" = "rust_float"
+"constant.character" = "rust_char"
+"constant.character.escape" = { fg = "rust_escape", modifiers = ["bold"] }
+"constant.builtin" = { fg = "rust_builtin_const", modifiers = ["bold"] } # true, false, None, Some
+
+# === CHAÎNES ET PATTERNS ===
+"string" = "green"
+"string.regexp" = { fg = "rust_regex", modifiers = ["italic"] }
+"string.special" = { fg = "rust_format_string", modifiers = ["bold"] } # Format strings
+
+# === ATTRIBUTS ET ANNOTATIONS ===
+"attribute" = { fg = "rust_attribute", modifiers = ["italic"] }  # #[derive(...)]
+"attribute.builtin" = { fg = "rust_builtin_attr", modifiers = ["bold"] } # #[cfg], #[test], etc.
+
+# === NAMESPACES ET MODULES ===
+"namespace" = { fg = "rust_namespace", modifiers = ["italic"] }
+"module" = { fg = "rust_module", modifiers = ["bold"] }
+
+# === OPÉRATEURS ET PONCTUATION ===
+"operator" = "red"
+"operator.comparison" = { fg = "rust_comparison", modifiers = ["bold"] }
+"operator.logical" = { fg = "rust_logical", modifiers = ["bold"] }
+"operator.assignment" = "rust_assignment"
+"punctuation" = "grey"
+"punctuation.delimiter" = "grey"
+"punctuation.bracket" = "fg"
+"punctuation.special" = { fg = "rust_special_punct", modifiers = ["bold"] } # :: ? !
+
+# === AUTRES ÉLÉMENTS ===
+"comment" = { fg = "grey", modifiers = ["italic"] }
+"comment.documentation" = { fg = "rust_doc_comment", modifiers = ["italic"] } # /// et /**
+"label" = { fg = "rust_label", modifiers = ["bold"] }           # 'lifetime labels
+"tag" = "yellow"
+"special" = "orange"
+
+# === ERREURS ET DIAGNOSTICS RUST-SPÉCIFIQUES ===
+"diagnostic.error.rust.borrow_checker" = { fg = "rust_borrow_error", bg = "rust_error_bg", modifiers = ["bold"] }
+"diagnostic.warning.rust.unused" = { fg = "rust_unused", modifiers = ["strikethrough"] }
+
+# === MARKUP (pour documentation) ===
+"markup.heading.marker" = "grey"
+"markup.heading.1" = { fg = "purple", modifiers = ["bold"] }
+"markup.heading.2" = { fg = "red", modifiers = ["bold"] }
+"markup.heading.3" = { fg = "blue", modifiers = ["bold"] }
+"markup.heading.4" = { fg = "yellow", modifiers = ["bold"] }
+"markup.heading.5" = { fg = "green", modifiers = ["bold"] }
+"markup.heading.6" = { fg = "fg", modifiers = ["bold"] }
+"markup.list" = "red"
+"markup.bold" = { modifiers = ["bold"] }
+"markup.italic" = { modifiers = ["italic"] }
+"markup.link.url" = { fg = "green", modifiers = ["underlined"] }
+"markup.link.text" = "purple"
+"markup.quote" = "grey"
+"markup.raw" = "green"
+
+# === DIFF ===
+"diff.plus" = "green"
+"diff.delta" = "orange"
+"diff.minus" = "red"
+
+# === INTERFACE UTILISATEUR ===
+"ui.background" = { bg = "bg0" }
+"ui.background.separator" = "grey"
+"ui.cursor" = { fg = "bg0", bg = "fg" }
+"ui.cursor.match" = { fg = "orange", bg = "diff_yellow" }
+"ui.cursor.insert" = { fg = "black", bg = "grey" }
+"ui.cursor.select" = { fg = "bg0", bg = "blue" }
+"ui.cursorline.primary" = { bg = "bg1" }
+"ui.cursorline.secondary" = { bg = "bg1" }
+"ui.selection" = { bg = "bg4" }
+"ui.linenr" = "grey"
+"ui.linenr.selected" = "fg"
+"ui.statusline" = { fg = "fg", bg = "bg3" }
+"ui.statusline.inactive" = { fg = "grey", bg = "bg1" }
+"ui.statusline.normal" = { fg = "bg0", bg = "fg", modifiers = ["bold"] }
+"ui.statusline.insert" = { fg = "bg0", bg = "purple", modifiers = ["bold"] }
+"ui.statusline.select" = { fg = "bg0", bg = "blue", modifiers = ["bold"] }
+"ui.bufferline" = { fg = "grey", bg = "bg1" }
+"ui.bufferline.active" = { fg = "fg", bg = "bg4", modifiers = ["bold"] }
+"ui.popup" = { fg = "grey", bg = "bg2" }
+"ui.window" = { fg = "grey", bg = "bg0" }
+"ui.help" = { fg = "fg", bg = "bg2" }
+"ui.text" = "fg"
+"ui.text.focus" = "green"
+"ui.menu" = { fg = "fg", bg = "bg3" }
+"ui.menu.selected" = { fg = "bg0", bg = "blue" }
+"ui.virtual.whitespace" = { fg = "bg4" }
+"ui.virtual.indent-guide" = { fg = "bg4" }
+"ui.virtual.ruler" = { bg = "bg2" }
+
+# === DIAGNOSTICS ===
+"hint" = "blue"
+"info" = "green"
+"warning" = "yellow"
+"error" = "red"
+"diagnostic" = { underline = { style = "line" } }
+"diagnostic.hint" = { underline = { color = "blue", style = "dotted" } }
+"diagnostic.info" = { underline = { color = "green", style = "dotted" } }
+"diagnostic.warning" = { underline = { color = "yellow", style = "curl" } }
+"diagnostic.error" = { underline = { color = "red", style = "curl" } }
+
+[palette]
+# Palette de base
+black = "#202023"
+bg0 = "#2b2d37"
+bg1 = "#333644"
+bg2 = "#363a49"
+bg3 = "#3a3e4e"
+bg4 = "#404455"
+bg_grey = "#7e869b"
+bg_red = "#ec7279"
+diff_red = "#55393d"
+bg_green = "#a0c980"
+diff_green = "#394634"
+bg_blue = "#6cb6eb"
+diff_blue = "#354157"
+bg_purple = "#d38aea"
+diff_yellow = "#4e432f"
+fg = "#c5cdd9"
+red = "#ec7279"
+orange = "#e59b77"
+yellow = "#deb974"
+green = "#a0c980"
+cyan = "#5dbbc1"
+blue = "#6cb6eb"
+purple = "#d38aea"
+grey = "#7e8294"
+grey_dim = "#5b5e71"
+
+# Couleurs spécifiques Rust
+rust_struct = "#ff8c42"        # Orange vif pour structs
+rust_enum = "#c4d95a"          # Jaune-vert pour enums
+rust_union = "#ff6b9d"         # Rose pour unions
+rust_trait = "#4ecdc4"         # Cyan distinctif pour traits
+rust_primitive = "#87ceeb"     # Bleu ciel pour types primitifs
+rust_generic = "#dda0dd"       # Violet clair pour génériques
+
+rust_unsafe = "#ff4444"        # Rouge vif pour unsafe
+rust_unsafe_bg = "#4d1f1f"     # Arrière-plan rouge sombre
+rust_async = "#9370db"         # Violet pour async
+rust_storage = "#ffa500"       # Orange pour mut, ref
+rust_modifier = "#32cd32"      # Vert pour pub, const
+rust_control = "#ff69b4"       # Rose pour if, else, match
+rust_loop = "#20b2aa"          # Turquoise pour boucles
+
+rust_self = "#ffd700"          # Or pour self
+rust_param = "#b0c4de"         # Bleu acier pour paramètres
+rust_field = "#98fb98"         # Vert pâle pour champs
+rust_const = "#ff6347"         # Tomate pour constantes
+
+rust_number = "#90ee90"        # Vert clair pour nombres
+rust_integer = "#98fb98"       # Vert pâle pour entiers
+rust_float = "#87ceeb"         # Bleu ciel pour flottants
+rust_char = "#dda0dd"          # Violet pour caractères
+rust_escape = "#ff1493"        # Rose vif pour échappements
+rust_builtin_const = "#ffd700" # Or pour true, false, None
+
+rust_regex = "#ff8c69"         # Saumon pour regex
+rust_format_string = "#40e0d0" # Turquoise pour format strings
+
+rust_attribute = "#da70d6"     # Orchidée pour attributs
+rust_builtin_attr = "#ff69b4"  # Rose vif pour attributs builtin
+
+rust_namespace = "#87cefa"     # Bleu clair pour namespaces
+rust_module = "#ffa07a"        # Saumon clair pour modules
+
+rust_comparison = "#ff6347"    # Tomate pour ==, !=, etc.
+rust_logical = "#32cd32"       # Vert lime pour &&, ||
+rust_assignment = "#ffd700"    # Or pour =, +=, etc.
+rust_special_punct = "#ff1493" # Rose vif pour ::, ?, !
+
+rust_doc_comment = "#9acd32"   # Jaune-vert pour doc comments
+rust_label = "#ff7f50"         # Corail pour lifetime labels
+
+rust_macro = "#ba55d3"         # Orchidée moyen pour macros
+rust_method = "#4169e1"        # Bleu royal pour méthodes
+rust_constructor = "#ff8c00"   # Orange foncé pour constructeurs
+rust_builtin_fn = "#00ced1"    # Turquoise foncé pour fonctions builtin
+
+rust_borrow_error = "#dc143c"  # Rouge cramoisie pour erreurs de borrow checker
+rust_error_bg = "#2f1b14"      # Arrière-plan rouge très sombre
+rust_unused = "#696969"        # Gris pour code inutilisé

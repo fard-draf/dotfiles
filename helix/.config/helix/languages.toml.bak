@@ -1,0 +1,67 @@
+#
+# Syntaxe correcte pour les versions récentes de Helix
+#
+
+[[language]]
+name = "rust"
+auto-format = true
+formatter = { command = "rustfmt", args = ["--emit=stdout"] }
+# On déclare la liste des serveurs à utiliser pour ce langage
+language-servers = [ "rust-analyzer" ]
+indent = { tab-width = 4, unit = "    " }
+
+# Ajout de la configuration du débogueur
+[debugger]
+name = "lldb-dap" # Nom arbitraire, mais cohérent
+command = "lldb-dap" # La commande à exécuter
+transport = "stdio"
+# On peut spécifier des templates pour construire le programme à lancer.
+# {cwd} est le répertoire de travail, {program} est le binaire.
+args = [ "launch", "--", "{program}" ]
+
+
+# On configure ensuite chaque serveur de langage dans sa propre table
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+[language-server.rust-analyzer.config]
+# Utilise "clippy" pour le diagnostic.
+check.command = "clippy"
+checkOnSave = true
+
+# Active toutes les "features" du Cargo.toml.
+cargo.allFeatures = true
+
+# Indispensable pour l'autocomplétion des macros.
+procMacro.enable = true
+
+# Configuration des "inlay hints" (indications dans le code).
+inlayHints.bindingModeHints.enable = true
+inlayHints.chainingHints.enable = true
+inlayHints.closingBraceHints.enable = true
+inlayHints.closingBraceHints.minLines = 10
+inlayHints.parameterHints.enable = true
+inlayHints.typeHints.enable = true
+inlayHints.typeHints.hideLessSpecificTypes = true
+
+
+################BASH
+[[language]]
+name = "bash"
+scope = "source.bash"
+file-types = ["sh", "bash", ".env"]
+shebangs = ["sh", "bash"]
+# On déclare le serveur à utiliser
+language-servers = [ "bash-language-server" ]
+formatter = { command = "shfmt", args = ["-i", "2"] } # Optionnel : nécessite 'shfmt'
+
+# On définit comment lancer le serveur
+[language-server.bash-language-server]
+command = "bash-language-server"
+args = ["start"]
+
+# [profile.dev]
+# Lancer des vérifications moins complètes en développement pour plus de rapidité
+# lto = false
+# opt-level = 1
+

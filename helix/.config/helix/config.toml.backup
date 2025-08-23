@@ -1,0 +1,66 @@
+theme = "zed_onedark"
+
+[editor]
+true-color = true
+mouse = true
+auto-completion = true
+bufferline = "always"
+line-number = "relative"
+rulers = [120]
+auto-format = true
+default-yank-register = "+"
+
+auto-info = true
+end-of-line-diagnostics = "disable"
+#font = "Fira Code"
+
+[editor.gutters]
+# Configure les gutters (marges gauches)
+layout = ["diagnostics", "spacer", "line-numbers", "spacer", "diff"]
+
+[editor.inline-diagnostics]
+# Active les diagnostics inline (nouveauté)
+cursor-line = "warning"    # Montre warnings/errors sur la ligne du curseur
+other-lines = "disable"    # Désactive sur les autres lignes
+prefix-len = 1
+max-wrap = 20
+max-diagnostics = 10
+
+[editor.lsp]
+# Active le LSP
+enable = true
+display-messages = true
+display-inlay-hints = true
+
+[editor.statusline]
+left = ["mode", "spinner"]
+center = ["file-name"]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+
+[keys.insert]
+C-s = [":write", "normal_mode"]
+# Déplace le curseur au début du mot précédent
+C-left = "move_prev_word_start"
+
+# Déplace le curseur au début du mot suivant
+C-right = "move_next_word_start"
+
+# Bonus : Naviguer d'une ligne à l'autre
+C-h = "move_line_up"
+C-l = "move_line_down"
+
+
+[keys.normal."+"]
+c = ":run-shell-command cargo check"
+t = ":run-shell-command cargo test"
+b = ":run-shell-command cargo build"
+
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.indent-guides]
+# Affiche les guides d'indentation
+render = true

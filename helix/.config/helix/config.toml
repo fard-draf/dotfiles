@@ -1,4 +1,4 @@
-theme = "edge_aura"
+theme = "rust_friendly"
 
 #==================================================================================
 [editor]
@@ -12,7 +12,11 @@ auto-format = true
 default-yank-register = "+"
 auto-info = true
 end-of-line-diagnostics = "disable"
+scroll-lines = 10
 #font = "Fira Code"
+#==========================================
+[editor.whitespace]
+trim-trailing-whitespace = true
 #==========================================
 [editor.cursor-shape]
 insert = "bar"
@@ -37,6 +41,10 @@ other-lines = "disable"    # Désactive sur les autres lignes
 prefix-len = 1
 max-wrap = 20
 max-diagnostics = 10
+#==========================================
+# [editor.indent-guides]
+# rainbow-indent = "dim"
+# WAIT FOR 25.07.1 VERSION
 #==========================================
 [editor.lsp]
 # Active le LSP
@@ -64,6 +72,8 @@ A-h = "move_prev_word_start"
 #==========================================
 [keys.normal]
 A-f = ":format"
+C-r = ":rl"
+C-s = ":w"
 #==========================================
 [keys.normal."+"]
 c = ":run-shell-command cargo check"

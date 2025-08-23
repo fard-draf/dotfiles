@@ -1,7 +1,7 @@
 [[language]]
 name = "rust"
 formatter = { command = "rustfmt", args = ["--emit=stdout"] }
-language-servers = [ "rust-analyzer", "taplo-lsp" ]
+language-servers = [ "rust-analyzer" ]
 indent = { tab-width = 4, unit = "    " }
 
 [language-server.rust-analyzer]
