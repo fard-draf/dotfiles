@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # This script installs all necessary dependencies for the provided Sway configuration on a Fedora system.
-# Version 3: Final, simplified version using official Fedora repositories.
+# Version 5: Final, definitive version using official repositories for almost everything.
 #
 
 # Stop the script if any command fails
@@ -10,8 +10,15 @@ set -e
 echo "--- Starting installation of Sway dependencies ---"
 echo
 
-# --- Package List ---
-# All packages are now available in the official Fedora repositories.
+# --- Enabling the necessary COPR repository for Wezterm ---
+echo "-> Enabling COPR repository for 'wezterm'..."
+# Wezterm is not in the official Fedora repos, so this is required.
+sudo dnf copr enable -y wezfurlong/wezterm-nightly
+echo "   COPR for wezterm enabled."
+echo
+
+# --- Main Package List ---
+# All packages except wezterm are in the official Fedora repos.
 PACKAGES=(
     # Core Sway and graphical session packages
     sway
@@ -23,27 +30,27 @@ PACKAGES=(
     mako
     wofi
     wlogout
-    wl-clipboard  # Provides wl-copy and wl-paste
+    wl-clipboard
     grim
     slurp
-    cliphist
+    cliphist      # Available in official repos
     brightnessctl
     pavucontrol
 
     # Application and terminal packages
-    wezterm
-    helix       # The 'hx' editor
+    wezterm       # Available via the COPR enabled above
+    helix
     brave-browser
-    network-manager-applet  # Provides nm-connection-editor
-    bleman
+    network-manager-applet
+    blueman
 
     # Utility and dependency packages
-    pactl       # For audio control
+    pactl
     acpi
     pamixer
-    gum         # Now included directly
+    gum           # Available in official repos
     tlp
-    playerctl   # For media key support
+    playerctl
     
     # Fonts
     fontawesome-fonts
@@ -51,7 +58,7 @@ PACKAGES=(
 )
 
 echo "-> Installing all packages via DNF..."
-echo "   List: ${PACKAGES[*]}"
+echo "   This may take a few moments."
 
 sudo dnf install -y "${PACKAGES[@]}"
 
