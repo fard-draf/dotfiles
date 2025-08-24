@@ -224,17 +224,25 @@ keybinds clear-defaults=true {
 // Plugin aliases - can be used to change the implementation of Zellij
 // changing these requires a restart to take effect
 plugins {
-    about location="zellij:about"
-    compact-bar location="zellij:compact-bar"
+    about location="zellij:about" {
+        _hidden true
+    }
+    compact-bar location="zellij:compact-bar" {
+        _hidden true
+    }
     configuration location="zellij:configuration"
     filepicker location="zellij:strider" {
         cwd "/"
     }
     plugin-manager location="zellij:plugin-manager"
     session-manager location="zellij:session-manager"
-    status-bar location="zellij:status-bar"
+    status-bar location="zellij:status-bar" {
+        _hidden true
+    }
     strider location="zellij:strider"
-    tab-bar location="zellij:tab-bar"
+    tab-bar location="zellij:tab-bar" {
+        _hidden true
+    }
     welcome-screen location="zellij:session-manager" {
         welcome_screen true
     }
@@ -301,7 +309,7 @@ load_plugins {
 //   - true (default, enabled)
 //   - false
 // 
-// pane_frames false
+pane_frames false
  
 // When attaching to an existing session with other users,
 // should the session be mirrored (true)

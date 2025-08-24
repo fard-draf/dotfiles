@@ -9,19 +9,22 @@ set $menu /usr/bin/wofi # Consider fuzzel or rofi-wayland for more features
 set $editor /usr/bin/hx  # Assuming VS Code; change to vim/nvim/emacs as needed
 set $browser /usr/bin/brave-browser  # Or chromium/brave for dev tools
 
+### Start Exec
+exec mako #Notifications
+exec kanshi #Screen conf
+
 ### Output configuration
 # Use kanshi for dynamic multi-monitor setups (uncomment and install if needed)
 # exec kanshi
 # Default wallpaper
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg /home/fard/Pictures/Wallpapers/will-rust-L76ogaaqsAk-unsplash.jpg fill
+# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # Manual screen setup bind (your custom script)
-bindsym $mod+Shift+x exec /home/fard/dotfiles/scripts/sway/setup-dock.sh
+bindsym $mod+Shift+x exec /home/fard/dotfiles/sway/scripts/setup-dock.sh
 # Example for dual monitors (adjust based on swaymsg -t get_outputs)
 # output eDP-1 pos 0 0 res 1920x1080
 # output HDMI-A-1 pos 1920 0 res 1920x1080
 
-# Notifications
-exec mako
 
 ### Idle configuration
 # Enhanced idle with swayidle: lock screen, dim displays, and DPMS
@@ -39,6 +42,9 @@ input keyboard {
     repeat_delay 250
     repeat_rate 50
 }
+
+#Pave numerique
+input type:keyboard xkb_numlock enabled
 # Touchpad: natural scroll, tap-to-click for productivity
 input "type:touchpad" {
     dwt enabled
@@ -60,6 +66,7 @@ input "type:pointer" {
 # Basics
 bindsym $mod+Return exec gtk-launch wezterm-local-zellij
 bindsym F1 exec gtk-launch wezterm-remote-zellij.desktop
+bindsym F2 exec wezterm
 bindsym $mod+q kill
 bindsym $mod+d exec /usr/bin/wofi --show drun --allow-images
 floating_modifier $mod normal
@@ -90,9 +97,9 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # Workspaces (1-10, with dev-oriented names optional)
-bindsym $mod+1 workspace number 1:Code
-bindsym $mod+2 workspace number 2:Term
-bindsym $mod+3 workspace number 3:Web
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
 bindsym $mod+4 workspace number 4
 bindsym $mod+5 workspace number 5
 bindsym $mod+6 workspace number 6
@@ -101,9 +108,9 @@ bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
 
-bindsym $mod+Shift+1 move container to workspace number 1:Code
-bindsym $mod+Shift+2 move container to workspace number 2:Term
-bindsym $mod+Shift+3 move container to workspace number 3:Web
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
 bindsym $mod+Shift+4 move container to workspace number 4
 bindsym $mod+Shift+5 move container to workspace number 5
 bindsym $mod+Shift+6 move container to workspace number 6
@@ -142,6 +149,9 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+# Afficher/masquer la barre (Waybar)
+bindsym $mod+m bar mode toggle
+
 # Utilities
 bindsym --locked XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
@@ -154,26 +164,34 @@ bindsym Print exec grim -g "$(slurp)" - | wl-copy  # Enhanced screenshot: select
 # Dev extras: Clipboard manager, notifications
 exec wl-paste --type text --watch cliphist store  # Install cliphist for clipboard history
 bindsym $mod+Shift+v exec cliphist list | wmenu | cliphist decode | wl-copy  # Paste from history
-exec mako  # Notification daemon
 
 # Status Bar (switch to waybar for more modules: CPU, RAM, network, etc.)
-exec /usr/bin/waybar
+# exec /usr/bin/waybar
 # Lanceur d'applications
 # Fallback to swaybar if waybar not installed
-# bar {
-#     position top
-#     status_command i3status-rs  # Or waybar alternative
-#     colors {
-#         statusline #ffffff
-#         background #323232
-#         inactive_workspace #32323200 #32323200 #5c5c5c
-#     }
-# }
+# Fallback to swaybar if waybar not installed
+bar {
+    # Afficher la barre uniquement sur le moniteur DP-8
+    output DP-8,
+    status_command waybar
+    position top
+}
+# --- Règles pour les panneaux de configuration flottants ---
 
+# Contrôle du son
+for_window [app_id="pavucontrol"] floating enable, resize set width 500 px height 700 px
+
+# Contrôle du réseau
+for_window [app_id="nm-connection-editor"] floating enable, resize set width 650 px height 550 px
+
+# Contrôle du Bluetooth
+for_window [app_id="blueman-manager"] floating enable, resize set width 600 px height 500 px
+# Controle TLP Battery
+for_window [app_id="tlp-viewer"] floating enable, resize set width 1000 px height 1200 px
 # Auto-start dev apps on workspaces (optional)
-assign [app_id="code"] workspace number 1:Code
-assign [app_id="wezterm"] workspace number 2:Term
-assign [class="brave-browser"] workspace number 3:Web
+# assign [app_id="code"] workspace number 1:Code
+# assign [app_id="wezterm"] workspace number 2:Term
+# assign [class="brave-browser"] workspace number 3:Web
 
 # Theme and gaps for better visuals
 default_border pixel 2
@@ -186,5 +204,5 @@ client.unfocused #333333 #222222 #888888 #292d2e #222222
 
 include /etc/sway/config.d/*
 # Your custom exec
-exec /home/fard/dotfiles/scripts/sway/setup-dock.sh
+# exec /home/fard/dotfiles/scripts/sway/setup-dock.sh
 
