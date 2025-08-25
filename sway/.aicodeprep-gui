@@ -8,7 +8,7 @@
 version=1.0
 
 [window]
-width=1263
+width=840
 height=1373
 splitter_state=AAAA/wAAAAEAAAACAAADAAAAAPoB/////wEAAAACAA==
 
@@ -17,12 +17,7 @@ output_format=xml
 
 [files]
 sway/.config/sway/config
-wofi/.config/wofi/style.css
-waybar/.config/waybar/config.old
 waybar/.config/waybar/style.css
 waybar/.config/waybar/config
-gtk-3.0/.config/gtk-3.0/bookmarks
 gtk-3.0/.config/gtk-3.0/settings.ini
-scripts/setup-dock.sh
-scripts/tlp-menu.sh
 kanshi/.config/kanshi/config

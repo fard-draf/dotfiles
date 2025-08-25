@@ -1,5 +1,3 @@
-Fait un script pour installer TOUTES les dependances necessaire a l execution de SWAY et des dependances !
-
 sway/.config/sway/config:
 <code>
 ### Variables
@@ -210,332 +208,6 @@ include /etc/sway/config.d/*
 # Your custom exec
 # exec /home/fard/dotfiles/scripts/sway/setup-dock.sh
 
-
-</code>
-
-wofi/.config/wofi/style.css:
-<code>
-/* --- Fenêtre principale --- */
-window {
-  margin: 10px;
-  border: 2px solid #3498db;
-  background: rgba(44, 62, 80, 0.95); /* Fond semi-transparent */
-  border-radius: 18px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
-}
-
-/* --- Champ de recherche --- */
-#input {
-  font-family: "Fira Code", monospace;
-  font-size: 16px;
-  margin: 10px;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 10px;
-  color: #ecf0f1;
-  background-color: #34495e;
-  outline: none;
-}
-
-/* --- Conteneurs internes --- */
-#inner-box, #outer-box {
-  margin: 8px;
-  border: none;
-  background: transparent; /* On enlève tout fond derrière */
-}
-
-/* --- Liste déroulante --- */
-#scroll {
-  margin: 0;
-  border: none;
-  background: transparent;
-}
-
-/* --- Texte des entrées --- */
-#text {
-  margin: 6px;
-  color: #ecf0f1;
-  font-size: 15px;
-  font-family: "Fira Code", monospace;
-}
-
-/* --- Entrées --- */
-#entry {
-  padding: 6px;
-  border-radius: 10px;
-  transition: background-color 0.2s ease;
-  background: transparent; /* Supprime le fond noir derrière */
-}
-
-/* --- Entrée sélectionnée --- */
-#entry:selected {
-  background-color: #3498db;
-  color: #ffffff;
-  border-radius: 10px;
-}
-
-/* --- Entrée au focus --- */
-#entry:focus {
-  outline: none;
-}
-#entry {
-  padding: 6px 10px;
-  border-radius: 10px;
-  background: transparent;
-  display: flex;
-  align-items: center; /* Centre l’icône avec le texte */
-  gap: 8px; /* Espace entre icône et texte */
-}
-
-#entry:selected {
-  background-color: #3498db;
-  color: #ffffff;
-  border-radius: 10px;
-}
-
-</code>
-
-waybar/.config/waybar/config.old:
-<code>
-{
-    // ==========================================
-    // WAYBAR CONFIGURATION - FedoraSway
-    // ==========================================
-    
-    // === BAR SETTINGS ===
-    "layer": "top",
-    "position": "top",
-    "height": 24,
-    "spacing": 3,
-    "margin": 0,
-    
-    // === MODULES LAYOUT ===
-    "modules-left": [
-        "sway/workspaces",
-        "sway/mode",
-        "custom/separator",
-        "cpu",
-        "memory",
-        "temperature"
-    ],
-    
-    "modules-center": [
-        "sway/window"
-    ],
-    
-    "modules-right": [
-        "idle_inhibitor",
-        "pulseaudio",
-        "custom/separator",
-        "network",
-        "bluetooth",
-        "custom/separator",
-        "backlight", 
-        "battery",
-        "custom/separator",
-        "clock",
-        "tray",
-        "custom/power"
-    ],
-
-    // ==========================================
-    // LEFT MODULES
-    // ==========================================
-
-    "sway/workspaces": {
-        "disable-scroll": false,
-        "all-outputs": true,
-        "format": "{icon}",
-        "persistent_workspaces": {
-            "1": [],
-            "2": [],
-            "3": [],
-            "4": [],
-            "5": []
-        },
-        "format-icons": {
-            "1": "1",        // Web
-            "2": "2",        // Code  
-            "3": "3",        // Files
-            "4": "4",        // Chat
-            "5": "5",        // Media
-            "urgent": "!",
-            "focused": "*",
-            "default": "•"
-        }
-    },
-
-    "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>",
-        "max-length": 50
-    },
-
-    "cpu": {
-        "interval": 3,
-        "format": "CPU {usage}%",
-        "tooltip": true,
-        "tooltip-format": "CPU Usage: {usage}%\nLoad: {load}",
-        "states": {
-            "warning": 70,
-            "critical": 85
-        }
-    },
-
-    "memory": {
-        "interval": 5,
-        "format": "RAM {percentage}%",
-        "tooltip": true,
-        "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G ({percentage}%)\nSwap: {swapUsed:0.1f}G / {swapTotal:0.1f}G",
-        "states": {
-            "warning": 75,
-            "critical": 90
-        }
-    },
-
-    "temperature": {
-        "interval": 5,
-        "thermal-zone": 0,
-        "critical-threshold": 75,
-        "format": "TEMP {temperatureC}°C",
-        "tooltip": true,
-        "tooltip-format": "Temperature: {temperatureC}°C"
-    },
-
-    // ==========================================
-    // CENTER MODULES
-    // ==========================================
-
-    "sway/window": {
-        "format": "{}",
-        "max-length": 80,
-        "tooltip": true,
-        "rewrite": {
-            "(.*) — Mozilla Firefox": " $1",
-            "(.*) - Visual Studio Code": " $1", 
-            "(.*) - vim": " $1",
-            "(.*) - zsh": " $1",
-            "(.*)": " $1"
-        }
-    },
-
-    // ==========================================
-    // RIGHT MODULES
-    // ==========================================
-
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        },
-        "tooltip": true,
-        "tooltip-format-activated": "Idle inhibitor: Enabled",
-        "tooltip-format-deactivated": "Idle inhibitor: Disabled"
-    },
-
-    "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-bluetooth": "{icon} {volume}%",
-        "format-bluetooth-muted": " {icon}",
-        "format-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "scroll-step": 5,
-        "on-click": "pavucontrol",
-        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-        "tooltip": true,
-        "tooltip-format": "Audio: {desc}\nVolume: {volume}%"
-    },
-
-    "network": {
-        "interval": 3,
-        "format-wifi": " {signalStrength}%",
-        "format-ethernet": "",
-        "format-linked": " No IP",
-        "format-disconnected": "󰤭",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "tooltip": true,
-        "tooltip-format-wifi": "Network: {essid}\nSignal: {signalStrength}%\nIP: {ipaddr}/{cidr}\nGateway: {gwaddr}",
-        "tooltip-format-ethernet": "Ethernet: {ifname}\nIP: {ipaddr}/{cidr}",
-        "tooltip-format-disconnected": "Network: Disconnected",
-        "on-click-right": "nm-connection-editor"
-    },
-
-    "bluetooth": {
-        "format": "BT",
-        "format-disabled": "BT-",
-        "format-off": "BT-", 
-        "format-connected": "BT+",
-        "tooltip": true,
-        "tooltip-format": "Bluetooth: {status}",
-        "tooltip-format-connected": "Bluetooth: Connected to {device_alias}",
-        "on-click": "blueman-manager"
-    },
-
-    "backlight": {
-        "format": "{icon} {percent}%",
-        "format-icons": ["", "", "", "", "", "", "", "", ""],
-        "tooltip": true,
-        "tooltip-format": "Brightness: {percent}%",
-        "on-scroll-up": "brightnessctl set 5%+",
-        "on-scroll-down": "brightnessctl set 5%-"
-    },
-
-    "battery": {
-        "interval": 10,
-        "states": {
-            "good": 80,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon} {capacity}%",
-        "format-charging": " {capacity}%",
-        "format-plugged": " {capacity}%",
-        "format-alt": "{icon} {time}",
-        "format-icons": ["", "", "", "", ""],
-        "tooltip": true,
-        "tooltip-format": "Battery: {capacity}%\nTime: {timeTo}\nHealth: {health}%\nCycles: {cycles}"
-    },
-
-    "clock": {
-        "interval": 60,
-        "format": "{:%H:%M}",
-        "format-alt": "{:%a %d %b}",
-        "tooltip": true,
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "on-click": "gnome-calendar"
-    },
-
-    "tray": {
-        "icon-size": 16,
-        "spacing": 4,
-        "show-passive-items": true
-    },
-
-    // ==========================================
-    // CUSTOM MODULES
-    // ==========================================
-
-    "custom/separator": {
-        "format": "│",
-        "interval": "once",
-        "tooltip": false
-    },
-
-    "custom/power": {
-        "format": "PWR",
-        "tooltip": true,
-        "tooltip-format": "Power Menu",
-        "on-click": "wlogout"
-    }
-}
 
 </code>
 
@@ -783,7 +455,7 @@ waybar/.config/waybar/config:
     
     // === BAR SETTINGS ===
     "layer": "top",
-    "output" : ["DP-8", "eDP-1"],
+    "output" : ["DP-9", "eDP-1"],
     "position": "top",
     "height": 30,
     "spacing": 3,
@@ -948,20 +620,6 @@ waybar/.config/waybar/config:
 
 </code>
 
-gtk-3.0/.config/gtk-3.0/bookmarks:
-<code>
-file:///home/fard/Downloads Downloads 📥
-file:///home/fard/Documents Documents 📚
-file:///home/fard/Documents/10_SYNC/10.2_VAULTS/10.2.1_SUMAC_CLOUD/20.DOMAINS/D01_WHEELHOUSE Wheelhouse 🧭
-file:///home/fard/Documents/10_SYNC/10.2_VAULTS/10.2.1_SUMAC_CLOUD/20.DOMAINS/D02_AI_TOOLS AI Tools ✴️
-file:///mnt/sumac/dev/warehouse/playground Playground 📑
-file:/// Root 🛠️
-file:///home/fard/Documents/10_SYNC/10.2_VAULTS/10.2.1_SUMAC_CLOUD Obsidian 💎
-file:///mnt/sumac Sumac 🧪
-file:///mnt/sumac/dev/warehouse/projects/professional/korrigan korrigan
-
-</code>
-
 gtk-3.0/.config/gtk-3.0/settings.ini:
 <code>
 
@@ -972,94 +630,18 @@ gtk-icon-theme-name=Papirus-Dark
 
 </code>
 
-scripts/setup-dock.sh:
-<code>
-
-#!/bin/bash
-
-# --- LA SOLUTION À LA CONDITION DE COURSE ---
-# On attend 3 secondes pour être certain que tous les 
-# moniteurs connectés au dock sont bien initialisés par le système.
-sleep 3
-
-swaymsg "output \"AOC 1601W MMEM1JA000545\" enable pos 0 856 res 1920x1080 transform 270; output \"Samsung Electric Company Odyssey G5 HK7X400599\" enable pos 1080 856 res 2560x1440@119.998Hz; output \"Samsung Electric Company LS32CG51x H9JX201723\" enable pos 3640 0 res 2560x1440 transform 90; output eDP-1 disable;"
-# swaymsg "output \"AOC 1601W MMEM1JA000545\" enable pos 0 856 res 1920x1080 transform 270; output \"Samsung Electric Company Odyssey G5 HK7X400599\" enable pos 1080 856 res 2560x1440@119.998Hz; output \"Samsung Electric Company LS32CG51x H9JX201723\" enable pos 3640 0 res 2560x1440 transform 90; output eDP-1 disable; workspace 1 output \"Samsung Electric Company Odyssey G5 HK7X400599\";"
-# swaymsg "output \"AOC 1601W MMEM1JA000545\" enable pos 0 856 res 1920x1080 transform 270; output \"Samsung Electric Company Odyssey G5 HK7X400599\" enable pos 1080 856 res 2560x1440@119.998Hz; output \"Samsung Electric Company LS32CG51x H9JX201723\" enable pos 3640 0 res 2560x1440 transform 90; output eDP-1 disable; workspace 1 output \"Samsung Electric Company Odyssey G5 HK7X400599\"; output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill"
-
-</code>
-
-scripts/tlp-menu.sh:
-<code>
-#!/bin/bash
-
-# Vérifier si 'gum' est installé
-if ! command -v gum &> /dev/null; then
-    kitty --hold echo "Le paquet 'gum' est nécessaire. Voir les instructions d'installation."
-    exit 1
-fi
-
-# Boucle principale du script
-while true; do
-    # On nettoie l'écran et on affiche le statut en premier
-    clear
-    
-    # MODIFICATION ICI : On retire le cadre et la couleur pour un affichage simple.
-    echo "--- État Actuel de la Batterie (TLP) ---"
-    sudo tlp-stat -s -b
-    echo "------------------------------------------"
-    echo
-
-    # gum choose crée un menu sélectionnable avec les flèches
-    choice=$(gum choose "Forcer charge complète" "Recalibrer batterie" "Définir les seuils" "Quitter" --height=4)
-
-    # Si l'utilisateur appuie sur Echap, gum retourne une chaîne vide
-    if [ -z "$choice" ]; then
-        clear
-        break
-    fi
-
-    case "$choice" in
-        "Forcer charge complète")
-            gum confirm "Lancer une charge complète pour BAT0 ?" && sudo tlp fullcharge BAT0
-            ;;
-        "Recalibrer batterie")
-            gum confirm "Lancer le recalibrage pour BAT0 ?" && sudo tlp recalibrate BAT0
-            ;;
-        "Définir les seuils")
-            start_charge=$(gum input --placeholder "Seuil de DÉBUT (ex: 70)" --prompt "│ ")
-            if [ $? -ne 0 ]; then continue; fi
-            
-            stop_charge=$(gum input --placeholder "Seuil de FIN (ex: 80)" --prompt "│ ")
-            if [ $? -ne 0 ]; then continue; fi
-
-            if [ -n "$start_charge" ] && [ -n "$stop_charge" ]; then
-                gum confirm "Régler les seuils à $start_charge% - $stop_charge% ?" && sudo tlp setcharge "$start_charge" "$stop_charge" BAT0
-            fi
-            ;;
-        "Quitter")
-            clear
-            break
-            ;;
-    esac
-    sleep 1
-done
-
-</code>
-
 kanshi/.config/kanshi/config:
 <code>
-# Profil "Maison" : Syntaxe finale compacte et rigoureuse.
 profile maison {
 
     output "eDP-1" disable
 
     output "AOC 1601W MMEM1JA000545"  enable mode 1920x1080 position 0,856 transform 90 
 
-    output "Samsung Electric Company Odyssey G5 HK7X400599"  enable mode 2560x1440@119.998Hz position 1080,856 
+    output "Samsung Electric Company LS32CG51x H9JX201723" enable mode 2560x1440@59.951Hz position 1080,856 
 
-    output "Samsung Electric Company LS32CG51x H9JX201723" enable mode 2560x1440 position 3640,0 transform 270 
+    output "Samsung Electric Company Odyssey G5 HK7X400599" enable mode 2560x1440@59.951Hz position 3640,0 transform 270 
 }
-
 # Profil "Nomade"
 profile nomade {
     output "eDP-1"  enable mode 1920x1200 position 0,0 
@@ -1067,6 +649,3 @@ profile nomade {
 
 </code>
 
-
-
-Fait un script pour installer TOUTES les dependances necessaire a l execution de SWAY et des dependances !

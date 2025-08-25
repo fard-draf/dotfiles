@@ -5,7 +5,7 @@
     
     // === BAR SETTINGS ===
     "layer": "top",
-    "output" : ["DP-8", "eDP-1"],
+    "output" : ["DP-9", "eDP-1"],
     "position": "top",
     "height": 30,
     "spacing": 3,

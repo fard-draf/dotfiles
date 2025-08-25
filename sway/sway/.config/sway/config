@@ -20,7 +20,8 @@ exec kanshi #Screen conf
 output * bg /home/fard/Pictures/Wallpapers/will-rust-L76ogaaqsAk-unsplash.jpg fill
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # Manual screen setup bind (your custom script)
-bindsym $mod+Shift+x exec /home/fard/dotfiles/sway/scripts/setup-dock.sh
+# bindsym $mod+Shift+x exec /home/fard/dotfiles/sway/scripts/kill_kanshi.sh
+bindsym $mod+Shift+x exec killall -SIGHUP kanshi
 # Example for dual monitors (adjust based on swaymsg -t get_outputs)
 # output eDP-1 pos 0 0 res 1920x1080
 # output HDMI-A-1 pos 1920 0 res 1920x1080
