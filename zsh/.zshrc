@@ -111,6 +111,7 @@ alias t4='tree -a -C -L 4'
 alias cloud='cd /home/fard/Documents/10_SYNC/10.2_VAULTS/10.2.1_SUMAC_CLOUD'
 alias :q='exit'
 alias dotfiles='/home/fard/dotfiles'
+alias sway='/home/fard/dotfiles/sway'
 
 # ======= ALIAS SYSTÈME =======
 alias update='sudo dnf update -y'

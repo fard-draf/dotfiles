@@ -23,7 +23,7 @@
     ],
     
     "modules-center": [
-        "clock"
+        "clock",
     ],
     
     "modules-right": [
@@ -91,11 +91,12 @@
     // CENTER MODULES
     // ==========================================
 
-      "clock": {
-          "format": "{0:%H:%M}",
-          "tooltip-format": "{0:%A %d %B}\n  Semaine n°{0:%V}",
-          "on-click": "gnome-calendar"
-    },
+    "clock": {
+          "format": "{0:%A %d %B}, {0:%H:%M}",
+          "tooltip-format": "Semaine n°{0:%V}",
+          "interval": 60,
+          "on-click": "gnome-calendar"    },
+
     // ==========================================
     // RIGHT MODULES
     // ==========================================

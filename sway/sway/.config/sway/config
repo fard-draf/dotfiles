@@ -13,7 +13,7 @@ set $browser /usr/bin/brave-browser  # Or chromium/brave for dev tools
 exec mako #Notifications
 exec kanshi #Screen conf
 
-### Output configuration
+###================================================================================== Output configuration
 # Use kanshi for dynamic multi-monitor setups (uncomment and install if needed)
 # exec kanshi
 # Default wallpaper
@@ -27,7 +27,7 @@ bindsym $mod+Shift+x exec killall -SIGHUP kanshi
 # output HDMI-A-1 pos 1920 0 res 1920x1080
 
 
-### Idle configuration
+###==================================================================================  Idle configuration
 # Enhanced idle with swayidle: lock screen, dim displays, and DPMS
 exec swayidle -w \
     timeout 300 'swaylock -f -c 000000 --image /path/to/lockscreen.png' \
@@ -35,7 +35,7 @@ exec swayidle -w \
     resume 'swaymsg "output * power on"' \
     before-sleep 'swaylock -f -c 000000'
 
-### Input configuration
+###==================================================================================  Input configuration
 # Keyboard: set layout, repeat rate for faster typing in dev
 input keyboard {
     xkb_layout us
@@ -63,7 +63,7 @@ input "type:pointer" {
 
 
 
-### Key bindings
+###==================================================================================  Key bindings
 # Basics
 bindsym $mod+Return exec gtk-launch wezterm-local-zellij
 bindsym F1 exec gtk-launch wezterm-remote-zellij.desktop
@@ -120,6 +120,8 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
+bindsym $mod+Shift+button4 workspace prev
+bindsym $mod+Shift+button5 workspace next
 # Layout
 # bindsym $mod+b splith
 bindsym $mod+v splitv
@@ -160,7 +162,12 @@ bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ 
 bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-bindsym Print exec grim -g "$(slurp)" - | wl-copy  # Enhanced screenshot: select area and copy to clipboard
+
+
+# Pave numerique
+bindsym XF86Launch7 exec /usr/bin/gnome-calculator
+bindsym XF86Launch8 exec grim -g "$(slurp)" - | wl-copy  # Enhanced screenshot: select area and copy to clipboard
+bindsym XF86Launch9 exec --no-startup-id flatpak run md.obsidian.Obsidian
 
 # Dev extras: Clipboard manager, notifications
 exec wl-paste --type text --watch cliphist store  # Install cliphist for clipboard history
@@ -177,24 +184,21 @@ bar {
     status_command waybar
     position top
 }
-# --- Règles pour les panneaux de configuration flottants ---
-
-# Contrôle du son
+###==================================================================================WINDOWS
 for_window [app_id="pavucontrol"] floating enable, resize set width 500 px height 700 px
-
-# Contrôle du réseau
 for_window [app_id="nm-connection-editor"] floating enable, resize set width 650 px height 550 px
-
-# Contrôle du Bluetooth
 for_window [app_id="blueman-manager"] floating enable, resize set width 600 px height 500 px
-# Controle TLP Battery
 for_window [app_id="tlp-viewer"] floating enable, resize set width 1000 px height 1200 px
+for_window [app_id="/usr/bin/gnome-calendar"] floating enable, resize set width 1000 px height 1200 px
+for_window [app_id="/usr/bin/gnome-calculator"] floating enable, resize set width 1000 px height 1200 px
+
+
 # Auto-start dev apps on workspaces (optional)
 # assign [app_id="code"] workspace number 1:Code
 # assign [app_id="wezterm"] workspace number 2:Term
 # assign [class="brave-browser"] workspace number 3:Web
 
-# Theme and gaps for better visuals
+###==================================================================================  Theme and gaps for better visuals
 default_border pixel 2
 gaps inner 5
 gaps outer 5
@@ -203,7 +207,6 @@ smart_borders on
 client.focused #4c7899 #285577 #ffffff #2e9ef4 #285577
 client.unfocused #333333 #222222 #888888 #292d2e #222222
 
+###==================================================================================INCLUDE
 include /etc/sway/config.d/*
-# Your custom exec
-# exec /home/fard/dotfiles/scripts/sway/setup-dock.sh
 

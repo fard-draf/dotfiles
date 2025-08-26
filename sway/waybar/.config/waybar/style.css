@@ -159,8 +159,9 @@ button:hover {
     padding: 4px 10px;
     color: #FFFFFF;
     font-weight: 600;
-    font-size: 24px;
+    font-size: 20px;
 }
+
 
 #clock:hover {
     background: linear-gradient(45deg, rgba(137, 180, 250, 0.25), rgba(180, 190, 254, 0.25));
