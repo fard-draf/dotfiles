@@ -128,6 +128,9 @@ alias cpuinfo='lscpu'
 alias diskspace='df -h'
 alias wezterm='flatpak run org.wezfurlong.wezterm'
 
+#==================================================================================ALIAS CALENDAR
+alias vdsync="source ~/.config/vdirsyncer/.env && vdirsyncer sync"
+alias cal="vdsync && calcurse"
 # ======= ALIAS VAULT ====
 export VAULT_PATH="/home/fard/Documents/10_SYNC/10.2_VAULTS/10.2.1_SUMAC_CLOUD"
 
@@ -258,9 +261,9 @@ eval "$(pyenv init - zsh)"
 
 export SSH_ASKPASS=""
 # SSH GITHUB
-if [ -z "$SSH_AUTH_SOCK" ]; then
-    eval "$(ssh-agent -s)"
-fi
+# if [ -z "$SSH_AUTH_SOCK" ]; then
+#     eval "$(ssh-agent -s)"
+# fi
 
 ssh-add -q ~/.ssh/id_ed25519_github_zaatar_fard 2>/dev/null
 

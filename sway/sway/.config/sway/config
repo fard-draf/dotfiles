@@ -13,7 +13,7 @@ set $browser /usr/bin/brave-browser  # Or chromium/brave for dev tools
 exec mako #Notifications
 exec kanshi #Screen conf
 exec gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark' #Theme
-
+exec --no-startup-id /usr/libexec/xdg-desktop-portal-wlr #portail gtk
 ###================================================================================== Output configuration
 # Use kanshi for dynamic multi-monitor setups (uncomment and install if needed)
 # exec kanshi
@@ -194,6 +194,7 @@ bar {
 ###==================================================================================WINDOWS
 for_window [app_id="pavucontrol"] floating enable, resize set width 500 px height 700 px
 for_window [app_id="nm-connection-editor"] floating enable, resize set width 650 px height 550 px
+for_window [app_id="net.thunderbird.Thunderbird"] floating enable, resize set width 650 px height 550 px
 for_window [app_id="wezterm"] floating enable, resize set width 650 px height 550 px
 for_window [app_id="blueman-manager"] floating enable, resize set width 600 px height 500 px
 for_window [app_id="tlp-viewer"] floating enable, resize set width 1000 px height 1200 px

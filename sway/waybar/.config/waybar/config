@@ -13,8 +13,9 @@
     
     // === MODULES LAYOUT ===
     "modules-left": [
+        "clock",
+        "temperature",
         "sway/mode",
-        "temperature"
     ],
     
     "modules-center": [
@@ -85,8 +86,8 @@
     // ==========================================
 
     "clock": {
-          "format": "{0:%A %d %B}, {0:%H:%M}",
-          "tooltip-format": "Semaine n°{0:%V}",
+          "format": "{0:%H:%M}",
+          "tooltip-format": "{0:%A %d %B}\n  Week {0:%V}",
           "interval": 60,
           "on-click": "gnome-calendar"    },
 
