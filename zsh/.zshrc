@@ -86,6 +86,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+
+# ======= ALIAS SUDO ===========
+alias se='sudoedit'
 # ======= ALIAS GÉNÉRAUX =======
 alias l='ls -lah'
 alias ll='ls -lah'
@@ -247,7 +250,19 @@ alias sola='solana address'
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+
+#PYENV
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+
 export SSH_ASKPASS=""
+# SSH GITHUB
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    eval "$(ssh-agent -s)"
+fi
+
+ssh-add -q ~/.ssh/id_ed25519_github_zaatar_fard 2>/dev/null
 
 # pnpm
 export PNPM_HOME="/home/fard/.local/share/pnpm"
@@ -274,6 +289,9 @@ export NVM_DIR="$HOME/.nvm"
 
 
 export EDITOR=hx
+
+
+
 # ==================================================================================SECRETS
  if [[ -f "~/dotfiles/zsh/.secrets" ]]; then
   source "~/dotfiles/zsh/.secrets"

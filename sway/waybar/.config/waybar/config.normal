@@ -7,27 +7,35 @@
     "layer": "top",
     "output" : ["DP-9", "eDP-1"],
     "position": "top",
-    "height": 25,
+    "height": 42,
     "spacing": 3,
     "margin": 0,
     
     // === MODULES LAYOUT ===
     "modules-left": [
+        "sway/workspaces",
+        "custom/separator",
         "sway/mode",
+        "custom/uptime",
+        "cpu",
+        "memory",
         "temperature"
     ],
     
     "modules-center": [
-        "sway/workspaces",
+        "clock",
     ],
     
     "modules-right": [
         "idle_inhibitor",
         "pulseaudio",
+        "custom/separator",
         "network",
         "bluetooth",
+        "custom/separator",
         "backlight", 
         "battery",
+        "custom/separator",
         "tray",
         "custom/power"
     ],
@@ -62,22 +70,21 @@
         "interval": 3,
         "format": "{usage}%", // ACTION : Ajout d'icône.
         "tooltip": true,
-        "on-click": "foot -e btop" // ACTION : Rend le module interactif.
+        "on-click": "kitty -e btop" // ACTION : Rend le module interactif.
     },
 
     "memory": {
         "interval": 5,
         "format": "{percentage}%", // ACTION : Ajout d'icône.
         "tooltip": true,
-        "on-click": "foot -e btop"
-        },
+        "on-click": "kitty -e btop" // ACTION : Rend le module interactif.
+    },
 
     "temperature": {
         "interval": 5,
         "thermal-zone": 0,
         "critical-threshold": 75,
-        "format": "{temperatureC}°C", 
-        "on-click": "foot -e btop"
+        "format": "{temperatureC}°C" // ACTION : Ajout d'icône.
     },
 
     // ==========================================
@@ -103,8 +110,8 @@
     },
 
     "pulseaudio": {
-        "format": "{icon}",
-        "format-muted": " ",
+        "format": "{icon} {volume}%",
+        "format-muted": " {volume}%",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -119,33 +126,33 @@
 
     "network": {
         "interval": 3,
-        "format-wifi": " ",
+        "format-wifi": " {signalStrength}%",
         "format-ethernet": "",
         "format-disconnected": "!",
-        "tooltip-format-wifi": "IP: {ipaddr}\n    Signal: {signalStrength}%",
+        "tooltip-format-wifi": "IP: {ipaddr}",
         "tooltip-format-ethernet": "Interface: {ifname}\n    IP: {ipaddr}",
         "on-click": "nm-connection-editor",
-        "on-click-right": "foot -e nmcli show"
+        "on-click-right": "foot -e nmtui"
     },  
 
     "bluetooth": {
-        "format": "",
-        "format-disabled": "!",
-        "format-off": "!",
+        "format": "", // ACTION : Icônes pour chaque état
+        "format-disabled": "󰂲",
+        "format-off": "󰂲",
         "format-connected": "",
         "on-click": "blueman-manager"
     },
 
     "backlight": {
-        "format": "{icon}",
+        "format": "{icon} {percent}%",
         "format-icons": ["", "", "", "", "", "", "", "", ""] // ACTION : Icônes
     },
 
     "battery": {
         "states": { "warning": 30, "critical": 15 },
         "format": "{icon} {capacity}%",
-        "format-charging": "{capacity}%",
-        "format-plugged": "{capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
         "format-icons": ["", "", "", "", ""],
         "on-click": "foot --app-id=tlp-viewer ~/dotfiles/sway/scripts/tlp-menu.sh"
     },

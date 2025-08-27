@@ -41,7 +41,8 @@ local wezterm = require "wezterm"
 
 -- This table will hold the configuration.
 local config = {}
-
+-- Force le rendu logiciel (Software) pour éviter de solliciter le pilote i915
+config.front_end = "Software"
 -- In newer versions of wezterm, use the config_builder which will
 -- help provide clearer error messages
 if wezterm.config_builder then

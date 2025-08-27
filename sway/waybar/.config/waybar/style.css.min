@@ -3,7 +3,7 @@
 * {
     font-family: "Fira Code", "FontAwesome", "Font Awesome 5 Free", monospace;
     font-size: 16px;
-    font-weight: 300;
+    font-weight: 500;
 }
 
 window#waybar {
@@ -145,7 +145,7 @@ button:hover {
 #idle_inhibitor {
     color: #cdd6f4;
     margin: 0 6px;
-    font-size: 15px;
+    font-size: 20px;
     padding: 0;
 }
 
@@ -178,7 +178,6 @@ button:hover {
     color: #f38ba8;
     margin: 0 6px;
     padding: 0;
-    font-size: 25px;
 }
 
 #custom-power:hover { color: #fab387; }
@@ -192,7 +191,6 @@ button:hover {
 
 #custom-uptime {
     color: #45475a;
-    font-size: 25px;
     margin: 0 6px;
     padding: 0;
 }
