@@ -115,6 +115,9 @@ alias cloud='cd /home/fard/Documents/10_SYNC/10.2_VAULTS/10.2.1_SUMAC_CLOUD'
 alias :q='exit'
 alias dotfiles='/home/fard/dotfiles'
 alias sway='/home/fard/dotfiles/sway'
+alias swayconf='hx /home/fard/dotfiles/sway/sway/.config/sway/config'
+alias hxconf='hx /home/fard/dotfiles/helix/.config/helix/config.toml'
+alias zellijconf='hx /home/fard/dotfiles/zellij/.config/zellij/config.kdl'
 
 # ======= ALIAS SYSTÈME =======
 alias update='sudo dnf update -y'

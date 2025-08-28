@@ -74,11 +74,19 @@ A-h = "move_prev_word_start"
 A-f = ":format"
 C-r = ":rl"
 C-s = ":w"
+0 = "goto_line_end"
+9 = "goto_line_start"
+H = "move_prev_long_word_start"
+L = "move_next_long_word_end"
+# Se déplacer verticalement par 5 lignes
+K = ["move_line_up", "move_line_up", "move_line_up", "move_line_up", "move_line_up"]
+J = ["move_line_down", "move_line_down", "move_line_down", "move_line_down", "move_line_down"]
+
 #==========================================
 [keys.normal."+"]
-c = ":run-shell-command cargo check"
-t = ":run-shell-command cargo test"
-b = ":run-shell-command cargo build"
+c = ":sh cargo check"
+t = ":sh cargo test"
+b = ":sh cargo build"
 #==========================================
 [keys.normal.space]
 # La touche 'a' après 'space' exécutera la commande

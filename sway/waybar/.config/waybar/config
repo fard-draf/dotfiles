@@ -14,7 +14,11 @@
     // === MODULES LAYOUT ===
     "modules-left": [
         "clock",
+        "custom/separator",
         "temperature",
+        "cpu",
+        "memory",
+        "custom/separator",
         "sway/mode",
     ],
     
@@ -86,10 +90,10 @@
     // ==========================================
 
     "clock": {
-          "format": "{0:%H:%M}",
+          "format": "{0:%d/%m}•{0:%H:%M}",
           "tooltip-format": "{0:%A %d %B}\n  Week {0:%V}",
           "interval": 60,
-          "on-click": "gnome-calendar"    },
+          "on-click": "exec /usr/bin/thunderbird"    },
 
     // ==========================================
     // RIGHT MODULES
@@ -156,7 +160,7 @@
         "spacing": 4
     },
 
-    "custom/separator": { "format": "⫶" },
+    "custom/separator": { "format": "•" },
 
     "custom/power": {
         "format": "",

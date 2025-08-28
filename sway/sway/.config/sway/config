@@ -18,7 +18,7 @@ exec --no-startup-id /usr/libexec/xdg-desktop-portal-wlr #portail gtk
 # Use kanshi for dynamic multi-monitor setups (uncomment and install if needed)
 # exec kanshi
 # Default wallpaper
-output * bg /home/fard/Pictures/Wallpapers/neptune.tif fill
+output * bg /home/fard/Pictures/Wallpapers/will-rust-L76ogaaqsAk-unsplash.jpg fill
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 # Manual screen setup bind (your custom script)
 # bindsym $mod+Shift+x exec /home/fard/dotfiles/sway/scripts/kill_kanshi.sh
@@ -77,8 +77,8 @@ input "type:pointer" {
 ###==================================================================================  Key bindings
 # Basics
 bindsym $mod+Return exec foot
-bindsym F1 exec gtk-launch foot-remote-zellij.desktop
-bindsym F2 exec gtk-launch foot-local-zellij
+bindsym F1 exec gtk-launch wezterm-remote.desktop
+bindsym F2 exec gtk-launch wezterm-local.desktop
 bindsym $mod+q kill
 bindsym $mod+d exec /usr/bin/wofi --show drun --allow-images
 floating_modifier $mod normal
