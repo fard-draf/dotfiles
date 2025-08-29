@@ -5,7 +5,6 @@
     
     // === BAR SETTINGS ===
     "layer": "top",
-    "output" : ["DP-9", "eDP-1"],
     "position": "top",
     "height": 25,
     "spacing": 3,
@@ -152,7 +151,7 @@
         "format-charging": "{capacity}%",
         "format-plugged": "{capacity}%",
         "format-icons": ["", "", "", "", ""],
-        "on-click": "foot --app-id=tlp-viewer ~/dotfiles/sway/scripts/tlp-menu.sh"
+        "on-click": "foot --app-id=tlp-viewer ~/.config/scripts/tlp-menu.sh"
     },
 
     "tray": {

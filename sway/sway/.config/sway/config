@@ -7,36 +7,21 @@ set $right l
 set $term term  # Or use kitty/alacritty if preferred for better performance in dev workflows
 set $menu /usr/bin/wofi --show drun --allow-images # Consider fuzzel or rofi-wayland for more features
 set $editor /usr/bin/hx  # Assuming VS Code; change to vim/nvim/emacs as needed
-set $browser /usr/bin/brave-browser  # Or chromium/brave for dev tools
-
-### Start Exec
+set $browser /usr/bin/firefox  # Or chromium/brave for dev tools
+# Aliases
+# set $ecran_aoc 'AOC 1601W MMEM1JA000545'
+# set $ecran_32 'Samsung Electric Company LS32CG51x H9JX201723'
+# set $ecran_27 'Samsung Electric Company Odyssey G5 HK7X400599'
+###================================================================================== Start Exec
 exec mako #Notifications
-exec kanshi #Screen conf
-exec gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark' #Theme
+exec waybar
+exec kanshi #Screen conf 
 exec --no-startup-id /usr/libexec/xdg-desktop-portal-wlr #portail gtk
+# exec_always --no-startup-id "~/.config/scripts/organiser_workspaces.sh"
 ###================================================================================== Output configuration
-# Use kanshi for dynamic multi-monitor setups (uncomment and install if needed)
-# exec kanshi
-# Default wallpaper
 output * bg /home/fard/Pictures/Wallpapers/will-rust-L76ogaaqsAk-unsplash.jpg fill
-# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-# Manual screen setup bind (your custom script)
-# bindsym $mod+Shift+x exec /home/fard/dotfiles/sway/scripts/kill_kanshi.sh
 bindsym $mod+Shift+x exec killall -SIGHUP kanshi
-# Example for dual monitors (adjust based on swaymsg -t get_outputs)
-# output eDP-1 pos 0 0 res 1920x1080
-# output HDMI-A-1 pos 1920 0 res 1920x1080
-
-workspace 1 output DP-1
-workspace 2 output DP-9
-workspace 3 output DP-8
-workspace 4 output DP-1  # Additional workspaces cycle back or assign as needed
-workspace 5 output DP-9
-workspace 6 output DP-8
-workspace 7 output DP-1
-workspace 8 output DP-9
-workspace 9 output DP-8
-workspace 10 output DP-1
+bindsym $mod+Shift+z exec "~/.config/scripts/organiser_workspaces.sh"
 
 ###==================================================================================  Idle configuration
 # Enhanced idle with swayidle: lock screen, dim displays, and DPMS
@@ -184,17 +169,10 @@ bindsym XF86Launch9 exec --no-startup-id flatpak run md.obsidian.Obsidian
 exec wl-paste --type text --watch cliphist store  # Install cliphist for clipboard history
 bindsym $mod+Shift+v exec cliphist list | wmenu | cliphist decode | wl-copy  # Paste from history
 
-###================================================================================== Status Bar
-bar {
-    # Afficher la barre uniquement sur le moniteur DP-8
-    output DP-9,
-    status_command waybar
-    position top
-}
 ###==================================================================================WINDOWS
 for_window [app_id="pavucontrol"] floating enable, resize set width 500 px height 700 px
 for_window [app_id="nm-connection-editor"] floating enable, resize set width 650 px height 550 px
-for_window [app_id="net.thunderbird.Thunderbird"] floating enable, resize set width 650 px height 550 px
+for_window [app_id="net.thunderbird.Thunderbird"] floating enable, resize set width 1500 px height 800 px
 for_window [app_id="wezterm"] floating enable, resize set width 650 px height 550 px
 for_window [app_id="blueman-manager"] floating enable, resize set width 600 px height 500 px
 for_window [app_id="tlp-viewer"] floating enable, resize set width 1000 px height 1200 px
@@ -208,16 +186,16 @@ for_window [app_id="/usr/bin/gnome-calculator"] floating enable, resize set widt
 # assign [class="brave-browser"] workspace number 3:Web
 
 ###==================================================================================  Theme and gaps for better visuals
-
-exec --no-startup-id bash -c 'QT_QPA_PLATFORMTHEME="gtk2"
-default_border pixel 2
-gaps inner 5
-gaps outer 5
-smart_gaps on
-smart_borders on
-client.focused #4c7899 #285577 #ffffff #2e9ef4 #285577
-client.unfocused #333333 #222222 #888888 #292d2e #222222
-
+#Themes
+exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+exec gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+exec --no-startup-id bash -c 'export QT_QPA_PLATFORMTHEME="gnome"'
+default_border pixel 4
+titlebar_border_thickness 3 
+#                       <bord>   <fond> <texte> <indic> <bordure_enfant>
+client.focused          #D6119E #D6119E #D6119E #AA11D6 #4911D6
+client.unfocused        #333333 #222222 #888888 #292d2e #222222
+client.focused_inactive #333333 #222222 #888888 #292d2e  
 ###==================================================================================INCLUDE
 include /etc/sway/config.d/*
 
