@@ -28,8 +28,6 @@
     "modules-right": [
         "idle_inhibitor",
         "pulseaudio",
-        "network",
-        "bluetooth",
         "backlight", 
         "battery",
         "tray",
@@ -121,24 +119,6 @@
         "on-scroll-down": "pamixer --decrease 5"
     },
 
-    "network": {
-        "interval": 3,
-        "format-wifi": " ",
-        "format-ethernet": "",
-        "format-disconnected": "!",
-        "tooltip-format-wifi": "IP: {ipaddr}\n    Signal: {signalStrength}%",
-        "tooltip-format-ethernet": "Interface: {ifname}\n    IP: {ipaddr}",
-        "on-click": "nm-connection-editor",
-        "on-click-right": "foot -e nmcli show"
-    },  
-
-    "bluetooth": {
-        "format": "",
-        "format-disabled": "!",
-        "format-off": "!",
-        "format-connected": "",
-        "on-click": "blueman-manager"
-    },
 
     "backlight": {
         "format": "{icon}",

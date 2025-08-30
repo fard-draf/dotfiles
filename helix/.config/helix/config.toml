@@ -31,7 +31,7 @@ render = true
 hidden = false #show hidden files
 #==========================================
 [editor.gutters]
-# Configure les gutters (marges gauches)
+# Configure les gutters (amarges gauches)
 layout = ["diagnostics", "spacer", "line-numbers", "spacer", "diff"]
 #==========================================
 [editor.inline-diagnostics]
@@ -74,8 +74,6 @@ A-h = "move_prev_word_start"
 A-f = ":format"
 C-r = ":rl"
 C-s = ":w"
-0 = "goto_line_end"
-9 = "goto_line_start"
 H = "move_prev_long_word_start"
 L = "move_next_long_word_end"
 # Se déplacer verticalement par 5 lignes

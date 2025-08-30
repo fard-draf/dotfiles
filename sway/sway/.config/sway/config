@@ -7,7 +7,7 @@ set $right l
 set $term term  # Or use kitty/alacritty if preferred for better performance in dev workflows
 set $menu /usr/bin/wofi --show drun --allow-images # Consider fuzzel or rofi-wayland for more features
 set $editor /usr/bin/hx  # Assuming VS Code; change to vim/nvim/emacs as needed
-set $browser /usr/bin/firefox  # Or chromium/brave for dev tools
+set $browser /usr/bin/qutebrowser  # Or chromium/brave for dev tools
 # Aliases
 # set $ecran_aoc 'AOC 1601W MMEM1JA000545'
 # set $ecran_32 'Samsung Electric Company LS32CG51x H9JX201723'
