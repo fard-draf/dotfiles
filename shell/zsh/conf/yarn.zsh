@@ -13,6 +13,7 @@ alias yt='yarn test'
 alias yb='yarn build'
 alias yd='yarn dev'
 alias ys='yarn start'
+alias yarn-al="show_aliases_from_file $DOTFILES/shell/zsh/conf/yarn.zsh"
 
 # Fonction pour afficher les infos Yarn
 yarn-info() {
@@ -25,18 +26,3 @@ yarn-info() {
     echo "================================"
 }
 
-yarn-al() {
-    
-    echo "alias yi='yarn install'"
-    echo "alias ya='yarn add'"
-    echo "alias yad='yarn add -D'"
-    echo "alias yr='yarn remove'"
-    echo "alias yu='yarn up'"
-    echo "alias ydlx='yarn dlx'"
-    echo "alias yw='yarn workspace'"
-    echo "alias yws='yarn workspaces'"
-    echo "alias yt='yarn test'"
-    echo "alias yb='yarn build'"
-    echo "alias yd='yarn dev'"
-    echo "alias ys='yarn start'"
-}

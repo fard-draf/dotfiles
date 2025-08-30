@@ -25,9 +25,10 @@ alias wh='cd $DEV_PATH/warehouse'
 # ======= ALIAS SHELL =======
 alias shell='cd $DOTFILES/shell'
 alias zshrc='hx $DOTFILES/shell/zsh/rc/.zshrc'    
-alias reload='source $DOTFILES/shell/zsh/rc/.zshrc' 
+alias reload='exec zsh' 
 alias zshalias='hx $DOTFILES/shell/zsh/aliases.zsh'
- 
+alias echopath='echo "$PATH" | tr ":" "\n"' 
+
 # ======= ALIAS CONFIGURATION =======
 alias conf='cd $DEV_PATH/warehouse/configs'
 alias dot='cd $DOTFILES'
