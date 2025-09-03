@@ -1,36 +1,41 @@
 {
-    "label" : "lock",
-    "action" : "loginctl lock-session",
-    "text" : "Lock",
-    "keybind" : "l"
-}
-{
-    "label" : "hibernate",
-    "action" : "systemctl hibernate",
-    "text" : "Hibernate",
-    "keybind" : "h"
-}
-{
     "label" : "logout",
-    "action" : "swaymsg exit",
-    "text" : "Logout",
-    "keybind" : "e"
+    "action" : "hyprctl dispatch exit 0",
+    "text" : "Logout"     
 }
+
+{
+    "label" : "lock",
+    "action" : "swaylock",
+    "text" : "Lock"
+}
+
+
 {
     "label" : "shutdown",
     "action" : "systemctl poweroff",
-    "text" : "Shutdown",
-    "keybind" : "s"
+    "text" : "Shutdown"
 }
-{
-    "label" : "suspend",
-    "action" : "systemctl suspend",
-    "text" : "Suspend",
-    "keybind" : "u"
-}
+
 {
     "label" : "reboot",
     "action" : "systemctl reboot",
-    "text" : "Reboot",
-    "keybind" : "r"
+    "text" : "Reboot"     
 }
+
+{
+    "label" : "suspend",
+    "action" : "systemctl suspend",
+    "text" : "Suspend"    
+}
+
+{
+    "label" : "hibernate",
+    "action" : "systemctl hibernate",
+    "text" : "Hibernate"    
+}
+
+
+
+
+# Commande -> wlogout --protocol layer-shell -b 6 --margin-left 700 --margin-right 700 --margin-top 600 --margin-bottom 600

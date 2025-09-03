@@ -122,7 +122,6 @@ config.set('content.local_content_can_access_file_urls', False, 'file:///home/fa
 #   - false
 #   - ask
 config.set('content.notifications.enabled', False, 'https://www.youtube.com')
-
 # Render all web contents using a dark theme. On QtWebEngine < 6.7, this
 # setting requires a restart and does not support URL patterns, only the
 # global setting is applied. Example configurations from Chromium's
@@ -148,15 +147,3 @@ c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 # template -> config.bind('touche', 'commande', mode='normal')
 # Lancer la vidéo actuelle dans MPV avec ",m"
 config.bind(',mvp', 'spawn --userscript view_in_mpv')
-config.bind('gi', 'spawn --userscript focus-element')
-
-SCRIPT_NAME = 'qute-extract.py'
-
-# Raccourci ",t" pour TÉLÉCHARGER
-config.bind(',t', f'userscript-run -p {{page:text}} {SCRIPT_NAME}')
-
-# Raccourci ",o" pour OUVRIR dans un onglet
-config.bind(',o', f'userscript-run -p {{page:text}} {SCRIPT_NAME} --tab')
-
-# Raccourci ",T" pour TÉLÉCHARGER avec un seuil de 10 mots
-config.bind(',T', f'userscript-run -p {{page:text}} {SCRIPT_NAME} 10')

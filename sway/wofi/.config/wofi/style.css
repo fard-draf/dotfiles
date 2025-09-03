@@ -1,77 +1,61 @@
-/* --- Fenêtre principale --- */
-window {
-  margin: 10px;
-  border: 2px solid #3498db;
-  background: rgba(44, 62, 80, 0.95); /* Fond semi-transparent */
-  border-radius: 18px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
-}
-
-/* --- Champ de recherche --- */
-#input {
-  font-family: "Fira Code", monospace;
+* {
+  font-family: FiraCode Nerd Font;
+  color: #e5e9f0;
+  background: transparent;
   font-size: 16px;
-  margin: 10px;
-  padding: 8px 12px;
-  border: none;
-  border-radius: 10px;
-  color: #ecf0f1;
-  background-color: #34495e;
-  outline: none;
 }
 
-/* --- Conteneurs internes --- */
-#inner-box, #outer-box {
-  margin: 8px;
-  border: none;
-  background: transparent; /* On enlève tout fond derrière */
+#window {
+    /* 1. Définir une bordure transparente pour créer l'espace du dégradé */
+    border: 5px solid transparent;
+    border-radius: 15px;
+    background-color: #282A36; 
+
+    /* 2. La technique des deux arrière-plans adaptée pour Wofi */
+    background:
+        linear-gradient(150deg, #282A36, #282A36) padding-box, 
+        linear-gradient(135deg, #4911D6, #D6119E) border-box; 
+
+    /* 3. Le découpage qui fait fonctionner la magie */
+    background-clip: padding-box, border-box;
+}
+/* #input { */
+  /* padding: 5px; */
+  /* margin-bottom: 10px; */
+  /* border-radius: 15px; */
+/* } */
+
+#outer-box {
+  padding: 25px;
 }
 
-/* --- Liste déroulante --- */
-#scroll {
-  margin: 0;
-  border: none;
-  background: transparent;
+#img {
+  margin-right: 2px;
 }
 
-/* --- Texte des entrées --- */
+#entry {
+  padding: 3px;
+  border-radius: 15px;
+}
+
+#entry:selected {
+  background-color: #340C97;
+  border-radius: 15px;
+  border: 5px solid transparent;
+}
+
 #text {
-  margin: 6px;
-  color: #ecf0f1;
-  font-size: 15px;
-  font-family: "Fira Code", monospace;
+  margin: 3px;
 }
 
-/* --- Entrées --- */
-#entry {
-  padding: 6px;
-  border-radius: 10px;
-  transition: background-color 0.2s ease;
-  background: transparent; /* Supprime le fond noir derrière */
-}
+#input {
+    /* On force l'élément à ne prendre aucune place */
+    height: 0px;
+    min-height: 0px;
+    padding: 0px;
+    margin: 0px;
+    border: none;
 
-/* --- Entrée sélectionnée --- */
-#entry:selected {
-  background-color: #3498db;
-  color: #ffffff;
-  border-radius: 10px;
-}
-
-/* --- Entrée au focus --- */
-#entry:focus {
-  outline: none;
-}
-#entry {
-  padding: 6px 10px;
-  border-radius: 10px;
-  background: transparent;
-  display: flex;
-  align-items: center; /* Centre l’icône avec le texte */
-  gap: 8px; /* Espace entre icône et texte */
-}
-
-#entry:selected {
-  background-color: #3498db;
-  color: #ffffff;
-  border-radius: 10px;
+    /* On le rend invisible au cas où il occuperait encore de l'espace */
+    opacity: 0;
 }

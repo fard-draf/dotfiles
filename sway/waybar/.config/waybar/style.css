@@ -1,13 +1,14 @@
 /* Style CSS pour Waybar - Clean & Minimal avec icônes fixes */
 
 * {
-    font-family: "Fira Code", "FontAwesome", "Font Awesome 5 Free", monospace;
+    font-family: "Iosevka Term Extrabold", "FontAwesome", "Font Awesome 5 Free", monospace;
     font-size: 16px;
     font-weight: 300;
 }
 
 window#waybar {
-    background: rgba(30, 30, 46, 0.4);
+    background: rgba(30, 30, 46, 0.5);
+    /* background: linear-gradient(135deg, rgba(73, 17, 214, 0.5), rgba(73, 17, 214, 0.1)); */
     border-bottom: 2px solid #3E4D5C;
     color: #cdd6f4;
 }
@@ -27,9 +28,9 @@ button:hover {
 /* #workspaces { */
     /* background: rgba(49, 50, 68, 0.3); */
     /* border-radius: 8px; */
-    /* margin: 2px 4px; */
-    /* padding: 2px 4px; */
-    /* border: 1px solid rgba(137, 180, 250, 0.2); */
+    /* margin: 4px 4px; */
+    /* padding: 0px 4px; */
+    /* border: 2px solid rgba(73, 17, 214, 1); */
 /* } */
 
 /* #workspaces button { */
@@ -118,7 +119,7 @@ button:hover {
     color: #89b4fa;
     margin: 0 6px;
     padding: 0;
-    font-size: 20px;
+    font-size: 15px;
     
 }
 
@@ -134,7 +135,7 @@ button:hover {
 #battery {
     color: #a6e3a1;
     margin: 0 6px;
-    font-size: 18px;
+    font-size: 15px;
     padding: 0;
 }
 
@@ -178,7 +179,7 @@ button:hover {
     color: #f38ba8;
     margin: 0 6px;
     padding: 0;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 #custom-power:hover { color: #fab387; }
@@ -187,9 +188,42 @@ button:hover {
     color: #45475a;
     margin: 0 6px;
     padding: 0;
-    font-size: 33px;
+    font-size: 15px;
 }
 
+#language {
+    background: transparent;
+    color: #a6e3a1;
+    padding: 0 5px;
+    margin: 0 5px;
+    min-width: 16px;
+}
+
+#power-profiles-daemon {
+    padding-right: 15px;
+}
+
+#power-profiles-daemon.performance {
+    background-color: transparent;
+    color: #783567;
+}
+
+#power-profiles-daemon.balanced {
+    background-color: transparent;
+    color: #f9e2af;
+}
+
+#power-profiles-daemon.power-saver {
+    background-color: transparent;
+    color: #bedf97;
+}
+
+#sway-keyboard-layout {
+    color: #45475a;
+    margin: 0 6px;
+    padding: 0;
+    font-size: 20px;
+}
 #custom-uptime {
     color: #45475a;
     font-size: 25px;
@@ -229,5 +263,5 @@ tooltip {
 
 tooltip label {
     color: #CDD6F4;                    /* Une couleur de texte claire et lisible sur fond sombre. */
-    font-size: 17px;                   /* Une taille de police confortable pour la lecture. */
+    font-size: 15px;                   /* Une taille de police confortable pour la lecture. */
 }

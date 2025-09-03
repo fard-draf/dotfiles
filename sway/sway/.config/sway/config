@@ -7,7 +7,7 @@ set $right l
 set $term term  # Or use kitty/alacritty if preferred for better performance in dev workflows
 set $menu /usr/bin/wofi --show drun --allow-images # Consider fuzzel or rofi-wayland for more features
 set $editor /usr/bin/hx  # Assuming VS Code; change to vim/nvim/emacs as needed
-set $browser /usr/bin/qutebrowser  # Or chromium/brave for dev tools
+set $browser /usr/bin/firefox  # Or chromium/brave for dev tools
 # Aliases
 # set $ecran_aoc 'AOC 1601W MMEM1JA000545'
 # set $ecran_32 'Samsung Electric Company LS32CG51x H9JX201723'
@@ -16,6 +16,7 @@ set $browser /usr/bin/qutebrowser  # Or chromium/brave for dev tools
 exec mako #Notifications
 exec waybar
 exec kanshi #Screen conf 
+exec nm-applet #Network
 exec --no-startup-id /usr/libexec/xdg-desktop-portal-wlr #portail gtk
 # exec_always --no-startup-id "~/.config/scripts/organiser_workspaces.sh"
 ###================================================================================== Output configuration
@@ -33,9 +34,10 @@ exec swayidle -w \
 
 ###==================================================================================  Input configuration
 # Keyboard: set layout, repeat rate for faster typing in dev
-input keyboard {
-    xkb_layout us
-    xkb_variant intl
+input type:keyboard {
+    xkb_layout "us,us"
+    xkb_variant ",intl"
+    xkb_options "grp:win_space_toggle"
     repeat_delay 250
     repeat_rate 50
 }
@@ -48,7 +50,8 @@ input "type:touchpad" {
     tap enabled
     natural_scroll enabled
     middle_emulation enabled
-    scroll_factor 0.8  # Adjust sensitivity
+    pointer_accel 0.5
+    scroll_factor 0.5  # Adjust sensitivity
 }
 # Mouse: accel for precise control
 input "type:pointer" {
@@ -68,8 +71,7 @@ bindsym $mod+q kill
 bindsym $mod+d exec /usr/bin/wofi --show drun --allow-images
 floating_modifier $mod normal
 bindsym $mod+Shift+c reload
-bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit sway?' -B 'Yes' 'swaymsg exit'
-
+bindsym $mod+Shift+e exec /home/fard/.config/scripts/power_menu.sh
 # Dev-specific: Quick open editor/browser
 bindsym $mod+e exec $editor
 bindsym $mod+b exec $browser
@@ -190,10 +192,11 @@ for_window [app_id="/usr/bin/gnome-calculator"] floating enable, resize set widt
 exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 exec gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 exec --no-startup-id bash -c 'export QT_QPA_PLATFORMTHEME="gnome"'
-default_border pixel 4
-titlebar_border_thickness 3 
+default_border pixel 5
+titlebar_border_thickness 0 
 #                       <bord>   <fond> <texte> <indic> <bordure_enfant>
-client.focused          #D6119E #D6119E #D6119E #AA11D6 #4911D6
+# client.focused          #4911D6 #2EA47 #FFFFFF #D6119E #D6119E
+client.focused          #D6119E #4911D6 #D6119E #4911D6 #4911D6
 client.unfocused        #333333 #222222 #888888 #292d2e #222222
 client.focused_inactive #333333 #222222 #888888 #292d2e  
 ###==================================================================================INCLUDE

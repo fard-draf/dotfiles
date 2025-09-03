@@ -63,7 +63,7 @@ Custom Configuration
 
 -- change to square if you don't like rounded tab style
 -- local tab_style = "rounded"
-local tab_style = "square"
+local tab_style = "rounded"
 
 -- leader active indicator prefix
 local leader_prefix = utf8.char(0x1f30a) -- ocean wave
@@ -124,13 +124,14 @@ local scheme_colors = {
             lavender = "#b7bdf8",
             text = "#cad3f5",
             crust = "#181926",
-            zaatar = "#33261E"
+            zaatar = "#33261E",
+            fancy_pink = "#4911D6",
         }
     }
 }
 
 local colors = {
-    border = scheme_colors.catppuccin.macchiato.lavender,
+    border = scheme_colors.catppuccin.macchiato.fancy_pink,
     tab_bar_active_tab_fg = scheme_colors.catppuccin.macchiato.lavender,
     tab_bar_active_tab_bg = scheme_colors.catppuccin.macchiato.zaatar,
     tab_bar_text = scheme_colors.catppuccin.macchiato.crust,
@@ -146,10 +147,10 @@ Border
 ]] --
 
 config.window_frame = {
-    border_left_width = "0.4cell",
-    border_right_width = "0.4cell",
-    border_bottom_height = "0.15cell",
-    border_top_height = "0.15cell",
+    border_left_width = "0.0cell",
+    border_right_width = "0.0cell",
+    border_bottom_height = "0.00cell",
+    border_top_height = "0.00cell",
     border_left_color = colors.border,
     border_right_color = colors.border,
     border_bottom_color = colors.border,

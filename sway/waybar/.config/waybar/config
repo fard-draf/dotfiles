@@ -6,13 +6,15 @@
     // === BAR SETTINGS ===
     "layer": "top",
     "position": "top",
-    "height": 25,
+    "height": 20,
     "spacing": 3,
     "margin": 0,
     
     // === MODULES LAYOUT ===
     "modules-left": [
         "clock",
+        "custom/separator",
+        "sway/language",
         "custom/separator",
         "temperature",
         "cpu",
@@ -28,8 +30,12 @@
     "modules-right": [
         "idle_inhibitor",
         "pulseaudio",
+        "bluetooth",
         "backlight", 
+        "custom/separator",
         "battery",
+        "power-profiles-daemon",
+        "custom/separator",
         "tray",
         "custom/power"
     ],
@@ -119,10 +125,40 @@
         "on-scroll-down": "pamixer --decrease 5"
     },
 
+    "network": {
+        "interval": 3,
+        "format-wifi": " ",
+        "format-ethernet": "",
+        "format-disconnected": "!",
+        "tooltip-format-wifi": "IP: {ipaddr}\n    Signal: {signalStrength}%",
+        "tooltip-format-ethernet": "Interface: {ifname}\n    IP: {ipaddr}",
+        "on-click": "nm-connection-editor",
+        "on-click-right": "foot -e nmcli show"
+    },  
+
+    "bluetooth": {
+        "format": "",
+        "format-disabled": "!",
+        "format-off": "!",
+        "format-connected": "",
+        "on-click": "blueman-manager"
+    },
 
     "backlight": {
         "format": "{icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""] // ACTION : Icônes
+    },
+
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
     },
 
     "battery": {
@@ -138,13 +174,13 @@
         "icon-size": 20,
         "spacing": 4
     },
-
+ 
     "custom/separator": { "format": "•" },
 
     "custom/power": {
         "format": "",
         "exec-tooltip": "awk '{printf \"%d minutes %d secondes\", int($1/60), int($1%60)}' /proc/uptime",
-        "on-click": "wlogout",
+        "on-click": "exec /home/fard/.config/scripts/power_menu.sh",
         "exec-tooltip-every": 5 
     }
 }
