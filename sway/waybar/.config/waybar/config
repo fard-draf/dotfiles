@@ -44,14 +44,13 @@
     // LEFT MODULES
     // ==========================================
 
-    "sway/workspaces": {
+     "sway/workspaces": {
         "disable-scroll": false,
         "all-outputs": true,
-        "format": "{name}", // ACTION : Affiche le nom directement. C'est plus propre.
+        "format": "{name}",
         "format-icons": {
             "urgent": "!",
             "default": "•"
-            // "focused" est géré par le CSS.
         }
     },
 

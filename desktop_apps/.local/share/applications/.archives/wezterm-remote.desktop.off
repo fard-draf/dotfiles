@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Remote Sumac (Wezterm)
+Comment=Lance une session Zellij sur le serveur sumac via Wezterm
+Icon=/home/fard/Pictures/Icones/terminal.png
+# La commande adaptée pour Wezterm via Flatpak
+Exec=env WEZTERM_SOCKET=/tmp/wezterm-remote flatpak run org.wezfurlong.wezterm start --class sumac-remote -- ssh -Y sumac -t "TERM=xterm-256color /mnt/repo/dev/tools/rust/cargo/bin/zellij"
+# L'identifiant doit correspondre à l'option --class
+StartupWMClass=sumac-remote
+Terminal=false
+Categories=System;TerminalEmulator;

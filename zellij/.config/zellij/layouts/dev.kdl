@@ -1,0 +1,94 @@
+layout {
+    default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        children
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+    pane_template name="tests_under_files" {
+        pane split_direction="horizontal" {
+            children
+            pane command="cargo" size="30%" {
+                args "test"
+            }
+        }
+    }
+    pane_template name="test_ls" {
+        pane split_direction="horizontal" {
+            children
+            pane command="ls" size="30%" {
+                args "-ll"
+            }
+        }
+    }
+    tab_template name="strider_tab" {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        pane split_direction="Vertical" {
+            pane size="15%" {
+                // TODO: when we support sending CWD to plugins, this should start in ./zellij-derver
+                plugin location="zellij:strider"
+            }
+            children
+        }
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+
+    // ==========================================================================================
+    strider_tab name="OverView" cwd="$KORRI/libs/korri-n2k" focus=true {
+        tests_under_files split_direction="vertical" {
+            pane 
+            pane 
+        }
+    }
+    // ==========================================================================================
+    tab name="Docs" split_direction="vertical" cwd="$KORRI/libs/korri-n2k" {
+        pane {
+            pane edit="./essentials/canboat.json"
+            pane command="sh" {
+                args "$KORRI/libs/korri-n2k/tools/scripts/find_pgns.sh"
+                size "25%"
+            }
+            pane command="sh"{
+                args "-c" "$KORRI/libs/korri-n2k/tools/scripts/find_enums.sh"
+                size "25%"
+            }
+        }
+        test_ls split_direction="vertical" {
+            pane
+        }
+    }
+    // ==========================================================================================
+     tab name="Dev #1" split_direction="vertical" cwd="$DEV_PATH/warehouse/projects/professional/korrigan/libs/korri-n2k" {
+        pane split_direction="vertical" {
+            pane 
+        }
+        pane split_direction="horizontal" {
+            pane size="70%"
+            pane 
+        }
+    }
+
+
+}
+   // tab name="Server (pty thread)" split_direction="vertical" cwd="/mnt/sumac/dev/warehouse/projects/professional/korrigan" {
+    //     pane 
+    //     pane 
+    // }
+    // tab name="Server (pane grids)" split_direction="horizontal" cwd="/mnt/sumac/dev/warehouse/projects/professional/korrigan" {
+    //     pane split_direction="vertical" {
+    //         pane 
+    //         pane 
+    //         pane 
+    //     }
+    //     pane split_direction="vertical" {
+    //         pane 
+    //         pane 
+    //     }
+    // }

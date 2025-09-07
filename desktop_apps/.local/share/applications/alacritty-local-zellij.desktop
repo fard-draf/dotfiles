@@ -1,0 +1,14 @@
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Local (Alacritty)
+Comment=Lance une session Zellij locale dans Alacritty
+# La commande adaptée pour Alacritty
+Exec=alacritty --class zellij -e /home/fard/.cargo/bin/zellij
+# L'identifiant pour GNOME, qui doit correspondre à la classe définie dans Exec
+StartupWMClass=zellij
+# Votre icône personnalisée
+Icon=/home/fard/Pictures/Icones/terminal_w.png
+Terminal=false
+Categories=System;TerminalEmulator;

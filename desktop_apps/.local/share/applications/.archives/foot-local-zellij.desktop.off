@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Local (foot)
+Comment=Lance une session Zellij locale dans foot
+# La commande adaptée pour foot
+Exec=foot --app-id=zellij /home/fard/.cargo/bin/zellij
+# L'identifiant pour GNOME, qui doit correspondre à l'app-id
+StartupWMClass=zellij
+# Votre icône personnalisée
+Icon=/home/fard/Pictures/Icones/terminal_w.png
+Terminal=false
+Categories=System;TerminalEmulator;

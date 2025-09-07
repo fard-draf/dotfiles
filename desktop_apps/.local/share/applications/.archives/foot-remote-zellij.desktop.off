@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Remote Sumac (foot)
+Comment=Lance une session Zellij sur le serveur sumac via foot
+Icon=/home/fard/Pictures/Icones/terminal.png
+# La commande adaptée pour foot
+Exec=foot --app-id=sumac-remote ssh sumac -t "TERM=xterm-256color /mnt/repo/dev/tools/rust/cargo/bin/zellij"
+# L'identifiant doit correspondre à l'app-id
+StartupWMClass=sumac-remote
+Terminal=false
+Categories=System;TerminalEmulator;

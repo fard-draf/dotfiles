@@ -26,36 +26,33 @@
 /* } */
 
 #outer-box {
-  padding: 25px;
-}
-
-#img {
-  margin-right: 2px;
+  padding: 15px; /* Optionnel : J'ai un peu réduit le padding général */
 }
 
 #entry {
-  padding: 3px;
+  /* On enlève le padding de l'entrée elle-même. */
+  /* On le gérera plus finement sur les éléments internes. */
+  padding: 0px; 
   border-radius: 15px;
 }
 
 #entry:selected {
   background-color: #340C97;
-  border-radius: 15px;
-  border: 5px solid transparent;
+  border: none; /* Le "border: 5px" pouvait aussi ajouter de la hauteur */
 }
 
-#text {
-  margin: 3px;
+/* C'est ici la clé : on cible l'icône ET le texte pour un contrôle total. */
+#img, #text {
+    padding: 2px 8px;   /* On applique un padding vertical fin (2px) ici. */
+    margin: 0px;        /* On supprime toute marge par défaut. */
 }
 
+/* ... (votre section #input ne change pas) ... */
 #input {
-    /* On force l'élément à ne prendre aucune place */
     height: 0px;
     min-height: 0px;
     padding: 0px;
     margin: 0px;
     border: none;
-
-    /* On le rend invisible au cas où il occuperait encore de l'espace */
     opacity: 0;
 }

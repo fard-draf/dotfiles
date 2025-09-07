@@ -1,0 +1,56 @@
+layout { 
+    tab_template name="mod_tab" {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar" 
+        }
+
+		children
+		               
+        pane size=2 borderless=true split_direction="vertical" {
+            plugin location="zellij:status-bar"
+        }
+    }
+    
+	mod_tab name="sway_conf" {
+		pane {
+			command "hx"
+			args "/home/fard/dev/warehouse/configs/dotfiles/sway/sway/.config/sway/config"
+		}
+	}
+
+
+	mod_tab name="waybar_conf" split_direction="vertical"{
+		pane split_direction="vertical" {
+			command "hx"
+			args "/home/fard/dev/warehouse/configs/dotfiles/sway/waybar/.config/waybar/config"
+		}
+		pane split_direction="vertical" {
+			command "hx"
+			args "/home/fard/dev/warehouse/configs/dotfiles/sway/waybar/.config/waybar/style.css"
+		}
+	}
+
+	mod_tab name="wofi" split_direction="vertical"{
+		pane split_direction="vertical" {
+			command "hx"
+			args "/home/fard/dev/warehouse/configs/dotfiles/sway/wofi/.config/wofi/config"
+		}
+		pane split_direction="vertical" {
+			command "hx"
+			args "/home/fard/dev/warehouse/configs/dotfiles/sway/wofi/.config/wofi/style.css"
+		}
+	}
+
+	mod_tab name="scripts" split_direction="vertical"{
+		pane split_direction="vertical" {
+			command "tree"
+			args "-L" "3" "-a" "/home/fard/dev/warehouse/configs/dotfiles/sway/scripts/.config/scripts/"
+		}
+		pane split_direction="vertical" size="80%" {
+			command "hx"
+			args "/home/fard/dev/warehouse/configs/dotfiles/sway/scripts/.config/scripts/"
+		}
+	}
+
+}
+

@@ -1,0 +1,17 @@
+[font]
+size = 13.0
+
+[font.bold]
+family = "Iosevka Term"
+style = "Bold"
+
+[font.italic]
+family = "Iosevka Term"
+style = "Italic"
+
+[font.normal]
+family = "Iosevka Term"
+style = "Regular"
+
+[colors.primary]
+background = "#1B1B25"

@@ -1,0 +1,13 @@
+
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Remote Sumac (Alacritty)
+Comment=Lance une session Zellij sur le serveur sumac via Alacritty
+Icon=/home/fard/Pictures/Icones/terminal.png
+# La commande adaptée pour Alacritty
+Exec=alacritty --class sumac-remote -e ssh sumac -t "TERM=xterm-256color /mnt/repo/dev/tools/rust/cargo/bin/zellij"
+# L'identifiant doit correspondre à la classe définie dans Exec
+StartupWMClass=sumac-remote
+Terminal=false
+Categories=System;TerminalEmulator;

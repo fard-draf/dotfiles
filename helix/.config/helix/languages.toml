@@ -12,7 +12,7 @@ checkOnSave = true  # Exécuter Clippy lors de la sauvegarde
 [language-server.rust-analyzer.config]
 cargo.allFeatures = true
 procMacro.enable = true
-
+check.command = "clippy"
 inlayHints.bindingModeHints.enable = true
 inlayHints.chainingHints.enable = true
 inlayHints.closingBraceHints.enable = true
