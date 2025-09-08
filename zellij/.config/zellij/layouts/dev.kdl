@@ -16,12 +16,12 @@ layout {
             }
         }
     }
-    pane_template name="test_ls" {
+    pane_template name="tree" {
         pane split_direction="horizontal" {
-            children
-            pane command="ls" size="30%" {
-                args "-ll"
+            pane command="tree" size="30%" {
+                args "-L" "3" "-a"
             }
+            children
         }
     }
     tab_template name="strider_tab" {
@@ -41,27 +41,26 @@ layout {
     }
 
     // ==========================================================================================
-    strider_tab name="OverView" cwd="$KORRI/libs/korri-n2k" focus=true {
-        tests_under_files split_direction="vertical" {
-            pane 
-            pane 
+    strider_tab name="Overview" cwd="$KORRI/libs/korri-n2k" focus=true {
+        pane {
         }
+
     }
     // ==========================================================================================
     tab name="Docs" split_direction="vertical" cwd="$KORRI/libs/korri-n2k" {
         pane {
-            pane edit="./essentials/canboat.json"
-            pane command="sh" {
-                args "$KORRI/libs/korri-n2k/tools/scripts/find_pgns.sh"
-                size "25%"
+            pane size="33%" edit="./essentials/canboat.json"
+            pane command="sh" split_direction="vertical" {
+                args "-c" "./tools/scripts/find_pgns.sh"
+                size "33%"
             }
             pane command="sh"{
-                args "-c" "$KORRI/libs/korri-n2k/tools/scripts/find_enums.sh"
-                size "25%"
+                args "-c" "./tools/scripts/find_enums.sh"
+                size "33%"
             }
         }
-        test_ls split_direction="vertical" {
-            pane
+        tree split_direction="vertical" size="30%"{
+            children 
         }
     }
     // ==========================================================================================

@@ -1,0 +1,99 @@
+layout {
+    default_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        children
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+    pane_template name="tests_under_files" {
+        pane split_direction="horizontal" {
+            children
+            pane name="Check -A warns" command="sh" size="20%" {
+                args "-c" "RUSTFLAGS='-A warnings' cargo check"
+            }
+            pane name="Test" command="cargo" size="20%" {
+            	args "test"
+            }
+            pane name="Clean" command="cargo" size="5%" {
+            	args "clean"
+            }
+        }
+    }
+    tab_template name="strider_tab" {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        pane split_direction="Vertical" {
+            pane command="tree" size="30%" {
+                // TODO: when we support sending CWD to plugins, this should start in ./zellij-derver
+                args "-L" "3" "-a"
+            }
+            children
+        }
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+    strider_tab name="Overview" cwd="$KORRI/libs/korri-n2k" focus=true {
+        tests_under_files split_direction="vertical" {
+        	pane
+        	pane
+        }
+    }
+    tab name="Dev1" split_direction="vertical" cwd="$KORRI/libs/korri-n2k" {
+    	pane
+    	pane split_direction="horizontal" stacked=true {
+    		pane
+    		pane
+    	}
+    }
+    tab name="Dev2" split_direction="vertical" cwd="$KORRI/libs/korri-n2k" {
+    	pane
+    	pane
+    }
+    tab name="Journal" split_direction="vertical"  {
+    	pane command="ssh" {
+    		args "zaatar"
+    	}
+    	pane
+    }
+    tab name="Docs" split_direction="horizontal" cwd="$KORRI/libs/korri-n2k" {
+        pane split_direction="vertical" {
+           pane size="33%" edit="./essentials/canboat.json"
+
+        }
+        pane split_direction="vertical" {
+           pane command="sh" {
+                args "-c" "./tools/scripts/find_pgns.sh"
+                size "50%"
+        	}
+            pane command="sh"{
+                args "-c" "./tools/scripts/find_enums.sh"
+                size "50%"
+            }
+        }
+    }
+    tab name="Git" split_direction="vertical" cwd="$KORRI" {
+        pane split_direction="horizontal" {
+			pane command="tree" {
+				args "-L" "2" "-a"
+			}
+        	pane name="Branch" size="15%" command="git" {
+        		args "branch"
+        	}
+        }
+        pane split_direction="horizontal" size="80%"  {
+        	pane name="Git Commands" size="15%"
+        	pane name="Status" command="git" size="15%"{
+        		args "status"
+        	}
+       		pane name="History" command="sh" {
+       		    args "-c" "git log --graph --all --pretty=format:'%C(yellow)%h%C(reset) - %C(auto)%d%C(reset) %s %C(green)(%cr) %C(bold blue)<%an>%C(reset)'"
+       		}
+
+       	}
+    }
+}

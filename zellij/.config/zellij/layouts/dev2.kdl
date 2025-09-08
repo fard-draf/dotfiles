@@ -1,0 +1,57 @@
+layout {
+    // Templates de base (réutilisables).
+    pane_template name="test_runner" {  // Pour cargo test.
+        pane split_direction="horizontal" {
+            children  // Placeholder pour code/editeur.
+            pane command="cargo" size="25%" borderless=false {  // Borderless pour UI clean.
+                args "test"
+            }
+        }
+    }
+
+    pane_template name="log_viewer" {  // Pour tail logs.
+        pane split_direction="horizontal" {
+            children
+            pane command="tail" size="20%" {
+                args "-f" "target/debug/log.txt"  // Adapte à ton projet.
+            }
+        }
+    }
+
+    // Template tab par défaut (avec UI Zellij).
+    tab_template name="dev_tab" {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+        pane split_direction="vertical" {  // Corps principal : haut pour éditeur, bas pour outils.
+            children
+        }
+        pane size=2 borderless=true {
+            plugin location="zellij:status-bar"
+        }
+    }
+
+    // Tabs spécifiques.
+    dev_tab name="RustDev" cwd="$KORRI/libs/korri-n2k" focus=true {  // CWD pour ton projet.
+        test_runner split_direction="vertical" {  // Haut : tests.
+        	children
+        }
+        pane split_direction="horizontal" {  // Bas : logs + autre.
+            log_viewer {
+                pane command="cargo" {
+                    args "build"  // Pane build ré-exécutable.
+                }
+            }
+        }
+    }
+
+    dev_tab name="AutreTab" cwd="$KORRI/libs/korri-n2k" {  // Tab sœur.
+        pane split_direction="vertical" {
+            children
+            pane command="git" size="30%" {  // Pane git status, re-run avec Enter.
+                args "status"
+            }
+        }
+        pane {}  // Pane vide pour shell.
+    }
+}
