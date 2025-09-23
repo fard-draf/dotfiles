@@ -4,10 +4,11 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term foot  # Or use kitty/alacritty if preferred for better performance in dev workflows
+set $term alacritty  # Or use kitty/alacritty if preferred for better performance in dev workflows
 set $menu /usr/bin/wofi --show drun --allow-images # Consider fuzzel or rofi-wayland for more features
 set $editor /usr/bin/hx  # Assuming VS Code; change to vim/nvim/emacs as needed
 set $browser /usr/bin/firefox  # Or chromium/brave for dev tools
+set $filemanager /usr/bin/Thunar 
 # Aliases
 # set $ecran_aoc 'AOC 1601W MMEM1JA000545'
 # set $ecran_32 'Samsung Electric Company LS32CG51x H9JX201723'
@@ -64,9 +65,9 @@ input "type:pointer" {
 exec_always --no-startup-id workstyle &> /tmp/workstyle.log
 ###==================================================================================  Key bindings
 # Basics
-bindsym $mod+Return exec foot
-bindsym F1 exec gtk-launch alacritty-local-zellij.desktop
-bindsym F2 exec gtk-launch alacritty-remote-zellij.desktop
+bindsym $mod+Return exec alacritty
+bindsym F1 exec gtk-launch wezterm-local.desktop
+bindsym F2 exec gtk-launch wezterm-remote.desktop
 # bindsym F3 exec gtk-launch wezterm-local-sway_conf.desktop
 bindsym $mod+q kill
 bindsym $mod+d exec /usr/bin/wofi --show drun --allow-images
@@ -74,6 +75,7 @@ floating_modifier $mod normal
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exec /home/fard/.config/scripts/power_menu.sh
 # Dev-specific: Quick open editor/browser
+bindsym $mod+n exec $filemanager
 bindsym $mod+e exec $editor
 bindsym $mod+b exec $browser
 
@@ -174,6 +176,7 @@ bindsym --locked XF86Eject exec zellij ka -y
 # Pave numerique
 bindsym XF86Launch7 exec /usr/bin/gnome-calculator
 bindsym XF86Launch8 exec grim -g "$(slurp)" - | wl-copy  # Enhanced screenshot: select area and copy to clipboard
+bindsym $mod+Shift+equal exec grim -g "$(slurp)" - | wl-copy  # Enhanced screenshot: select area and copy to clipboard
 bindsym XF86Launch9 exec --no-startup-id flatpak run md.obsidian.Obsidian
 
 # Dev extras: Clipboard manager, notifications
@@ -189,6 +192,7 @@ for_window [app_id="blueman-manager"] floating enable, resize set width 600 px h
 for_window [app_id="tlp-viewer"] floating enable, resize set width 1000 px height 1200 px
 for_window [app_id="/usr/bin/gnome-calendar"] floating enable, resize set width 1000 px height 1200 px
 for_window [app_id="org.gnome.Calculator"] floating enable, resize set width 700 px height 600 px
+for_window [app_id="thunar"] floating enable, resize set width 1300 px height 900 px
 
 
 # Auto-start dev apps on workspaces (optional)

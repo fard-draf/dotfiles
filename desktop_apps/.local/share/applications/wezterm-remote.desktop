@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=pvedev-wezterm
+Comment=Lance une session en ssh pve-dev via Wezterm
+Icon=/home/fard/Pictures/Icones/terminal.png
+# La commande adaptée pour Wezterm via Flatpak
+Exec=env WEZTERM_SOCKET=/tmp/wezterm-remote wezterm start --class pve-dev-remote -- ssh -Y p-dev
+# L'identifiant doit correspondre à l'option --class
+StartupWMClass=pve-dev-remote
+Terminal=false
+Categories=System;TerminalEmulator;

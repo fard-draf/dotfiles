@@ -115,6 +115,10 @@ handle_extension() {
             mediainfo "${FILE_PATH}" && exit 5
             exiftool "${FILE_PATH}" && exit 5
             ;; # Continue with next handler on failure
+        ## Markdown
+        md|markdown)
+            glow -s dark -- "${FILE_PATH}" && exit 5
+            exit 1;;
     esac
 }
 

@@ -1,0 +1,14 @@
+profile maison {
+
+    output "eDP-1" disable
+
+    output "AOC 1601W MMEM1JA000545"  enable mode 1920x1080 position 0,856 transform 90 
+
+    output "Samsung Electric Company LS32CG51x H9JX201723" enable mode 2560x1440@59.951Hz position 1080,856 
+
+    output "Samsung Electric Company Odyssey G5 HK7X400599" enable mode 2560x1440@59.951Hz position 3640,0 transform 270 
+}
+# Profil "Nomade"
+profile nomade {
+    output "eDP-1"  enable mode 1920x1200 position 0,0 
+}

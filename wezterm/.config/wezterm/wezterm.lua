@@ -79,7 +79,7 @@ config.font =
     wezterm.font_with_fallback { "Iosevka Term" }
 config.font_size = 13
 
-config.window_decorations = "RESIZE"
+config.window_decorations = "NONE"
 
 --[[
 --
