@@ -1,0 +1,13 @@
+[Unit]
+Description=Force Wake-on-LAN on enp42s0
+DefaultDependencies=no
+Before=shutdown.target halt.target poweroff.target reboot.target
+
+[Service]
+Type=oneshot
+ExecStart=/sbin/ethtool -s enp42s0 wol g
+ExecStop=/sbin/ethtool -s enp42s0 wol g
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
