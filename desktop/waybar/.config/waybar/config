@@ -89,9 +89,9 @@
     },
 
     "custom/boot-time": {
-        "format": "⚡{}",
-        "exec": "systemd-analyze | grep 'Startup finished' | sed 's/.*= //' | sed 's/ *$//'",
-        "tooltip-format": "Temps de démarrage système"
+        "format": "⚡ {}",
+        "exec": "~/.config/dsk_scripts/boot-time.sh",
+        "on-click": "foot --app-id=boot-viewer ~/.config/dsk_scripts/boot-times.sh"
     },
 
     // ==========================================

@@ -19,6 +19,7 @@ exec waybar
 exec kanshi #Screen conf 
 exec nm-applet #Network
 exec --no-startup-id /usr/libexec/xdg-desktop-portal-wlr #portail gtk
+exec /home/fard/.config/dsk_scripts/boot-time.sh --log
 # exec_always --no-startup-id "~/.config/scripts/organiser_workspaces.sh"
 ###================================================================================== Output configuration
 output * bg /home/fard/Pictures/Wallpapers/will-rust-L76ogaaqsAk-unsplash.jpg fill
@@ -190,6 +191,7 @@ for_window [app_id="net.thunderbird.Thunderbird"] floating enable, resize set wi
 for_window [app_id="wezterm"] floating enable, resize set width 650 px height 550 px
 for_window [app_id="blueman-manager"] floating enable, resize set width 600 px height 500 px
 for_window [app_id="tlp-viewer"] floating enable, resize set width 1000 px height 1200 px
+for_window [app_id="boot-viewer"] floating enable, resize set width 600 px height 1000 px
 for_window [app_id="/usr/bin/gnome-calendar"] floating enable, resize set width 1000 px height 1200 px
 for_window [app_id="org.gnome.Calculator"] floating enable, resize set width 700 px height 600 px
 for_window [app_id="thunar"] floating enable, resize set width 1300 px height 900 px
@@ -214,4 +216,3 @@ client.unfocused        #333333 #222222 #888888 #292d2e #222222
 client.focused_inactive #333333 #222222 #888888 #292d2e  
 ###==================================================================================INCLUDE
 include /etc/sway/config.d/*
-
