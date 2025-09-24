@@ -21,7 +21,7 @@ case "$(hostname)" in
         HOST_ENV_FILE="$HOST_CONFIG_DIR/pepper.env.sh"
         ;;
     *)
-        HOST_ENV_FILE="$HOST_CONFIG_DIR/pve-dev.env.sh"
+        HOST_ENV_FILE="$HOST_CONFIG_DIR/generic.env.sh"
         ;;
 esac
 
@@ -102,8 +102,8 @@ mkdir -p $DOTFILES/core/shell/zsh \
          $DOTFILES/core/shell/env 
          
 # Chargement des paths
-if [[ -f $DOTFILES/shell/env/paths.env ]]; then
-  source $DOTFILES/shell/env/paths.env
+if [[ -f $DOTFILES/core/shell/env/paths.env ]]; then
+  source $DOTFILES/core/shell/env/paths.env
 fi
 # ================================================================
 # SECTION FINALE : COMMANDES INTERACTIVES ET NON-INTERACTIVES
@@ -123,8 +123,8 @@ fi
 # --- Commandes pouvant être exécutées dans tous les contextes ---
 
 # Gestion des secrets
-if [[ -f "$DOTFILES/shell/common/.secrets" ]]; then
-  source "$DOTFILES/shell/common/.secrets"
+if [[ -f "$DOTFILES/core/shell/common/.secrets" ]]; then
+  source "$DOTFILES/core/shell/common/.secrets"
 fi
 
 # Gestion de l'agent SSH
