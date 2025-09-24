@@ -166,7 +166,7 @@
         "format-charging": "{capacity}%",
         "format-plugged": "{capacity}%",
         "format-icons": ["", "", "", "", ""],
-        "on-click": "foot --app-id=tlp-viewer ~/.config/scripts/tlp-menu.sh"
+        "on-click": "foot --app-id=tlp-viewer ~/.config/dsk_scripts/tlp-menu.sh"
     },
 
     "tray": {
@@ -179,7 +179,7 @@
     "custom/power": {
         "format": "",
         "exec-tooltip": "awk '{printf \"%d minutes %d secondes\", int($1/60), int($1%60)}' /proc/uptime",
-        "on-click": "exec /home/fard/.config/scripts/power_menu.sh",
+        "on-click": "exec /home/fard/.config/dsk_scripts/power_menu.sh",
         "exec-tooltip-every": 5 
     }
 }

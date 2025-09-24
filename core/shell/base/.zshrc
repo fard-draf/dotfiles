@@ -88,7 +88,7 @@ unset rc
 local main_zshrc_path="${ZDOTDIR:-$HOME}/.zshrc:A"
 
 # 1. Charger les fichiers de configuration Zsh (tous les fichiers presents dans le dossier)
-for config_file in "$DOTFILES/shell/zsh/"**/*.zsh; do
+for config_file in "$DOTFILES/core/shell/zsh/"**/*.zsh; do
   # On utilise aussi ":A" ici pour la comparaison
   if [[ -f "$config_file" ]] && [[ "$config_file:A" != "$main_zshrc_path" ]]; then
     source "$config_file"
@@ -97,9 +97,9 @@ done
 unset main_zshrc_path
 
 # Créer les répertoires nécessaires
-mkdir -p $DOTFILES/shell/zsh \
-         $DOTFILES/shell/common \
-         $DOTFILES/shell/env 
+mkdir -p $DOTFILES/core/shell/zsh \
+         $DOTFILES/core/shell/common \
+         $DOTFILES/core/shell/env 
          
 # Chargement des paths
 if [[ -f $DOTFILES/shell/env/paths.env ]]; then

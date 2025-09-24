@@ -73,7 +73,7 @@ bindsym $mod+q kill
 bindsym $mod+d exec /usr/bin/wofi --show drun --allow-images
 floating_modifier $mod normal
 bindsym $mod+Shift+c reload
-bindsym $mod+Shift+e exec /home/fard/.config/scripts/power_menu.sh
+bindsym $mod+Shift+e exec /home/fard/.config/dsk_scripts/power_menu.sh
 # Dev-specific: Quick open editor/browser
 bindsym $mod+n exec $filemanager
 bindsym $mod+e exec $editor
@@ -139,7 +139,7 @@ bindsym $mod+a focus parent
 # Scratchpad
 bindsym $mod+minus move scratchpad
 # bindsym $mod+minus scratchpad show
-bindsym $mod+equal exec /home/fard/.config/scripts/scratchpad_menu.sh
+bindsym $mod+equal exec /home/fard/.config/dsk_scripts/scratchpad_menu.sh
 
 # Resizing
 mode "resize" {
