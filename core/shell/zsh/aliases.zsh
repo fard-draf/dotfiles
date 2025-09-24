@@ -34,12 +34,12 @@ alias hxconf='hx $DOTFILES/helix/config.toml'
 alias zelconf='hx $DOTFILES/zellij/config.kdl'
 
 # ======= ALIAS TREE =======
-alias t0='tree 1'
-alias t1='tree -L 1 -a -I ".git"'
-alias t2='tree -L 2 -a -I ".git"'
-alias t3='tree -a -L 3 -a -I ".git"'
-alias t4='tree -a -C -L 4 -a -I ".git"'
-alias t5='tree -a -C -L 5 -a -I ".git"'
+alias t0='tree -a -C 1'
+alias t1='tree -a -C -L 1 -I ".git"'
+alias t2='tree -a -C -L 2 -I ".git"'
+alias t3='tree -a -C -L 3 -I ".git"'
+alias t4='tree -a -C -L 4 -I ".git"'
+alias t5='tree -a -C -L 5 -I ".git"'
 
 # ======= ALIAS SYSTÈME =======
 alias update='sudo dnf update -y'
