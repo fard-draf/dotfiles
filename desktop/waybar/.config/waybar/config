@@ -14,7 +14,7 @@
     "modules-left": [
         "clock",
         "custom/separator",
-        "sway/language",
+        "custom/boot-time",
         "custom/separator",
         "temperature",
         "cpu",
@@ -29,6 +29,7 @@
     
     "modules-right": [
         "idle_inhibitor",
+        "sway/language",
         "pulseaudio",
         "bluetooth",
         "backlight", 
@@ -85,6 +86,12 @@
         "critical-threshold": 75,
         "format": "{temperatureC}°C", 
         "on-click": "foot -e btop"
+    },
+
+    "custom/boot-time": {
+        "format": "⚡{}",
+        "exec": "systemd-analyze | grep 'Startup finished' | sed 's/.*= //' | sed 's/ *$//'",
+        "tooltip-format": "Temps de démarrage système"
     },
 
     // ==========================================

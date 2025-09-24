@@ -231,6 +231,12 @@ button:hover {
     padding: 0;
 }
 
+#custom-boot-time {
+    color: #f9e2af;
+    margin: 0 6px;
+    padding: 0;
+}
+
 #mode {
     background: linear-gradient(45deg, #f38ba8, #fab387);
     color: #1e1e2e;
