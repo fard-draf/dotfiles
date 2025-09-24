@@ -1,1 +1,0 @@
-# zaatar_config
