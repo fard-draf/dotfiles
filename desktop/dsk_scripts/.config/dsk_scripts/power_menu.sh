@@ -11,7 +11,9 @@ SELECTION=$(wofi --dmenu -a center -p "Select an option: " --style "$STYLE_FILE"
  Reboot
  Reboot to UEFI
 󰐥 Shutdown
-󰜺 Cancel
+󰜺 Cancel󰤃
+󰍁 Dev OFF
+󰍀 Dev ON
 EOF
 )
 
@@ -47,6 +49,16 @@ case "$SELECTION" in
     *"Shutdown"*)
         if confirm_action "Shutdown"; then
             systemctl poweroff
+        fi
+        ;;
+    *"Dev OFF"*)
+        if confirm_action "Dev OFF"; then
+            exec pdev-power off
+        fi
+        ;;
+    *"Dev ON"*)
+        if confirm_action "Dev ON"; then
+            exec pdev-power on
         fi
         ;;
     # L'option "Cancel" ne fait rien, le script se termine
