@@ -10,7 +10,7 @@ export KORRI="$DEV_PATH/warehouse/projects/professional/korrigan"
 #=======================================================
 
 #=======================================================HELIX
-export HELIX_RUNTIME=~/src/helix/runtime
+export HELIX_RUNTIME=~/.local/helix/runtime
 #=======================================================TYPESCRIPT
 export TYPESCRIPT_HOME="$DEV_PATH/tools/typescript"
 #=======================================================CARGO+RUST
