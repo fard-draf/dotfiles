@@ -24,7 +24,7 @@ exec /home/fard/.config/dsk_scripts/boot-time.sh --log
 ###================================================================================== Output configuration
 output * bg /home/fard/Pictures/Wallpapers/will-rust-L76ogaaqsAk-unsplash.jpg fill
 bindsym $mod+Shift+x exec killall -SIGHUP kanshi
-bindsym $mod+Shift+z exec "~/.config/scripts/organiser_workspaces.sh"
+bindsym $mod+Shift+z exec "~/.config/dsk_scripts/organiser_workspaces.sh"
 
 ###==================================================================================  Idle configuration
 # Enhanced idle with swayidle: lock screen, dim displays, and DPMS
