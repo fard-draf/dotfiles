@@ -1,8 +1,7 @@
 # ===================================================
 #        INITIALISATION DYNAMIQUE DE NVM (lazy)
 # ===================================================
-export NVM_DIR="$HOME/dev/tools/nodejs/nvm"
-
+export NVM_DIR="$DEV_PATH/tools/nvm"
 nvm_lazy_load() {
   unset -f node npm npx nvm
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"

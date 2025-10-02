@@ -18,8 +18,9 @@ export CARGO_HOME="$DEV_PATH/tools/rust/cargo"
 export RUSTUP_HOME="$DEV_PATH/tools/rust/rustup"
 export RUST_ANALYZER_HOME="$DEV_PATH/tools/rust/rust-analyzer"
 #=======================================================NVM
-#=======================================================NODEJS
-export NODEJS_HOME="$DEV_PATH/tools/nodejs"
+export NVM_DIR="$DEV_PATH/tools/nvm"
+#=======================================================NPM
+export NPM_CONFIG_PREFIX="$DEV_PATH/tools/npm"
 #=======================================================PYTHON
 export PYENV_ROOT="$DEV_PATH/tools/pyenv"
 #=======================================================YARN
