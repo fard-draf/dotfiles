@@ -19,19 +19,20 @@ alias dev='cd $DEV_PATH/'
 alias dev='cd $DEV_PATH'
 alias week='cd $DEV_PATH/warehouse/playground/weekly'
 alias korri='cd $DEV_PATH/warehouse/projects/professional/korrigan'
+alias lib='cd $DEV_PATH/warehouse/projects/libs'
 alias wh='cd $DEV_PATH/warehouse'
 
 # ======= ALIAS SHELL =======
-alias shell='cd $DOTFILES/shell'
-alias zshrc='hx $DOTFILES/shell/base/.zshrc'    
+alias shell='cd $DOTFILES/core/shell'
+alias zshrc='hx $DOTFILES/core/shell/base/.zshrc'    
 alias reload='exec zsh' 
-alias zshalias='hx $DOTFILES/shell/zsh/aliases.zsh'
+alias zshalias='hx $DOTFILES/core/shell/zsh/aliases.zsh'
  
 # ======= ALIAS CONFIGURATION =======
 alias conf='cd $DEV_PATH/warehouse/configs'
 alias dotf='cd $DOTFILES'
-alias hxconf='hx $DOTFILES/helix/config.toml'
-alias zelconf='hx $DOTFILES/zellij/config.kdl'
+alias hxconf='hx $DOTFILES/dev/helix/config.toml'
+alias zelconf='hx $DOTFILES/dev/zellij/config.kdl'
 
 # ======= ALIAS TREE =======
 alias t0='tree -a -C 1'
@@ -53,7 +54,7 @@ alias cpuinfo='lscpu'
 alias diskspace='df -h'
 
 # ======= ALIAS HELPER =======
-alias showalias='cat $DOTFILES/shell/zsh/aliases.zsh'
+alias showalias='cat $DOTFILES/core/shell/zsh/aliases.zsh'
 
 
 

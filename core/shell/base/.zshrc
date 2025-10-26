@@ -132,3 +132,7 @@ SYSTEMD_AGENT_SOCK="/run/user/$(id -u)/ssh-agent.socket"
 if [[ -S "$SYSTEMD_AGENT_SOCK" ]]; then
   export SSH_AUTH_SOCK="$SYSTEMD_AGENT_SOCK"
 fi
+
+export NVM_DIR="$HOME/dev/tools/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
