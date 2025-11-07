@@ -14,7 +14,7 @@ layout {
 	mod_tab name="sway_conf" {
 		pane {
 			command "hx"
-			args "/home/fard/dev/warehouse/configs/dotfiles/sway/sway/.config/sway/config"
+			args "/home/fard/dev/warehouse/configs/dotfiles/desktop/sway/sway/.config/sway/config"
 		}
 	}
 
@@ -22,33 +22,33 @@ layout {
 	mod_tab name="waybar_conf" split_direction="vertical"{
 		pane split_direction="vertical" {
 			command "hx"
-			args "/home/fard/dev/warehouse/configs/dotfiles/sway/waybar/.config/waybar/config"
+			args "/home/fard/dev/warehouse/configs/dotfiles/desktop/sway/waybar/.config/waybar/config"
 		}
 		pane split_direction="vertical" {
 			command "hx"
-			args "/home/fard/dev/warehouse/configs/dotfiles/sway/waybar/.config/waybar/style.css"
+			args "/home/fard/dev/warehouse/configs/dotfiles/desktop/sway/waybar/.config/waybar/style.css"
 		}
 	}
 
 	mod_tab name="wofi" split_direction="vertical"{
 		pane split_direction="vertical" {
 			command "hx"
-			args "/home/fard/dev/warehouse/configs/dotfiles/sway/wofi/.config/wofi/config"
+			args "/home/fard/dev/warehouse/configs/dotfiles/desktop/sway/wofi/.config/wofi/config"
 		}
 		pane split_direction="vertical" {
 			command "hx"
-			args "/home/fard/dev/warehouse/configs/dotfiles/sway/wofi/.config/wofi/style.css"
+			args "/home/fard/dev/warehouse/configs/dotfiles/desktop/sway/wofi/.config/wofi/style.css"
 		}
 	}
 
 	mod_tab name="scripts" split_direction="vertical"{
 		pane split_direction="vertical" {
 			command "tree"
-			args "-L" "3" "-a" "/home/fard/dev/warehouse/configs/dotfiles/sway/scripts/.config/scripts/"
+			args "-L" "3" "-a" "/home/fard/dev/warehouse/configs/dotfiles/desktop/sway/scripts/.config/scripts/"
 		}
 		pane split_direction="vertical" size="80%" {
 			command "hx"
-			args "/home/fard/dev/warehouse/configs/dotfiles/sway/scripts/.config/scripts/"
+			args "/home/fard/dev/warehouse/configs/dotfiles/desktop/sway/scripts/.config/scripts/"
 		}
 	}
 

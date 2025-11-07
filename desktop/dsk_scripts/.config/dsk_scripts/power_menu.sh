@@ -11,7 +11,7 @@ SELECTION=$(wofi --dmenu -a center -p "Select an option: " --style "$STYLE_FILE"
  Reboot
  Reboot to UEFI
 󰐥 Shutdown
-󰜺 Cancel󰤃
+󰜺 Cancel
 󰍁 Dev OFF
 󰍀 Dev ON
 EOF
