@@ -21,6 +21,7 @@ exec nm-applet #Network
 exec --no-startup-id /usr/libexec/xdg-desktop-portal-wlr #portail gtk
 exec /home/fard/.config/dsk_scripts/boot-time.sh --log
 # exec /home/fard/.config/dsk_scripts/organiser_workspaces.sh
+output * adaptive_sync off  
 
 # exec_always --no-startup-id "~/.config/scripts/organiser_workspaces.sh"
 ###================================================================================== Output configuration
