@@ -1,0 +1,55 @@
+layout {
+    cwd "/home/fard/dev/warehouse/configs/dotfiles/dev/zellij/.config/zellij/layouts"
+    tab name="main" hide_floating_panes=true {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar" {
+                _hidden "false"
+            }
+        }
+        pane size="25%"
+        pane size="75%"
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar" {
+                _hidden "true"
+            }
+        }
+    }
+    tab name="run" focus=true hide_floating_panes=true {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar" {
+                _hidden "false"
+            }
+        }
+        pane size="25%" split_direction="vertical" {
+            pane size="50%"
+            pane size="50%"
+        }
+        pane command="zellij" focus=true size="52%" {
+            args "action" "dump-layout"
+            start_suspended true
+        }
+        pane size="22%" split_direction="vertical" {
+            pane size="50%"
+            pane size="50%"
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar" {
+                _hidden "true"
+            }
+        }
+    }
+    new_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar" {
+                _hidden "false"
+            }
+        }
+        pane
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar" {
+                _hidden "true"
+            }
+        }
+    }
+}
+
