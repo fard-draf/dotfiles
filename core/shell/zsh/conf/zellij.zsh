@@ -1,9 +1,12 @@
 # ======= ALIAS ZELLIJ ========
-alias z.dev='zellij --layout dev'
-alias z.run='zellij --layout run'
-alias z.kbsp='zellij --layout kbsp attach --create korri-dev'
+alias z.dev='zellij --layout dev attach --create dev'
+alias z.run='zellij --layout run attach --create run'
+alias z.kbsp='zellij --layout kbsp attach --create kbsp'
+alias z.conf='zellij --layout conf attach --create conf'
+
+
 alias zka='zellij kill-all-sessions -y'
-alias swayconf='zellij --layout sway_conf'
+alias zkc='zellij kill-session'
 
 zjc() {
     local s

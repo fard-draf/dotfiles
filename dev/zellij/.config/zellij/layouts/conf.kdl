@@ -1,0 +1,125 @@
+layout {
+    cwd "/home/fard/dev/warehouse/configs/dotfiles"
+    tab name="dotf" focus=true hide_floating_panes=true {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar" {
+                _hidden "false"
+            }
+        }
+        pane size="25%"
+        pane size="75%" 
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar" {
+                _hidden "true"
+                show-modes "true"
+            }
+        }
+    }
+    tab name="core.shell" hide_floating_panes=true {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar" {
+                _hidden "false"
+            }
+        }
+        pane cwd="core/shell" size="25%"
+        pane command="hx" cwd="core/shell" size="75%" {
+            args "base/.zshrc"
+            start_suspended false
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar" {
+                _hidden "true"
+                show-modes "true"
+            }
+        }
+    }
+    tab name="dev.helix" hide_floating_panes=true {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar" {
+                _hidden "false"
+            }
+        }
+        pane cwd="dev/helix/.config/helix" size="25%"
+        pane command="hx" cwd="dev/helix/.config/helix" size="75%" {
+            args "config.toml"
+            start_suspended false
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar" {
+                _hidden "true"
+                show-modes "true"
+            }
+        }
+    }
+    tab name="dev.zellij" hide_floating_panes=true {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar" {
+                _hidden "false"
+            }
+        }
+        pane cwd="dev/zellij/.config/zellij" focus=true size="25%"
+        pane command="hx" cwd="dev/zellij/.config/zellij" size="75%" {
+            args "config.kdl"
+            start_suspended false
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar" {
+                _hidden "true"
+                show-modes "true"
+            }
+        }
+    }
+    tab name="desk.sway" hide_floating_panes=true {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar" {
+                _hidden "false"
+            }
+        }
+        pane command="hx" cwd="desktop/sway/.config/sway" {
+            args "config"
+            start_suspended false
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar" {
+                _hidden "true"
+                show-modes "true"
+            }
+        }
+    }
+    tab name="desk.waybar" hide_floating_panes=true {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar" {
+                _hidden "false"
+            }
+        }
+        pane command="hx" cwd="desktop/waybar/.config/waybar" size="47%" {
+            args "config"
+            start_suspended false
+        }
+        pane command="hx" cwd="desktop/waybar/.config/waybar" size="52%" {
+            args "style.css"
+            start_suspended false
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar" {
+                _hidden "true"
+                show-modes "true"
+            }
+        }
+    }
+    new_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar" {
+                _hidden "false"
+            }
+        }
+        pane cwd="/home/fard/dev/warehouse/configs/dotfiles"
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar" {
+                _hidden "true"
+                show-modes "true"
+            }
+        }
+    }
+}
+

@@ -62,7 +62,7 @@ layout {
         }
         pane command="ls" cwd="/home/fard/dev/warehouse/embedded" size="10%" {
             args "-l" "/dev/serial/by-id"
-            start_suspended true
+            start_suspended false
         }
         pane cwd="embedded/templates/korri/arm/stm32/stm32-g431-cbu6" size="53%"
         pane size="36%" split_direction="vertical" {
