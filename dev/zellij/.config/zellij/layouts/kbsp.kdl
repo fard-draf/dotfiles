@@ -1,13 +1,16 @@
 layout {
     cwd "/home/fard/dev/warehouse"
-    tab name="wh" focus=true hide_floating_panes=true {
+    tab name="misc" focus=true hide_floating_panes=true {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar" {
                 _hidden "false"
             }
         }
         pane size="25%"
-        pane focus=true size="75%" 
+        pane command="zellij" focus=true size="75%" {
+            args "action" "dump-layout"
+            start_suspended true
+        }
         pane size=1 borderless=true {
             plugin location="zellij:status-bar" {
                 _hidden "true"
@@ -22,8 +25,6 @@ layout {
         }
         pane cwd="embedded/templates/korri/arm/stm32/stm32-g431-cbu6" size="25%"
         pane cwd="embedded/templates/korri/arm/stm32/stm32-g431-cbu6" size="75%"
-        pane size=1 borderless=true 
-        
     }
     tab name="xtensa.s3" hide_floating_panes=true {
         pane size=1 borderless=true {
@@ -61,9 +62,9 @@ layout {
         }
         pane command="ls" cwd="/home/fard/dev/warehouse/embedded" size="10%" {
             args "-l" "/dev/serial/by-id"
-            start_suspended false
+            start_suspended true
         }
-        pane cwd="embedded/templates/korri/arm/stm32/stm32-g431-cbu6" size="52%"
+        pane cwd="embedded/templates/korri/arm/stm32/stm32-g431-cbu6" size="53%"
         pane size="36%" split_direction="vertical" {
             pane cwd="embedded/templates/korri/xtensa/esp32-s3" size="50%"
             pane cwd="embedded/templates/korri/risc-v/esp32-c3" size="50%"

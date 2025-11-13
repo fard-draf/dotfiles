@@ -3,6 +3,8 @@
 //
 
 keybinds clear-defaults=true {
+
+    
     locked {
         bind "Ctrl g" { SwitchToMode "normal"; }
     }
@@ -274,6 +276,7 @@ plugins {
     plugin-manager location="zellij:plugin-manager"
     session-manager location="zellij:session-manager"
     status-bar location="zellij:status-bar" {
+        show-modes true
         _hidden true
     }
     strider location="zellij:strider"
