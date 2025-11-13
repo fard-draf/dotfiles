@@ -2,7 +2,7 @@
 alias z.dev='zellij --layout dev attach --create dev'
 alias z.run='zellij --layout run attach --create run'
 alias z.kbsp='zellij --layout kbsp attach --create kbsp'
-alias z.conf='zellij --layout conf attach --create conf'
+alias z.dotf='zellij --layout dotf attach --create dotf'
 
 
 alias zka='zellij kill-all-sessions -y'

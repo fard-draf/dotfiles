@@ -7,7 +7,7 @@ layout {
             }
         }
         pane size="25%"
-        pane size="75%" 
+        pane focus=true size="75%"
         pane size=1 borderless=true {
             plugin location="zellij:status-bar" {
                 _hidden "true"
@@ -21,8 +21,10 @@ layout {
                 _hidden "false"
             }
         }
-        pane cwd="core/shell" size="25%"
-        pane command="hx" cwd="core/shell" size="75%" {
+        pane command="zsh" cwd="/home/fard/dev/warehouse/configs/dotfiles/core/shell" size="25%" {
+            start_suspended false
+        }
+        pane command="hx" cwd="/home/fard/dev/warehouse/configs/dotfiles/core/shell" size="75%" {
             args "base/.zshrc"
             start_suspended false
         }
@@ -40,7 +42,7 @@ layout {
             }
         }
         pane cwd="dev/helix/.config/helix" size="25%"
-        pane command="hx" cwd="dev/helix/.config/helix" size="75%" {
+        pane command="hx" cwd="/home/fard/dev/warehouse/configs/dotfiles/dev/helix/.config/helix" size="75%" {
             args "config.toml"
             start_suspended false
         }
@@ -57,8 +59,8 @@ layout {
                 _hidden "false"
             }
         }
-        pane cwd="dev/zellij/.config/zellij" focus=true size="25%"
-        pane command="hx" cwd="dev/zellij/.config/zellij" size="75%" {
+        pane cwd="dev/zellij/.config/zellij" size="25%"
+        pane command="hx" cwd="/home/fard/dev/warehouse/configs/dotfiles/dev/zellij/.config/zellij" size="75%" {
             args "config.kdl"
             start_suspended false
         }
@@ -75,7 +77,7 @@ layout {
                 _hidden "false"
             }
         }
-        pane command="hx" cwd="desktop/sway/.config/sway" {
+        pane command="hx" cwd="/home/fard/dev/warehouse/configs/dotfiles/desktop/sway/.config/sway" {
             args "config"
             start_suspended false
         }
@@ -92,12 +94,28 @@ layout {
                 _hidden "false"
             }
         }
-        pane command="hx" cwd="desktop/waybar/.config/waybar" size="47%" {
+        pane command="hx" cwd="/home/fard/dev/warehouse/configs/dotfiles/desktop/waybar/.config/waybar" size="47%" {
             args "config"
             start_suspended false
         }
-        pane command="hx" cwd="desktop/waybar/.config/waybar" size="52%" {
+        pane command="hx" cwd="/home/fard/dev/warehouse/configs/dotfiles/desktop/waybar/.config/waybar" size="52%" {
             args "style.css"
+            start_suspended false
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar" {
+                _hidden "true"
+                show-modes "true"
+            }
+        }
+    }
+    tab name="git" hide_floating_panes=true {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar" {
+                _hidden "false"
+            }
+        }
+        pane command="lazygit" {
             start_suspended false
         }
         pane size=1 borderless=true {
