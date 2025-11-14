@@ -6,7 +6,7 @@ layout {
                 _hidden "false"
             }
         }
-        pane command="zellij" focus=true {
+        pane command="zellij" cwd="dev/warehouse/configs/dotfiles" focus=true {
             args "action" "dump-layout"
             start_suspended true
         }
@@ -23,22 +23,8 @@ layout {
                 _hidden "false"
             }
         }
-        pane
-        pane size=1 borderless=true {
-            plugin location="zellij:status-bar" {
-                _hidden "true"
-                show-modes "true"
-            }
-        }
-    }
-    tab name="pfsense" hide_floating_panes=true {
-        pane size=1 borderless=true {
-            plugin location="zellij:tab-bar" {
-                _hidden "false"
-            }
-        }
         pane command="ssh" {
-            args "pfadmin"
+            args "mgmt.ans"
             start_suspended true
         }
         pane size=1 borderless=true {
@@ -48,14 +34,14 @@ layout {
             }
         }
     }
-    tab name="pvcore" hide_floating_panes=true {
+    tab name="m.pf" hide_floating_panes=true {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar" {
                 _hidden "false"
             }
         }
         pane command="ssh" {
-            args "pvcore"
+            args "mgmt.pf"
             start_suspended true
         }
         pane size=1 borderless=true {
@@ -65,13 +51,16 @@ layout {
             }
         }
     }
-    tab name="pbs" hide_floating_panes=true {
+    tab name="m.core" hide_floating_panes=true {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar" {
                 _hidden "false"
             }
         }
-        pane
+        pane command="ssh" {
+            args "mgmt.pcore"
+            start_suspended true
+        }
         pane size=1 borderless=true {
             plugin location="zellij:status-bar" {
                 _hidden "true"
@@ -79,13 +68,33 @@ layout {
             }
         }
     }
-    tab name="pvdev" hide_floating_panes=true {
+    tab name="mgmt.pbs" hide_floating_panes=true {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar" {
                 _hidden "false"
             }
         }
-        pane
+        pane command="ssh" {
+            args "mgmt.pbs"
+            start_suspended true
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar" {
+                _hidden "true"
+                show-modes "true"
+            }
+        }
+    }
+    tab name="dev.pcore" hide_floating_panes=true {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar" {
+                _hidden "false"
+            }
+        }
+        pane command="ssh" {
+            args "dev.pcore"
+            start_suspended true
+        }
         pane size=1 borderless=true {
             plugin location="zellij:status-bar" {
                 _hidden "true"
@@ -99,7 +108,7 @@ layout {
                 _hidden "false"
             }
         }
-        pane
+        pane cwd="/home/fard"
         pane size=1 borderless=true {
             plugin location="zellij:status-bar" {
                 _hidden "true"
