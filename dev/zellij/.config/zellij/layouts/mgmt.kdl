@@ -1,0 +1,111 @@
+layout {
+    cwd "/home/fard"
+    tab name="zaatar" focus=true hide_floating_panes=true {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar" {
+                _hidden "false"
+            }
+        }
+        pane command="zellij" focus=true {
+            args "action" "dump-layout"
+            start_suspended true
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar" {
+                _hidden "true"
+                show-modes "true"
+            }
+        }
+    }
+    tab name="ansible" hide_floating_panes=true {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar" {
+                _hidden "false"
+            }
+        }
+        pane
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar" {
+                _hidden "true"
+                show-modes "true"
+            }
+        }
+    }
+    tab name="pfsense" hide_floating_panes=true {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar" {
+                _hidden "false"
+            }
+        }
+        pane command="ssh" {
+            args "pfadmin"
+            start_suspended true
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar" {
+                _hidden "true"
+                show-modes "true"
+            }
+        }
+    }
+    tab name="pvcore" hide_floating_panes=true {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar" {
+                _hidden "false"
+            }
+        }
+        pane command="ssh" {
+            args "pvcore"
+            start_suspended true
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar" {
+                _hidden "true"
+                show-modes "true"
+            }
+        }
+    }
+    tab name="pbs" hide_floating_panes=true {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar" {
+                _hidden "false"
+            }
+        }
+        pane
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar" {
+                _hidden "true"
+                show-modes "true"
+            }
+        }
+    }
+    tab name="pvdev" hide_floating_panes=true {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar" {
+                _hidden "false"
+            }
+        }
+        pane
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar" {
+                _hidden "true"
+                show-modes "true"
+            }
+        }
+    }
+    new_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar" {
+                _hidden "false"
+            }
+        }
+        pane
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar" {
+                _hidden "true"
+                show-modes "true"
+            }
+        }
+    }
+}
+
