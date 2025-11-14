@@ -92,7 +92,7 @@ layout {
             }
         }
         pane command="ssh" {
-            args "dev.pcore"
+            args "pdev"
             start_suspended true
         }
         pane size=1 borderless=true {
