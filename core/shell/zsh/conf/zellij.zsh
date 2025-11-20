@@ -1,4 +1,5 @@
 # ======= ALIAS ZELLIJ ========
+alias zsm='zellij -l welcome'
 alias z.dev='zellij --layout dev attach --create dev'
 alias z.run='zellij --layout run attach --create run'
 alias z.kbsp='zellij --layout kbsp attach --create kbsp'
