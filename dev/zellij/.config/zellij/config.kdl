@@ -307,7 +307,7 @@ web_client {
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
-theme "lucario"
+theme "focus_intense"
  
 // Choose the base input mode of zellij.
 // Default: normal
@@ -352,8 +352,14 @@ default_mode "normal"
 //   - true (default, enabled)
 //   - false
 // 
-pane_frames false
- 
+pane_frames true
+
+ui {
+    pane_frames {
+        rounded_corners true // ou false pour des coins carrés
+        hide_session_name false
+    }
+}
 // When attaching to an existing session with other users,
 // should the session be mirrored (true)
 // or should each user have their own cursor (false)
@@ -555,3 +561,20 @@ show_startup_tips false
 // can be useful for removing wrappers around commands
 // Note: be sure to escape backslashes and similar characters properly
 // post_command_discovery_hook "echo $RESURRECT_COMMAND | sed <your_regex_here>"
+themes {
+    focus_intense {
+        fg "#FFFFFF"
+        bg "#000000"
+        black "#000000"
+        red "#CC0000"
+        // La couleur 'green' est souvent utilisée pour le cadre actif
+        // Mettez une couleur très visible ici (ex: Jaune fluo ou Magenta)
+        green "#FFFF00" 
+        yellow "#FFFF00"
+        blue "#0000FF"
+        magenta "#FF00FF"
+        cyan "#00FFFF"
+        white "#FFFFFF"
+        orange "#FF4500"
+    }
+}

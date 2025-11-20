@@ -17,3 +17,6 @@ alias gundo='git reset HEAD~1'                 # Annule le dernier commit
 alias gsync='git pull origin $(git rev-parse --abbrev-ref HEAD)' # Synchro avec remote
 
 alias git-al="show_aliases_from_file $DOTFILES/shell/zsh/conf/git.zsh"
+
+# ======= ALIAS LAZYGIT =======
+alias lg='lazygit'

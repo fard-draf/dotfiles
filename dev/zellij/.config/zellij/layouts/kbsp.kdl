@@ -1,13 +1,25 @@
 layout {
-    cwd "/home/fard/dev/warehouse"
-    tab name="misc" focus=true hide_floating_panes=true {
+    cwd "/home/fard/dev/warehouse/embedded/templates/korri"
+    tab name="bsp.run" hide_floating_panes=true {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar" {
                 _hidden "false"
             }
         }
-        pane size="25%"
-        pane  focus=true size="75%" 
+        pane command="just" cwd="arm/stm32/stm32-g431-cbu6" size="50%" {
+            args "run"
+            start_suspended true
+        }
+        pane size="50%" split_direction="vertical" {
+            pane command="espflash" cwd="xtensa/esp32-s3" size="50%" {
+                args "flash" "--monitor" "target/xtensa-esp32s3-none-elf/release/receiver"
+                start_suspended true
+            }
+            pane command="espflash" cwd="risc-v/esp32-c3" size="50%" {
+                args "flash" "--monitor" "--chip" "esp32c3" "target/riscv32imc-unknown-none-elf/release/talker_fight3"
+                start_suspended true
+            }
+        }
         pane size=1 borderless=true {
             plugin location="zellij:status-bar" {
                 _hidden "true"
@@ -20,17 +32,44 @@ layout {
                 _hidden "false"
             }
         }
-        pane cwd="embedded/templates/korri/arm/stm32/stm32-g431-cbu6" size="25%"
-        pane cwd="embedded/templates/korri/arm/stm32/stm32-g431-cbu6" size="75%"
+        pane split_direction="vertical" {
+            pane command="hx" cwd="arm/stm32/stm32-g431-cbu6" size="50%" {
+                args "src/main.rs"
+                start_suspended true
+            }
+            pane size="50%" {
+                pane command="hx" cwd="arm/stm32/stm32-g431-cbu6" size="70%" {
+                    args ".cargo/config.toml"
+                    start_suspended true
+                }
+                pane cwd="arm/stm32/stm32-g431-cbu6" size="30%"
+            }
+        }
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar" {
+                _hidden "true"
+            }
+        }
     }
-    tab name="xtensa.s3" hide_floating_panes=true {
+    tab name="xtensa.s3" focus=true hide_floating_panes=true {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar" {
                 _hidden "false"
             }
         }
-        pane cwd="embedded/templates/korri/xtensa/esp32-s3" size="25%"
-        pane cwd="embedded/templates/korri/xtensa/esp32-s3" size="75%"
+        pane split_direction="vertical" {
+            pane command="hx" cwd="xtensa/esp32-s3" size="50%" {
+                args "src/bin/receiver.rs"
+                start_suspended true
+            }
+            pane size="50%" {
+                pane cwd="xtensa/esp32-s3" size="70%"
+                pane command="zellij" cwd="xtensa/esp32-s3" focus=true size="30%" {
+                    args "action" "dump-layout"
+                    start_suspended true
+                }
+            }
+        }
         pane size=1 borderless=true {
             plugin location="zellij:status-bar" {
                 _hidden "true"
@@ -43,28 +82,15 @@ layout {
                 _hidden "false"
             }
         }
-        pane cwd="embedded/templates/korri/risc-v/esp32-c3" size="25%"
-        pane cwd="embedded/templates/korri/risc-v/esp32-c3" size="75%"
-        pane size=1 borderless=true {
-            plugin location="zellij:status-bar" {
-                _hidden "true"
+        pane split_direction="vertical" {
+            pane command="hx" cwd="risc-v/esp32-c3" size="50%" {
+                args "src/bin/talker_fight3.rs"
+                start_suspended true
             }
-        }
-    }
-    tab name="bsp.run" hide_floating_panes=true {
-        pane size=1 borderless=true {
-            plugin location="zellij:tab-bar" {
-                _hidden "false"
+            pane size="50%" {
+                pane cwd="risc-v/esp32-c3" size="70%"
+                pane cwd="risc-v/esp32-c3" size="30%"
             }
-        }
-        pane command="ls" cwd="/home/fard/dev/warehouse/embedded" size="10%" {
-            args "-l" "/dev/serial/by-id"
-            start_suspended false
-        }
-        pane cwd="embedded/templates/korri/arm/stm32/stm32-g431-cbu6" size="53%"
-        pane size="36%" split_direction="vertical" {
-            pane cwd="embedded/templates/korri/xtensa/esp32-s3" size="50%"
-            pane cwd="embedded/templates/korri/risc-v/esp32-c3" size="50%"
         }
         pane size=1 borderless=true {
             plugin location="zellij:status-bar" {
