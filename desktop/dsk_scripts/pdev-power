@@ -1,0 +1,23 @@
+
+#!/usr/bin/env bash
+#
+# Script de gestion du serveur Proxmox (pdev)
+# Usage :
+#   pdev-power on      -> Allume le serveur (Wake-on-LAN)
+#   pdev-power off     -> Éteint proprement via SSH
+#
+
+case "$1" in
+  on)
+    echo "[INFO] Envoi du Wake-on-LAN pour $MAC"
+    ssh -T mgmt.pf.wol.pdev
+    ;;
+  off)
+    echo "[INFO] Extinction du serveur $HOST"
+    ssh -T pdev.wol.off
+    ;;
+  *)
+    echo "Usage: $0 {on|off}"
+    exit 1
+    ;;
+esac

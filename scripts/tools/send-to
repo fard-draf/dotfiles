@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Wrapper générique pour scp vers un hôte défini dans ~/.ssh/config
+# Usage:
+#   send-to host fichier
+#   send-to host -r dossier
+
+set -euo pipefail
+
+if [[ $# -lt 2 ]]; then
+    echo "Usage: $0 <host> [-r] <fichier|dossier>"
+    exit 1
+fi
+
+HOST="$1"
+shift
+
+# Si option -r
+if [[ "$1" == "-r" ]]; then
+    if [[ -z "${2:-}" ]]; then
+        echo "❌ Erreur: vous devez fournir un dossier à copier."
+        exit 1
+    fi
+    scp -r "$2" "${HOST}:~/"
+else
+    scp "$1" "${HOST}:~/"
+fi
+
