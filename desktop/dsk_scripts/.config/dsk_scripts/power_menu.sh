@@ -1,68 +1,108 @@
 #!/bin/bash
 
-# Le chemin vers ton nouveau fichier de style
 STYLE_FILE="/home/fard/.config/wofi/profiles/power_menu_style.css"
 
-# MODIFIÉ ICI : Ajout de --style $STYLE_FILE
-SELECTION=$(wofi --dmenu -a center -p "Select an option: " --style "$STYLE_FILE" <<-EOF
-󰌾 Lock
-󰤄 Suspend
-󰍃 Log out
- Reboot
- Reboot to UEFI
-󰐥 Shutdown
-󰜺 Cancel
-󰍁 Dev OFF
-󰍀 Dev ON
+main_menu() {
+cat <<EOF
+ Lock 󰌾
+ Suspend 󰤄
+ Log out 󰍃
+ Reboot  
+ Shutdown 󰐥
+ Servers 󰈞
+ Cancel 󰜺
 EOF
-)
+}
+
+servers_menu() {
+cat <<EOF
+󰍁 Dev
+󰍀 PBS
+󰜺 Cancel
+EOF
+}
+
+dev_menu() {
+cat <<EOF
+󰍀 Dev ON
+󰍁 Dev OFF
+󰜺 Cancel
+EOF
+}
+
+pbs_menu() {
+cat <<EOF
+󰍀 PBS ON
+󰍁 PBS OFF
+󰜺 Cancel
+EOF
+}
+
+wofi_menu() {
+    wofi --dmenu -a center -p "$1" --width 220 --height 300 --style "$STYLE_FILE"
+}
+
+SELECTION=$(wofi_menu "Select an option:" <<<"$(main_menu)")
 
 confirm_action() {
     local prompt_text="$1"
-    CONFIRMATION=$(printf "No\nYes" | wofi --dmenu -a center -p "${prompt_text}?" --style "$STYLE_FILE")
+    CONFIRMATION=$(printf "No\nYes" | wofi_menu "${prompt_text}?")
     [[ "$CONFIRMATION" == "Yes" ]]
 }
+
 case "$SELECTION" in
     *"Lock"*)
         swaylock -f -c 000000
         ;;
+
     *"Suspend"*)
-        if confirm_action "Suspend"; then
-            systemctl suspend
-        fi
+        confirm_action "Suspend" && systemctl suspend
         ;;
+
     *"Log out"*)
-        if confirm_action "Log out"; then
-            swaymsg exit
-        fi
+        confirm_action "Log out" && swaymsg exit
         ;;
+
     *"Reboot"*)
-        if confirm_action "Reboot"; then
-            systemctl reboot
-        fi
+        confirm_action "Reboot" && systemctl reboot
         ;;
-    *"Reboot to UEFI"*)
-        if confirm_action "Reboot to UEFI"; then
-            systemctl reboot --firmware-setup
-        fi
-        ;;
+
     *"Shutdown"*)
-        if confirm_action "Shutdown"; then
-            systemctl poweroff
-        fi
+        confirm_action "Shutdown" && systemctl poweroff
         ;;
-    *"Dev OFF"*)
-        if confirm_action "Dev OFF"; then
-            exec pdev-power off
-        fi
+
+    *"Servers"*)
+        SERVER_SEL=$(wofi_menu "Servers:" <<<"$(servers_menu)")
+        case "$SERVER_SEL" in
+
+            *"Dev"*)
+                DEV_SEL=$(wofi_menu "Dev:" <<<"$(dev_menu)")
+                case "$DEV_SEL" in
+                    *"Dev ON"*)
+                        confirm_action "Dev ON" && exec pdev-power on
+                        ;;
+                    *"Dev OFF"*)
+                        confirm_action "Dev OFF" && exec pdev-power off
+                        ;;
+                esac
+                ;;
+
+            *"PBS"*)
+                PBS_SEL=$(wofi_menu "PBS:" <<<"$(pbs_menu)")
+                case "$PBS_SEL" in
+                    *"PBS ON"*)
+                        confirm_action "PBS ON" && exec pbs-power on
+                        ;;
+                    *"PBS OFF"*)
+                        confirm_action "PBS OFF" && exec pbs-power off
+                        ;;
+                esac
+                ;;
+        esac
         ;;
-    *"Dev ON"*)
-        if confirm_action "Dev ON"; then
-            exec pdev-power on
-        fi
-        ;;
-    # L'option "Cancel" ne fait rien, le script se termine
+
     *"Cancel"*)
         exit 0
         ;;
 esac
+

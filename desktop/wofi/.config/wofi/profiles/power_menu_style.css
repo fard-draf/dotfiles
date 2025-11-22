@@ -42,8 +42,8 @@
 
 #input {
     /* On force l'élément à ne prendre aucune place */
-    height: 0px;
-    min-height: 0px;
+    height: 1px;
+    min-height: 1px;
     padding: 0px;
     margin: 0px;
     border: none;
