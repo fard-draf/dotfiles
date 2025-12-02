@@ -1,2 +1,3 @@
 .secrets
+core/btop/.config/btop/btop.log
 dev/helix/.config/helix/runtime
