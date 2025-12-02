@@ -23,3 +23,12 @@ inlayHints.typeHints.hideLessSpecificTypes = true
 
 hover.actions.enable = true
 completion.autoimport.enable = true
+
+[[language]]
+name = "c"
+language-servers = [ "clangd" ]
+formatter = { command = "clang-format" }
+indent = { tab-width = 4, unit = "    " }
+
+[language-server.clangd]
+command = "clangd"

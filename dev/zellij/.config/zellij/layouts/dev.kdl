@@ -1,93 +1,48 @@
 layout {
-    default_tab_template {
+    tab name="Tab #1" focus=true hide_floating_panes=true {
         pane size=1 borderless=true {
-            plugin location="zellij:tab-bar"
-        }
-        children
-        pane size=2 borderless=true {
-            plugin location="zellij:status-bar"
-        }
-    }
-    pane_template name="tests_under_files" {
-        pane split_direction="horizontal" {
-            children
-            pane command="cargo" size="30%" {
-                args "test"
+            plugin location="zellij:tab-bar" {
+                _hidden "true"
             }
         }
-    }
-    pane_template name="tree" {
-        pane split_direction="horizontal" {
-            pane command="tree" size="30%" {
-                args "-L" "3" "-a"
-            }
-            children
-        }
-    }
-    tab_template name="strider_tab" {
-        pane size=1 borderless=true {
-            plugin location="zellij:tab-bar"
-        }
-        pane split_direction="Vertical" {
-            pane size="15%" {
-                // TODO: when we support sending CWD to plugins, this should start in ./zellij-derver
-                plugin location="zellij:strider"
-            }
-            children
-        }
-        pane size=2 borderless=true {
-            plugin location="zellij:status-bar"
-        }
-    }
-
-    // ==========================================================================================
-    strider_tab name="Overview" cwd="$KORRI/libs/korri-n2k" focus=true {
-        pane {
-        }
-
-    }
-    // ==========================================================================================
-    tab name="Docs" split_direction="vertical" cwd="$KORRI/libs/korri-n2k" {
-        pane {
-            pane size="33%" edit="./essentials/canboat.json"
-            pane command="sh" split_direction="vertical" {
-                args "-c" "./tools/scripts/find_pgns.sh"
-                size "33%"
-            }
-            pane command="sh"{
-                args "-c" "./tools/scripts/find_enums.sh"
-                size "33%"
-            }
-        }
-        tree split_direction="vertical" size="30%"{
-            children 
-        }
-    }
-    // ==========================================================================================
-     tab name="Dev #1" split_direction="vertical" cwd="$DEV_PATH/warehouse/projects/professional/korrigan/libs/korri-n2k" {
         pane split_direction="vertical" {
-            pane 
+            pane size="45%" stacked=true {
+                pane command="hx"  expanded=true {
+                    start_suspended false
+                }
+                pane command="lazygit" cwd="configs/dotfiles" {
+                    start_suspended false
+                }
+            }
+            pane size="40%" {
+                pane focus=true size="60%"
+                pane command="/usr/bin/python3"  size="40%" {
+                    args "-O" "/usr/bin/ranger"
+                    start_suspended false
+                }
+            }
+            pane size="15%"
         }
-        pane split_direction="horizontal" {
-            pane size="70%"
-            pane 
+        pane size=1 borderless=true {
+            plugin command="tree" location="zellij:status-bar" {
+                args "-La" "2"
+                start_suspended false
+            }
         }
     }
-
-
+    new_tab_template {
+        pane size=1 borderless=true {
+            plugin location="zellij:tab-bar" {
+                _hidden "false"
+            }
+        }
+        pane
+        pane size=1 borderless=true {
+            plugin location="zellij:status-bar" {
+                _hidden "true"
+                show-modes "true"
+            }
+        }
+    }
 }
-   // tab name="Server (pty thread)" split_direction="vertical" cwd="/mnt/sumac/dev/warehouse/projects/professional/korrigan" {
-    //     pane 
-    //     pane 
-    // }
-    // tab name="Server (pane grids)" split_direction="horizontal" cwd="/mnt/sumac/dev/warehouse/projects/professional/korrigan" {
-    //     pane split_direction="vertical" {
-    //         pane 
-    //         pane 
-    //         pane 
-    //     }
-    //     pane split_direction="vertical" {
-    //         pane 
-    //         pane 
-    //     }
-    // }
+
