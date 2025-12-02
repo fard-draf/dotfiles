@@ -220,5 +220,15 @@ titlebar_border_thickness 0
 client.focused          #D6119E #4911D6 #D6119E #4911D6 #4911D6
 client.unfocused        #333333 #222222 #888888 #292d2e #222222
 client.focused_inactive #333333 #222222 #888888 #292d2e  
+
+###==================================================================================GTK INTERFACE
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always {
+    gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+    gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+}
+
 ###==================================================================================INCLUDE
 include /etc/sway/config.d/*

@@ -4,37 +4,37 @@ STYLE_FILE="/home/fard/.config/wofi/profiles/power_menu_style.css"
 
 main_menu() {
 cat <<EOF
- Lock 󰌾
- Suspend 󰤄
- Log out 󰍃
- Reboot  
- Shutdown 󰐥
- Servers 󰈞
- Cancel 󰜺
+lock 󰌾
+suspend 󰤄
+log out 󰍃
+reboot  
+shutdown 󰐥
+servers 󰈞
+cancel 󰜺
 EOF
 }
 
 servers_menu() {
 cat <<EOF
-󰍁 Dev
-󰍀 PBS
-󰜺 Cancel
+dev
+pbs
+cancel
 EOF
 }
 
 dev_menu() {
 cat <<EOF
-󰍀 Dev ON
-󰍁 Dev OFF
-󰜺 Cancel
+dev on
+dev off
+cancel
 EOF
 }
 
 pbs_menu() {
 cat <<EOF
-󰍀 PBS ON
-󰍁 PBS OFF
-󰜺 Cancel
+pbs on
+pbs off
+cancel
 EOF
 }
 
@@ -42,66 +42,66 @@ wofi_menu() {
     wofi --dmenu -a center -p "$1" --width 220 --height 300 --style "$STYLE_FILE"
 }
 
-SELECTION=$(wofi_menu "Select an option:" <<<"$(main_menu)")
+SELECTION=$(wofi_menu "select an option:" <<<"$(main_menu)")
 
 confirm_action() {
     local prompt_text="$1"
-    CONFIRMATION=$(printf "No\nYes" | wofi_menu "${prompt_text}?")
-    [[ "$CONFIRMATION" == "Yes" ]]
+    CONFIRMATION=$(printf "no\nyes" | wofi_menu "${prompt_text}?")
+    [[ "$CONFIRMATION" == "yes" ]]
 }
 
 case "$SELECTION" in
-    *"Lock"*)
+    *"lock"*)
         swaylock -f -c 000000
         ;;
 
-    *"Suspend"*)
-        confirm_action "Suspend" && systemctl suspend
+    *"suspend"*)
+        confirm_action "suspend" && systemctl suspend
         ;;
 
-    *"Log out"*)
-        confirm_action "Log out" && swaymsg exit
+    *"log out"*)
+        confirm_action "log out" && swaymsg exit
         ;;
 
-    *"Reboot"*)
-        confirm_action "Reboot" && systemctl reboot
+    *"reboot"*)
+        confirm_action "reboot" && systemctl reboot
         ;;
 
-    *"Shutdown"*)
-        confirm_action "Shutdown" && systemctl poweroff
+    *"shutdown"*)
+        confirm_action "shutdown" && systemctl poweroff
         ;;
 
-    *"Servers"*)
-        SERVER_SEL=$(wofi_menu "Servers:" <<<"$(servers_menu)")
+    *"servers"*)
+        SERVER_SEL=$(wofi_menu "servers:" <<<"$(servers_menu)")
         case "$SERVER_SEL" in
 
-            *"Dev"*)
-                DEV_SEL=$(wofi_menu "Dev:" <<<"$(dev_menu)")
+            *"dev"*)
+                DEV_SEL=$(wofi_menu "dev:" <<<"$(dev_menu)")
                 case "$DEV_SEL" in
-                    *"Dev ON"*)
-                        confirm_action "Dev ON" && exec pdev-power on
+                    *"dev on"*)
+                        confirm_action "dev on" && exec pdev-power on
                         ;;
-                    *"Dev OFF"*)
-                        confirm_action "Dev OFF" && exec pdev-power off
+                    *"dev off"*)
+                        confirm_action "dev off" && exec pdev-power off
                         ;;
                 esac
                 ;;
 
-            *"PBS"*)
-                PBS_SEL=$(wofi_menu "PBS:" <<<"$(pbs_menu)")
+            *"pbs"*)
+                PBS_SEL=$(wofi_menu "pbs:" <<<"$(pbs_menu)")
                 case "$PBS_SEL" in
-                    *"PBS ON"*)
-                        confirm_action "PBS ON" && exec pbs-power on
+                    *"pbs on"*)
+                        confirm_action "pbs on" && exec pbs-power on
                         ;;
-                    *"PBS OFF"*)
-                        confirm_action "PBS OFF" && exec pbs-power off
+                    *"pbs off"*)
+                        confirm_action "pbs off" && exec pbs-power off
                         ;;
                 esac
                 ;;
         esac
         ;;
 
-    *"Cancel"*)
+    *"cancel"*)
         exit 0
         ;;
 esac
