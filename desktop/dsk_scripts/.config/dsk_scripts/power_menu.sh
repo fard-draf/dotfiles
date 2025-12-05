@@ -10,6 +10,7 @@ log out 󰍃
 reboot  
 shutdown 󰐥
 servers 󰈞
+cancel 󰜺
 EOF
 }
 
@@ -17,26 +18,28 @@ servers_menu() {
 cat <<EOF
 dev
 pbs
+cancel
 EOF
 }
 
 dev_menu() {
 cat <<EOF
- on
- off
+dev on
+dev off
+cancel
 EOF
 }
 
 pbs_menu() {
 cat <<EOF
- on
- off
+pbs on
+pbs off
+cancel
 EOF
 }
 
 wofi_menu() {
-    # wofi -S drun -p "$1" --width 110 --height 500 --style "$STYLE_FILE"
-    wofi --dmenu -a center -p "$2" --width 110 --lines 7 --style "$STYLE_FILE"
+    wofi --dmenu -a center -p "$1" --width 220 --height 300 --style "$STYLE_FILE"
 }
 
 SELECTION=$(wofi_menu "select an option:" <<<"$(main_menu)")
@@ -76,10 +79,10 @@ case "$SELECTION" in
                 DEV_SEL=$(wofi_menu "dev:" <<<"$(dev_menu)")
                 case "$DEV_SEL" in
                     *"dev on"*)
-                        exec pdev-power on
+                        confirm_action "dev on" && exec pdev-power on
                         ;;
                     *"dev off"*)
-                        exec pdev-power off
+                        confirm_action "dev off" && exec pdev-power off
                         ;;
                 esac
                 ;;
@@ -88,10 +91,10 @@ case "$SELECTION" in
                 PBS_SEL=$(wofi_menu "pbs:" <<<"$(pbs_menu)")
                 case "$PBS_SEL" in
                     *"pbs on"*)
-                        exec pbs-power on
+                        confirm_action "pbs on" && exec pbs-power on
                         ;;
                     *"pbs off"*)
-                        exec pbs-power off
+                        confirm_action "pbs off" && exec pbs-power off
                         ;;
                 esac
                 ;;
