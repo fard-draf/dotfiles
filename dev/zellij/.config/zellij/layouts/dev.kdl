@@ -1,39 +1,27 @@
 layout {
+    cwd "/home/fard/dev/warehouse/embedded/korri-n2k/mqtt/xtensa/esp32-s3"
     tab name="Tab #1" focus=true hide_floating_panes=true {
-        pane size=1 borderless=true {
-            plugin location="zellij:tab-bar" {
-                _hidden "true"
-            }
-        }
         pane split_direction="vertical" {
-            pane size="45%" stacked=true {
-                pane command="hx"  expanded=true {
-                    start_suspended false
-                }
-                pane command="lazygit" cwd="configs/dotfiles" {
-                    start_suspended false
-                }
-            }
-            pane size="40%" {
-                pane focus=true size="60%"
-                pane command="/usr/bin/python3"  size="40%" {
+            pane focus=true size="60%" stacked=true {
+                pane command="/usr/bin/python3" expanded=true {
                     args "-O" "/usr/bin/ranger"
                     start_suspended false
                 }
+                pane command="lazygit" {
+                    start_suspended true
+                }
             }
-            pane size="15%"
-        }
-        pane size=1 borderless=true {
-            plugin command="tree" location="zellij:status-bar" {
-                args "-La" "2"
-                start_suspended false
+            pane size="40%" {
+                pane size="70%" {
+                }
+                pane size="30%"
             }
         }
     }
     new_tab_template {
         pane size=1 borderless=true {
             plugin location="zellij:tab-bar" {
-                _hidden "false"
+                _hidden "true"
             }
         }
         pane

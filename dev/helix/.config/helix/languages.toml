@@ -5,12 +5,11 @@ language-servers = [ "rust-analyzer" ]
 indent = { tab-width = 4, unit = "    " }
 
 [language-server.rust-analyzer]
-command = "rust-analyzer"
-check.command = "cargo clippy -- -A clippy::all"
-checkOnSave = true  # Exécuter Clippy lors de la sauvegarde
+command = "/home/fard/dev/tools/rust/rustup/toolchains/stable-x86_64-unknown-linux-gnu/bin/rust-analyzer"
+
 
 [language-server.rust-analyzer.config]
-cargo.allFeatures = true
+cargo.allFeatures = false
 procMacro.enable = true
 check.command = "clippy"
 inlayHints.bindingModeHints.enable = true
