@@ -40,13 +40,13 @@ DISABLE_COMPFIX="true"
 
 # ======= POWERLEVEL10K INSTANT PROMPT =======
 # Doit rester près du début du fichier .zshrc
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 # ======= CONFIGURATION OH MY ZSH =======
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Réduit le nombre de plugins au minimum essentiel
 plugins=(git docker vscode npm node rust)
@@ -80,7 +80,7 @@ unset rc
 
 # ======= CONFIGURATION DE POWERLEVEL10K =======
 # Pour personnaliser le prompt, lancer `p10k configure` ou éditer ~/.p10k.zsh
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # ======= CHARGEMENT DES FICHIERS MODULAIRES =======
 
@@ -137,6 +137,12 @@ export NVM_DIR="$HOME/dev/tools/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# ==================================================================
+# PROMPT STARSHIP
+# ==================================================================
+if [ -t 1 ]; then
+  eval "$(starship init zsh)"
+fi
 
 # ==================================================================
 # LANCEMENT GRAPHIQUE
@@ -145,4 +151,3 @@ export NVM_DIR="$HOME/dev/tools/nvm"
 if [ -z "$WAYLAND_DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
   exec uwsm start sway
 fi
-
