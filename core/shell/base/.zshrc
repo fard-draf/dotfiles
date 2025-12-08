@@ -32,26 +32,10 @@ else
     echo "ERREUR : Fichier d'environnement '$HOST_ENV_FILE' introuvable." >&2
 fi
 
-# ======= OPTIMISATIONS DE PERFORMANCES =======
-# Désactiver les mises à jour automatiques d'Oh My Zsh
-DISABLE_AUTO_UPDATE="true"
-DISABLE_MAGIC_FUNCTIONS="true"
-DISABLE_COMPFIX="true"
-
-# ======= POWERLEVEL10K INSTANT PROMPT =======
-# Doit rester près du début du fichier .zshrc
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-
-# ======= CONFIGURATION OH MY ZSH =======
-export ZSH="$HOME/.oh-my-zsh"
-# ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# Réduit le nombre de plugins au minimum essentiel
-plugins=(git docker vscode npm node rust)
-
 # ======= OPTIMISATION DE L'AUTOCOMPLÉTION =======
+# Préparer les chemins nécessaires avant initialisation
+fpath=("$DOTFILES/core/shell/plugins/zsh-completions/src" $fpath)
+
 # Cache agressif des complétions
 autoload -Uz compinit
 if [ "$(date +'%j')" != "$(stat -c '%Y' ~/.zcompdump 2>/dev/null | date +'%j')" ]; then
@@ -59,9 +43,6 @@ if [ "$(date +'%j')" != "$(stat -c '%Y' ~/.zcompdump 2>/dev/null | date +'%j')" 
 else
   compinit -C
 fi
-
-# ======= CHARGEMENT OH MY ZSH =======
-source $ZSH/oh-my-zsh.sh
 
 # ======= CONFIGURATION SUPPLÉMENTAIRE =======
 if [ -f /etc/zshrc ]; then
@@ -77,10 +58,6 @@ if [ -d ~/.bashrc.d ]; then
   done
 fi
 unset rc
-
-# ======= CONFIGURATION DE POWERLEVEL10K =======
-# Pour personnaliser le prompt, lancer `p10k configure` ou éditer ~/.p10k.zsh
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # ======= CHARGEMENT DES FICHIERS MODULAIRES =======
 
@@ -151,4 +128,3 @@ fi
 if [ -z "$WAYLAND_DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
   exec uwsm start sway
 fi
-

@@ -216,7 +216,7 @@ exec --no-startup-id bash -c 'export QT_QPA_PLATFORMTHEME="gnome"'
 default_border pixel 4
 titlebar_border_thickness 0 
 #                       <bord>   <fond> <texte> <indic> <bordure_enfant>
-client.focused          #d7af00 #D7AF00 #0093D7 #d7af00 #d7af00
+client.focused          #d7af00 #D7AF00 #000000 #d7af00 #d7af00
 client.unfocused        #333333 #222222 #888888 #292d2e #222222
 client.focused_inactive #222222 #222222 #888888 #292d2e  
 
