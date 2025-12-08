@@ -1,6 +1,6 @@
 * {
   font-family: FiraCode Nerd Font;
-  color: #e5e9f0;
+  color: #fdf4cf;
   background: transparent;
   font-size: 16px;
 }
@@ -9,12 +9,12 @@
     /* 1. Définir une bordure transparente pour créer l'espace du dégradé */
     border: 5px solid transparent;
     border-radius: 15px;
-    background-color: #282A36; 
+    background-color: #1b1300;
 
     /* 2. La technique des deux arrière-plans adaptée pour Wofi */
     background:
-        linear-gradient(150deg, #282A36, #282A36) padding-box, 
-        linear-gradient(135deg, #4911D6, #D6119E) border-box; 
+        linear-gradient(150deg, rgba(23, 16, 0, 0.95), rgba(34, 18, 0, 0.92)) padding-box,
+        linear-gradient(135deg, #D7AF00, #D74400) border-box;
 
     /* 3. Le découpage qui fait fonctionner la magie */
     background-clip: padding-box, border-box;
@@ -37,14 +37,16 @@
 }
 
 #entry:selected {
-  background-color: #340C97;
+  background-color: rgba(215, 68, 0, 0.9);
   border: none; /* Le "border: 5px" pouvait aussi ajouter de la hauteur */
+  color: #1a0f00;
 }
 
 /* C'est ici la clé : on cible l'icône ET le texte pour un contrôle total. */
 #img, #text {
     padding: 2px 8px;   /* On applique un padding vertical fin (2px) ici. */
     margin: 0px;        /* On supprime toute marge par défaut. */
+    color: inherit;
 }
 
 /* ... (votre section #input ne change pas) ... */

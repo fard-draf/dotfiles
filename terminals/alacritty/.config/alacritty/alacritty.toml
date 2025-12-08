@@ -1,5 +1,5 @@
 [font]
-size = 13.0
+size = 14.0
 
 [font.bold]
 family = "Iosevka Term"
@@ -14,4 +14,4 @@ family = "Iosevka Term"
 style = "Regular"
 
 [colors.primary]
-background = "#1B1B25"
+background = "#070A0A"

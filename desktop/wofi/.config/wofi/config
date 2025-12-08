@@ -22,3 +22,5 @@ display_generic=false
 location=center
 key_expand=Tab
 insensitive=false
+# dmenu-hide_search=true
+dynamic_lines=true

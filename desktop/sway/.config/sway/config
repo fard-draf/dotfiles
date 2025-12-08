@@ -213,13 +213,12 @@ for_window [app_id="Thunar"] floating enable, resize set width 800 px height 140
 exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 exec gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 exec --no-startup-id bash -c 'export QT_QPA_PLATFORMTHEME="gnome"'
-default_border pixel 5
+default_border pixel 4
 titlebar_border_thickness 0 
 #                       <bord>   <fond> <texte> <indic> <bordure_enfant>
-# client.focused          #4911D6 #2EA47 #FFFFFF #D6119E #D6119E
-client.focused          #D6119E #4911D6 #D6119E #4911D6 #4911D6
+client.focused          #d7af00 #D7AF00 #0093D7 #d7af00 #d7af00
 client.unfocused        #333333 #222222 #888888 #292d2e #222222
-client.focused_inactive #333333 #222222 #888888 #292d2e  
+client.focused_inactive #222222 #222222 #888888 #292d2e  
 
 ###==================================================================================GTK INTERFACE
 set $gnome-schema org.gnome.desktop.interface

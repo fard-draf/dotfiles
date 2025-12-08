@@ -1,42 +1,36 @@
+######################################################################################################################
+############################################## SWAY CONF ##############################################################
+#######################################################################################################################
 ### Variables
 set $mod Mod4
 set $left h
 set $down j
 set $up k
 set $right l
-set $term term  # Or use kitty/alacritty if preferred for better performance in dev workflows
+set $term alacritty  # Or use kitty/alacritty if preferred for better performance in dev workflows
 set $menu /usr/bin/wofi --show drun --allow-images # Consider fuzzel or rofi-wayland for more features
 set $editor /usr/bin/hx  # Assuming VS Code; change to vim/nvim/emacs as needed
-set $browser /usr/bin/brave-browser  # Or chromium/brave for dev tools
-
-### Start Exec
+set $browser /usr/bin/firefox  # Or chromium/brave for dev tools
+set $filemanager /usr/bin/Thunar 
+# Aliases
+# set $ecran_aoc 'AOC 1601W MMEM1JA000545'
+# set $ecran_32 'Samsung Electric Company LS32CG51x H9JX201723'
+# set $ecran_27 'Samsung Electric Company Odyssey G5 HK7X400599'
+###================================================================================== Start Exec
 exec mako #Notifications
-exec kanshi #Screen conf
-exec gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark' #Theme
+exec waybar
+exec kanshi #Screen conf 
+exec nm-applet #Network
+exec --no-startup-id /usr/libexec/xdg-desktop-portal-wlr #portail gtk
+exec /home/fard/.config/dsk_scripts/boot-time.sh --log
+# exec /home/fard/.config/dsk_scripts/organiser_workspaces.sh
+output * adaptive_sync off  
 
+# exec_always --no-startup-id "~/.config/scripts/organiser_workspaces.sh"
 ###================================================================================== Output configuration
-# Use kanshi for dynamic multi-monitor setups (uncomment and install if needed)
-# exec kanshi
-# Default wallpaper
-output * bg /home/fard/Pictures/Wallpapers/neptune.tif fill
-# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-# Manual screen setup bind (your custom script)
-# bindsym $mod+Shift+x exec /home/fard/dotfiles/sway/scripts/kill_kanshi.sh
+output * bg /home/fard/Pictures/Wallpapers/will-rust-L76ogaaqsAk-unsplash.jpg fill
 bindsym $mod+Shift+x exec killall -SIGHUP kanshi
-# Example for dual monitors (adjust based on swaymsg -t get_outputs)
-# output eDP-1 pos 0 0 res 1920x1080
-# output HDMI-A-1 pos 1920 0 res 1920x1080
-
-workspace 1 output DP-1
-workspace 2 output DP-9
-workspace 3 output DP-8
-workspace 4 output DP-1  # Additional workspaces cycle back or assign as needed
-workspace 5 output DP-9
-workspace 6 output DP-8
-workspace 7 output DP-1
-workspace 8 output DP-9
-workspace 9 output DP-8
-workspace 10 output DP-1
+bindsym $mod+Shift+z exec "~/.config/dsk_scripts/organiser_workspaces.sh"
 
 ###==================================================================================  Idle configuration
 # Enhanced idle with swayidle: lock screen, dim displays, and DPMS
@@ -48,9 +42,10 @@ exec swayidle -w \
 
 ###==================================================================================  Input configuration
 # Keyboard: set layout, repeat rate for faster typing in dev
-input keyboard {
-    xkb_layout us
-    xkb_variant intl
+input type:keyboard {
+    xkb_layout "us,us"
+    xkb_variant ",intl"
+    xkb_options "grp:win_space_toggle"
     repeat_delay 250
     repeat_rate 50
 }
@@ -63,7 +58,8 @@ input "type:touchpad" {
     tap enabled
     natural_scroll enabled
     middle_emulation enabled
-    scroll_factor 0.8  # Adjust sensitivity
+    pointer_accel 0.5
+    scroll_factor 0.5  # Adjust sensitivity
 }
 # Mouse: accel for precise control
 input "type:pointer" {
@@ -73,19 +69,20 @@ input "type:pointer" {
 }
 
 
-
+exec_always --no-startup-id workstyle &> /tmp/workstyle.log
 ###==================================================================================  Key bindings
 # Basics
-bindsym $mod+Return exec foot
-bindsym F1 exec gtk-launch foot-remote-zellij.desktop
-bindsym F2 exec gtk-launch foot-local-zellij
+bindsym $mod+Return exec alacritty
+bindsym F1 exec gtk-launch wezterm-local.desktop
+bindsym F2 exec gtk-launch wezterm-remote.desktop
+# bindsym F3 exec gtk-launch wezterm-local-sway_conf.desktop
 bindsym $mod+q kill
 bindsym $mod+d exec /usr/bin/wofi --show drun --allow-images
 floating_modifier $mod normal
 bindsym $mod+Shift+c reload
-bindsym $mod+Shift+e exec swaynag -t warning -m 'Exit sway?' -B 'Yes' 'swaymsg exit'
-
+bindsym $mod+Shift+e exec /home/fard/.config/dsk_scripts/power_menu.sh
 # Dev-specific: Quick open editor/browser
+bindsym $mod+n exec $filemanager
 bindsym $mod+e exec $editor
 bindsym $mod+b exec $browser
 
@@ -131,8 +128,10 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
-bindsym $mod+Shift+button4 workspace prev
-bindsym $mod+Shift+button5 workspace next
+bindsym --whole-window $mod+button4 workspace next
+bindsym --whole-window $mod+button5 workspace prev
+bindsym --whole-window $mod+Shift+button4 move container to workspace next
+bindsym --whole-window $mod+Shift+button5 move container to workspace prev
 # Layout
 # bindsym $mod+b splith
 bindsym $mod+v splitv
@@ -145,8 +144,9 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # Scratchpad
-bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus scratchpad show
+bindsym $mod+minus move scratchpad
+# bindsym $mod+minus scratchpad show
+bindsym $mod+equal exec /home/fard/.config/dsk_scripts/scratchpad_menu.sh
 
 # Resizing
 mode "resize" {
@@ -174,31 +174,33 @@ bindsym --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ to
 bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
+# Zellij
+bindsym --locked XF86Eject exec zellij ka -y 
+# bindsym $mod+XF86Eject exec zellij-action kill
+
+
 
 # Pave numerique
 bindsym XF86Launch7 exec /usr/bin/gnome-calculator
 bindsym XF86Launch8 exec grim -g "$(slurp)" - | wl-copy  # Enhanced screenshot: select area and copy to clipboard
+bindsym $mod+Shift+equal exec grim -g "$(slurp)" - | wl-copy  # Enhanced screenshot: select area and copy to clipboard
 bindsym XF86Launch9 exec --no-startup-id flatpak run md.obsidian.Obsidian
 
 # Dev extras: Clipboard manager, notifications
 exec wl-paste --type text --watch cliphist store  # Install cliphist for clipboard history
 bindsym $mod+Shift+v exec cliphist list | wmenu | cliphist decode | wl-copy  # Paste from history
 
-###================================================================================== Status Bar
-bar {
-    # Afficher la barre uniquement sur le moniteur DP-8
-    output DP-9,
-    status_command waybar
-    position top
-}
 ###==================================================================================WINDOWS
 for_window [app_id="pavucontrol"] floating enable, resize set width 500 px height 700 px
 for_window [app_id="nm-connection-editor"] floating enable, resize set width 650 px height 550 px
-for_window [app_id="nmtui"] floating enable, resize set width 650 px height 550 px
+for_window [app_id="net.thunderbird.Thunderbird"] floating enable, resize set width 1500 px height 800 px
+for_window [app_id="wezterm"] floating enable, resize set width 650 px height 550 px
 for_window [app_id="blueman-manager"] floating enable, resize set width 600 px height 500 px
 for_window [app_id="tlp-viewer"] floating enable, resize set width 1000 px height 1200 px
+for_window [app_id="boot-viewer"] floating enable, resize set width 600 px height 1000 px
 for_window [app_id="/usr/bin/gnome-calendar"] floating enable, resize set width 1000 px height 1200 px
-for_window [app_id="/usr/bin/gnome-calculator"] floating enable, resize set width 1000 px height 1200 px
+for_window [app_id="org.gnome.Calculator"] floating enable, resize set width 700 px height 600 px
+for_window [app_id="Thunar"] floating enable, resize set width 800 px height 1400 px
 
 
 # Auto-start dev apps on workspaces (optional)
@@ -207,16 +209,26 @@ for_window [app_id="/usr/bin/gnome-calculator"] floating enable, resize set widt
 # assign [class="brave-browser"] workspace number 3:Web
 
 ###==================================================================================  Theme and gaps for better visuals
+#Themes
+exec gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+exec gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+exec --no-startup-id bash -c 'export QT_QPA_PLATFORMTHEME="gnome"'
+default_border pixel 15
+titlebar_border_thickness 0 
+#                       <bord>   <fond> <texte> <indic> <bordure_enfant>
+# client.focused          #4911D6 #2EA47 #FFFFFF #D6119E #D6119E
+client.focused          #D6119E #4911D6 #D6119E #4911D6 #4911D6
+client.unfocused        #333333 #222222 #888888 #292d2e #222222
+client.focused_inactive #333333 #222222 #888888 #292d2e  
 
-exec --no-startup-id bash -c 'QT_QPA_PLATFORMTHEME="gtk2"
-default_border pixel 2
-gaps inner 5
-gaps outer 5
-smart_gaps on
-smart_borders on
-client.focused #4c7899 #285577 #ffffff #2e9ef4 #285577
-client.unfocused #333333 #222222 #888888 #292d2e #222222
+###==================================================================================GTK INTERFACE
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always {
+    gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+    gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+}
 
 ###==================================================================================INCLUDE
 include /etc/sway/config.d/*
-

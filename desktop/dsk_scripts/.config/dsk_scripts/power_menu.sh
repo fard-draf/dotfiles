@@ -38,8 +38,19 @@ cancel
 EOF
 }
 
+
 wofi_menu() {
-    wofi --dmenu -a center -p "$1" --width 220 --height 300 --style "$STYLE_FILE"
+    local prompt="$1"
+    local input
+    input="$(cat)" || return 1
+
+    # plus besoin de calculer les lignes si tu utilises dynamic_lines=true
+    printf '%s\n' "$input" | wofi \
+        --dmenu \
+        -a center \
+        -p "$prompt" \
+        --width 200 \
+        # --style "$STYLE_FILE"
 }
 
 SELECTION=$(wofi_menu "select an option:" <<<"$(main_menu)")

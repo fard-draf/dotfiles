@@ -1,16 +1,24 @@
 /* Style CSS pour Waybar - Clean & Minimal avec icônes fixes */
+@define-color accent_gold #D7AF00;
+@define-color accent_ember #D74400;
+@define-color accent_bg #120800;
+@define-color accent_bg_alt #1f0c00;
+@define-color accent_text #fdf4cf;
+@define-color accent_muted #cdaa55;
+@define-color accent_disabled rgba(205, 170, 85, 0.4);
 
 * {
     font-family: "Iosevka Term Extrabold", "FontAwesome", "Font Awesome 5 Free", monospace;
     font-size: 16px;
     font-weight: 300;
+    color: @accent_text;
 }
 
 window#waybar {
-    background: rgba(30, 30, 46, 0.5);
-    /* background: linear-gradient(135deg, rgba(73, 17, 214, 0.5), rgba(73, 17, 214, 0.1)); */
-    border-bottom: 2px solid #3E4D5C;
-    color: #cdd6f4;
+    background: linear-gradient(135deg, alpha(@accent_bg, 0.96), alpha(@accent_bg_alt, 0.9));
+    border-bottom: 2px solid alpha(@accent_gold, 0.4);
+    color: @accent_text;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
 }
 
 button {
@@ -21,7 +29,8 @@ button {
 }
 
 button:hover {
-    background: rgba(137, 180, 250, 0.1);
+    background: alpha(@accent_gold, 0.12);
+    border-radius: 6px;
 }
 
 /* === WORKSPACES === */
@@ -42,150 +51,161 @@ button:hover {
     /* min-width: 15px; */
 /* } */
 
+#workspaces button {
+    color: alpha(@accent_text, 0.55);
+    border-radius: 8px;
+    min-width: 15px;
+}
+
 #workspaces button:hover {
-    color: #cdd6f4;
-    background: rgba(137, 180, 250, 0.2);
+    color: @accent_text;
+    background: linear-gradient(120deg, alpha(@accent_gold, 0.22), alpha(@accent_ember, 0.18));
 }
 
 #workspaces button.active {
-    color: #1e1e2e;
-    background: linear-gradient(45deg, #89b4fa, #b4befe);
+    color: #120800;
+    background: linear-gradient(45deg, @accent_gold, alpha(@accent_ember, 0.7));
+    font-weight: 600;
 }
 
 #workspaces button.focused {
-    background: linear-gradient(45deg, #463578, #673578);
-    color: #1e1e2e;
+    color: #120800;
+    background: linear-gradient(45deg, @accent_gold, @accent_ember);
+    box-shadow: 0 0 6px alpha(@accent_gold, 0.6);
     animation: blink 3s linear infinite alternate;
 }
 
 #workspaces button.urgent {
-    background: #f38ba8;
-    color: #1e1e2e;
+    background: @accent_ember;
+    color: #120800;
     animation: blink 1s linear infinite alternate;
+    font-weight: 600;
 }
 
 /* === WINDOW === */
 #window {
-    color: #cdd6f4;
+    color: alpha(@accent_text, 0.85);
     font-weight: 400;
     margin: 2px 8px;
     padding: 0 4px;
+    letter-spacing: 0.4px;
 }
 
 /* === MODULES - CLEAN STYLE === */
-#cpu {
-    color: #89b4fa;
+#cpu,
+#memory,
+#temperature,
+#pulseaudio,
+#network,
+#bluetooth,
+#backlight,
+#battery,
+#idle_inhibitor {
+    color: @accent_muted;
     margin: 0 6px;
     padding: 0;
 }
 
-#cpu.warning { color: #fab387; }
-#cpu.critical { color: #f38ba8; animation: pulse 1s infinite; }
-
-#memory {
-    color: #a6e3a1;
-    margin: 0 6px;
-    padding: 0;
+#cpu.warning,
+#memory.warning,
+#temperature.warning,
+#battery.warning:not(.charging) {
+    color: @accent_gold;
 }
 
-#memory.warning { color: #fab387; }
-#memory.critical { color: #f38ba8; animation: pulse 1s infinite; }
-
-#temperature {
-    color: #f9e2af;
-    margin: 0 6px;
-    padding: 0;
+#cpu.critical,
+#memory.critical,
+#temperature.critical,
+#battery.critical:not(.charging) {
+    color: @accent_ember;
+    animation: pulse 1s infinite;
 }
 
-#temperature.critical { color: #f38ba8; animation: pulse 2s infinite; }
-
-#pulseaudio {
-    color: #89b4fa;
-    margin: 0 6px;
-    padding: 0;
+#temperature.critical {
+    animation-duration: 1.5s;
 }
 
-#pulseaudio.muted { color: #6c7086; }
-
-#network {
-    color: #a6e3a1;
-    margin: 0 6px;
-    padding: 0;
+#pulseaudio.muted {
+    color: @accent_disabled;
 }
 
-#network.disconnected { color: #f38ba8; }
+#network.disconnected {
+    color: @accent_ember;
+    animation: blink 1.2s infinite alternate;
+}
 
 #bluetooth {
-    color: #89b4fa;
-    margin: 0 6px;
-    padding: 0;
     font-size: 15px;
-    
 }
 
-#bluetooth.disabled, #bluetooth.off { color: #6c7086; }
-#bluetooth.connected { color: #a6e3a1; }
+#bluetooth.disabled,
+#bluetooth.off {
+    color: @accent_disabled;
+}
+
+#bluetooth.connected {
+    color: @accent_gold;
+}
 
 #backlight {
-    color: #f9e2af;
-    margin: 0 6px;
-    padding: 0;
+    color: alpha(@accent_gold, 0.8);
 }
 
 #battery {
-    color: #a6e3a1;
-    margin: 0 6px;
     font-size: 15px;
-    padding: 0;
 }
 
-#battery.charging, #battery.plugged { color: #a6e3a1; }
-#battery.warning:not(.charging) { color: #fab387; }
-#battery.critical:not(.charging) { color: #f38ba8; animation: blink 0.5s infinite; }
+#battery.charging,
+#battery.plugged {
+    color: alpha(@accent_gold, 0.9);
+}
 
 #idle_inhibitor {
-    color: #cdd6f4;
-    margin: 0 6px;
     font-size: 15px;
-    padding: 0;
 }
 
-#idle_inhibitor.activated { color: #f38ba8; }
+#idle_inhibitor.activated {
+    color: @accent_ember;
+}
+
 
 /* === CLOCK === */
 #clock {
-    /* background: linear-gradient(45deg, rgba(137, 180, 250, 0.15), rgba(180, 190, 254, 0.15)); */
+    background: linear-gradient(45deg, alpha(@accent_gold, 0.2), alpha(@accent_ember, 0.2));
     border-radius: 8px;
     margin: 2px 4px;
     padding: 4px 10px;
-    color: #FFFFFF;
+    color: @accent_text;
     font-weight: 600;
-    /* font-size: 20px; */
+    border: 1px solid alpha(@accent_gold, 0.35);
 }
 
 
 #clock:hover {
-    background: linear-gradient(45deg, rgba(137, 180, 250, 0.25), rgba(180, 190, 254, 0.25));
+    background: linear-gradient(45deg, alpha(@accent_gold, 0.35), alpha(@accent_ember, 0.35));
 }
 
 /* === TRAY === */
 #tray {
     margin: 2px 4px;
     padding: 0 4px;
+    color: @accent_muted;
 }
 
 /* === POWER & SEPARATORS === */
 #custom-power {
-    color: #f38ba8;
+    color: @accent_ember;
     margin: 0 6px;
     padding: 0;
     font-size: 20px;
 }
 
-#custom-power:hover { color: #fab387; }
+#custom-power:hover {
+    color: alpha(@accent_ember, 0.8);
+}
 
 #custom-separator {
-    color: #45475a;
+    color: @accent_disabled;
     margin: 0 6px;
     padding: 0;
     font-size: 15px;
@@ -193,7 +213,7 @@ button:hover {
 
 #language {
     background: transparent;
-    color: #a6e3a1;
+    color: @accent_gold;
     padding: 0 5px;
     margin: 0 5px;
     min-width: 16px;
@@ -201,49 +221,51 @@ button:hover {
 
 #power-profiles-daemon {
     padding-right: 15px;
+    color: @accent_muted;
 }
 
 #power-profiles-daemon.performance {
     background-color: transparent;
-    color: #783567;
+    color: @accent_ember;
 }
 
 #power-profiles-daemon.balanced {
     background-color: transparent;
-    color: #f9e2af;
+    color: @accent_gold;
 }
 
 #power-profiles-daemon.power-saver {
     background-color: transparent;
-    color: #bedf97;
+    color: alpha(@accent_gold, 0.6);
 }
 
 #sway-keyboard-layout {
-    color: #45475a;
+    color: @accent_ember;
     margin: 0 6px;
     padding: 0;
     font-size: 20px;
 }
 #custom-uptime {
-    color: #45475a;
+    color: @accent_gold;
     font-size: 25px;
     margin: 0 6px;
     padding: 0;
 }
 
 #custom-boot-time {
-    color: #f9e2af;
+    color: alpha(@accent_gold, 0.85);
     margin: 0 6px;
     padding: 0;
 }
 
 #mode {
-    background: linear-gradient(45deg, #f38ba8, #fab387);
-    color: #1e1e2e;
+    background: linear-gradient(45deg, alpha(@accent_ember, 0.85), alpha(@accent_gold, 0.85));
+    color: #120800;
     border-radius: 6px;
     margin: 2px 4px;
     padding: 3px 8px;
     font-weight: 600;
+    box-shadow: 0 0 10px alpha(@accent_ember, 0.35);
     animation: pulse 2s infinite;
 }
 
@@ -261,13 +283,14 @@ button:hover {
 }
 /* ---- STYLE DE L'INFOBULLE (TOOLTIP) ---- */
 tooltip {
-    background-color: #1E1E2E;         /* Un fond sombre, cohérent avec un thème dark. */
-    border: 1px solid #3E4D5C;         /* Une bordure de couleur (ici, un bleu "Catppuccin Macchiato"). */
-    border-radius: 4px;                /* Des bords arrondis pour adoucir la forme. */
-    padding: 8px;                      /* Un peu d'espace interne pour que le texte ne soit pas collé au bord. */
+    background-color: rgba(18, 8, 0, 0.95);
+    border: 1px solid alpha(@accent_gold, 0.6);
+    border-radius: 6px;
+    padding: 8px;
+    color: @accent_text;
 }
 
 tooltip label {
-    color: #CDD6F4;                    /* Une couleur de texte claire et lisible sur fond sombre. */
-    font-size: 15px;                   /* Une taille de police confortable pour la lecture. */
+    color: @accent_text;
+    font-size: 15px;
 }
