@@ -48,7 +48,7 @@ read_only_style    = "bold fg:error_dark"
 [hostname]
 ssh_only   = false
 ssh_symbol = " " 
-format     = "[$ssh_symbol$hostname]($style)  "
+format     = " [$ssh_symbol$hostname]($style)  "
 style      = "bold fg:orange"
 
 [line_break]
