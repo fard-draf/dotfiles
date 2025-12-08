@@ -34,8 +34,8 @@ right_format = ""
 # --------------------------------------------------------------------
 
 [character]
-success_symbol = "[ ](bold fg:success) "
-error_symbol   = "[ ](bold fg:error) "
+success_symbol = "[ 󱞩](bold fg:success_dark) "
+error_symbol   = "[ 󱞽](bold fg:error) "
 vimcmd_symbol  = "[❮](bold fg:accent_cool) "
 
 [directory]

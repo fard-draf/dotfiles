@@ -4,23 +4,28 @@
 
 hide_scroll=true
 show=drun
-width=30%
-lines=8
+width=25%
+height=90%
+# lines=30
 line_wrap=word
 term=alacritty
 allow_markup=true
 always_parse_args=false
 show_all=true
-print_command=true
+print_command=false
 layer=overlay
 allow_images=true
 sort_order=alphabetical
 gtk_dark=true
 prompt=
-image_size=25
+image_size=30
+# single_click=true
 display_generic=false
-location=center
+# location=left
+xoffset=20
+yoffset=35
+
 key_expand=Tab
 insensitive=false
 # dmenu-hide_search=true
-dynamic_lines=true
+# dynamic_lines=true

@@ -50,6 +50,7 @@ wofi_menu() {
         -a center \
         -p "$prompt" \
         --width 200 \
+        --lines 8
         # --style "$STYLE_FILE"
 }
 
