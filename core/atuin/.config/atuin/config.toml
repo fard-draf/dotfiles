@@ -304,6 +304,6 @@ filter = [
 ]
 
 # UI / ergonomie
-style     = "auto"
+style     = "compact"
 keymap    = "vim"          # ou "emacs" selon ton goût
 show_preview = true  
