@@ -23,8 +23,6 @@ export PYENV_ROOT="$DEV_PATH/tools/pyenv"
 export YARN_HOME="$DEV_PATH/tools/yarn"
 export YARN_GLOBAL_FOLDER="${YARN_HOME}/global"
 export YARN_CACHE_FOLDER="${YARN_GLOBAL_FOLDER}/cache"
-#=======================================================ZSH
-export ZSH="$HOME/.oh-my-zsh"
 #=======================================================PODMAN
 export CONTAINERS_STORAGE_OPTS="--root $DEV_PATH/tools/podman/storage"
 #=======================================================PREFERENCES
