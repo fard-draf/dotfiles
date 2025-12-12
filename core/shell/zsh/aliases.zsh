@@ -16,11 +16,13 @@ alias :q='exit'
 alias :rbn='sudo reboot now -y'
 
 # ======= ALIAS NAVIGATION REPOSITORY =======
+alias dwl='cd $HOME/Downloads'
 alias dev='cd $DEV_PATH'
 alias week='cd $DEV_PATH/warehouse/playground/weekly'
 alias korri='cd $DEV_PATH/warehouse/projects/professional/korrigan'
 alias lib='cd $DEV_PATH/warehouse/projects/libs'
 alias wh='cd $DEV_PATH/warehouse'
+alias embed='cd $DEV_PATH/warehouse/embedded'
 
 # ======= ALIAS SHELL =======
 alias shell='cd $DOTFILES/core/shell'
